@@ -1,0 +1,12 @@
+{
+	"name": "CS428Project",
+	"version": "0.0.1",
+	"private": true,
+	"dependencies": {
+		"socket.io": "~0.9.6"
+	},
+	"engines": {
+		"node": "0.8.x"
+	}
+
+}
