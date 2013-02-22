@@ -1,0 +1,14 @@
+<script src="/socket.io/socket.io.js"></script>
+<script>
+
+
+	function onOrientation(event) {
+		var socket = io.connect('http://ec2-50-16-170-78.compute-1.amazonaws.com/');
+		var cor = {'alpha': event.alpha, 'beta': event.beta, 'gamma': event.gamma};
+        	console.log(cor);
+		socket.emit('cor', cor);
+	}
+
+window.addEventListener('deviceorientation', onOrientation);
+
+</script>
