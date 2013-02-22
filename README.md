@@ -32,3 +32,7 @@ Devices
 - Mac OSX 10.7 - Lion
 - Mac OSX 10.8 - Mountain Lion
 - Windows 7
+
+Resources
+---------
+- [Heroku: Getting Started with Node.js](https://devcenter.heroku.com/articles/nodejs#write-your-app)
