@@ -30,6 +30,11 @@ io.sockets.on('connection', function (socket) {
     console.log(data);
     socket.emit("data", {click: "You clicked it!"});
     socket.broadcast.emit('bcast', "Hi there");
-  })
+  });
+
+  socket.on('jump', function() {
+    console.log("jumpping!");
+    socket.broadcast.emit('jump');
+  });
 
 });
