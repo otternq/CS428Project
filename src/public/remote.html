@@ -1,0 +1,24 @@
+<html>
+	<head>
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js" language="javascript"></script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script  type="text/javascript" language="javascript">
+
+
+			function onOrientation(event) {
+				var socket = io.connect();
+				var cor = {'alpha': event.alpha, 'beta': event.beta, 'gamma': event.gamma};
+		        	console.log(cor);
+				socket.emit('cor', cor);
+			}
+
+			window.addEventListener('deviceorientation', onOrientation);
+
+			
+
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>

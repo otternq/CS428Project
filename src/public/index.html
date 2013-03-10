@@ -25,26 +25,22 @@
 
 		}
 
-		$(document).ready(function() {
-
-			var socket = io.connect();
-			
-			socket.on('bcast', function(data) {
-				alert('data');
-			});
-
-			socket.on('incor', function(data) {
-				console.log(data);
-			});
-
-		});
-
 	</script>
 
 	<body>
 		<a href="#" onClick="JavaScript: clickButton();">
 			click me
 		</a>
+		<div id="alpha"></div>
+		<div id="beta"></div>
+		<div id="gamma"></div>
+		
+		<div id="jsapp"></div>
+		<script type="text/javascript" src="lib/melonJS-0.9.4-min.js"></script>
+		<script type="text/javascript" src="js/screens.js"></script>
+		<script type="text/javascript" src="js/entities.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+
 	</body>
 
 </html>
