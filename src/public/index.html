@@ -25,65 +25,6 @@
 
 		}
 
-		$(document).ready(function() {
-
-			var boxLeftPos = 0;
-			var boxBottomPos = 0;
-
-			var lastAlpha = 0;
-
-			var step = 1;
-
-			var socket = io.connect();
-			
-			socket.on('bcast', function(data) {
-				alert('data');
-			});
-
-			socket.on('incor', function(data) {
-				//console.log(data);
-				//{"alpha":133.0871375626689,"beta":-0.22927611022410538,"gamma":0.4694779084384395}
-				document.getElementById('alpha').innerHTML = "Alpha: " + data.alpha;
-
-				document.getElementById('beta').innerHTML = "Beta: " + data.beta;
-
-				document.getElementById('gamma').innerHTML = "Gamma: " + data.gamma;
-
-				if (data.beta > 0 && boxLeftPos + step < window.innerWidth) {
-
-					boxLeftPos += step;
-
-					console.log("Beta is moving box right. Possition: "+ boxLeftPos);
-					
-				} else if (data.beta < 0 && boxLeftPos - step > 0) {
-
-					boxLeftPos -= step;
-					console.log("Beta is moving box left. Possition: "+ boxLeftPos);
-				}
-				
-
-				if (data.gamma > -60 && boxBottomPos + step < window.innerHeight) {
-
-					boxBottomPos += step;
-
-					console.log("Gamma is moving box up. Possition: "+ boxBottomPos);
-					
-				} else if ( boxBottomPos - step > 0 ) {
-					boxBottomPos -= step;
-
-					console.log("Gamma is moving box down. Possition: "+ boxBottomPos);
-				}
-
-				lastAlpha = data.alpha;
-
-
-
-				document.getElementById('box').style.left = boxLeftPos + "px";
-				document.getElementById('box').style.bottom = boxBottomPos + "px";
-			});
-
-		});
-
 	</script>
 
 	<body>
@@ -93,7 +34,13 @@
 		<div id="alpha"></div>
 		<div id="beta"></div>
 		<div id="gamma"></div>
-		<div id="box" style="position:absolute; bottom:0px; left:0px;">BOX!</div>
+		
+		<div id="jsapp"></div>
+		<script type="text/javascript" src="lib/melonJS-0.9.4-min.js"></script>
+		<script type="text/javascript" src="js/screens.js"></script>
+		<script type="text/javascript" src="js/entities.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+
 	</body>
 
 </html>
