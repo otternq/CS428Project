@@ -12,6 +12,11 @@
 				socket.emit('cor', cor);
 			}
 
+			function jump() {
+				var socket = io.connect();
+				socket.emit('jump');
+			}
+
 			window.addEventListener('deviceorientation', onOrientation);
 
 			
@@ -19,6 +24,8 @@
 		</script>
 	</head>
 	<body>
+
+		<a href="Javascript: jump();">JUMP!!</a>
 
 	</body>
 </html>

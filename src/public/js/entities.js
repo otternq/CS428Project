@@ -12,12 +12,6 @@
 
 function socketMovements(playerEntity) {
 
-	var boxLeftPos = 0;
-	var boxBottomPos = 0;
-
-	var lastAlpha = 0;
-
-	var step = 1;
 
 	var socket = io.connect();
 	
@@ -34,32 +28,26 @@ function socketMovements(playerEntity) {
 
 		document.getElementById('gamma').innerHTML = "Gamma: " + data.gamma;
 
-		if (data.beta > 0 && boxLeftPos + step < window.innerWidth) {
-
-			boxLeftPos += step;
-
-			console.log("Beta is moving box right. Possition: "+ boxLeftPos);
+		if (data.beta > 0) {
 			
-			console.log("PlayerEntity:");
-			console.log(playerEntity);
+			console.log("Beta is moving box right. Possition: ");
 
 			playerEntity.flipX(false);
 
-			playerEntity.vel.x += playerEntity.accel.x /** me.timer.tick*/;
-			playerEntity.updateMovement();
+			playerEntity.vel.x += playerEntity.accel.x * me.timer.tick;
+			//playerEntity.updateMovement();
 			
-		} else if (data.beta < 0 && boxLeftPos - step > 0) {
-
-			boxLeftPos -= step;
-			console.log("Beta is moving box left. Possition: "+ boxLeftPos);
+		} else if (data.beta < 0 ) {
+			console.log("Beta is moving box left.");
 
 
 			playerEntity.flipX(true);
 
-
-			playerEntity.vel.x -= playerEntity.accel.x /** me.timer.tick*/;
-			playerEntity.updateMovement();
+			playerEntity.vel.x -= playerEntity.accel.x * me.timer.tick;
+			//playerEntity.updateMovement();
 		}
+
+
 		
 
 		/*if (data.gamma > -60 && boxBottomPos + step < window.innerHeight) {
@@ -76,6 +64,20 @@ function socketMovements(playerEntity) {
 
 		lastAlpha = data.alpha;*/
 	});
+
+	socket.on('jump', function() {
+		if (!playerEntity.jumping && !playerEntity.falling) {
+			// set current vel to the maximum defined value
+			// gravity will then do the rest
+			playerEntity.vel.y = -playerEntity.maxVel.y * me.timer.tick;
+			// set the jumping flag
+			playerEntity.jumping = true;
+			// play some audio 
+			me.audio.play("jump");
+		}
+	});
+
+	playerEntity.update();
 
 }
 
@@ -116,7 +118,7 @@ function socketMovements(playerEntity) {
 		update : function ()
 		{
 				
-			if (me.input.isKeyPressed('left'))
+			/*if (me.input.isKeyPressed('left'))
 			{
 				// flip the sprite on horizontal axis
 				this.flipX(true);
@@ -148,7 +150,7 @@ function socketMovements(playerEntity) {
 				}
 			}
 			
-			// check & update player movement
+			// check & update player movement*/
 			this.updateMovement();
          
 			// check for collision
