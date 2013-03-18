@@ -1,46 +1,18 @@
+<!DOCTYPE html>
 <html>
-
-	<script src="http://code.jquery.com/jquery-1.9.1.min.js" language="javascript"></script>
-	<script src="/socket.io/socket.io.js"></script>
-
-	<script type="text/javascript" language="javascript">
-		
-		function clickButton() {
-
-			
-
-			var socket = io.connect();
-			var data = {
-				button: "clicked"
-			}
-
-			socket.emit('tempClick', data);
-			socket.on('data', function(data) {
-				console.log(data);
-			})
-
-			console.log("Button Clicked");
-
-
-
-		}
-
-	</script>
-
-	<body>
-		<a href="#" onClick="JavaScript: clickButton();">
-			click me
-		</a>
-		<div id="alpha"></div>
-		<div id="beta"></div>
-		<div id="gamma"></div>
-		
-		<div id="jsapp"></div>
-		<script type="text/javascript" src="lib/melonJS-0.9.4-min.js"></script>
-		<script type="text/javascript" src="js/screens.js"></script>
-		<script type="text/javascript" src="js/entities.js"></script>
-		<script type="text/javascript" src="js/main.js"></script>
-
+	<head>
+		<title>melonJS - Tutorial</title>
+	</head>
+	<body bgcolor="black">
+		<div id="info" style="width: 640px;">
+			<div id="jsapp">
+				<font color="#FFFFFF", style="position: absolute; font-size: 10px; font-family: Courier New">
+					<span id="framecounter">(0/0 fps)</span>
+				</font>
+				<script type="text/javascript" src="lib/melonJS-0.9.4-min.js"></script>
+				<script type="text/javascript" src="js/entities.js"></script>
+				<script type="text/javascript" src="js/main.js"></script>
+			</div>
+		</div>
 	</body>
-
 </html>
