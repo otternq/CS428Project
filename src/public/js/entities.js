@@ -1,3 +1,75 @@
+function socketMovements(playerEntity) {
+
+
+	var socket = io.connect();
+
+	socket.on('bcast', function(data) {
+		alert('data');
+	});
+
+	socket.on('incor', function(data) {
+		//console.log(data);
+		//{"alpha":133.0871375626689,"beta":-0.22927611022410538,"gamma":0.4694779084384395}
+		document.getElementById('alpha').innerHTML = "Alpha: " + data.alpha;
+
+		document.getElementById('beta').innerHTML = "Beta: " + data.beta;
+
+		document.getElementById('gamma').innerHTML = "Gamma: " + data.gamma;
+
+		if (data.beta > 0) {
+
+			console.log("Beta is moving box right. Possition: ");
+
+			playerEntity.flipX(false);
+
+			playerEntity.vel.x += playerEntity.accel.x * me.timer.tick;
+			//playerEntity.updateMovement();
+
+		} else if (data.beta < 0 ) {
+			console.log("Beta is moving box left.");
+
+
+			playerEntity.flipX(true);
+
+			playerEntity.vel.x -= playerEntity.accel.x * me.timer.tick;
+			//playerEntity.updateMovement();
+		}
+
+
+
+
+		/*if (data.gamma > -60 && boxBottomPos + step < window.innerHeight) {
+
+			boxBottomPos += step;
+
+			console.log("Gamma is moving box up. Possition: "+ boxBottomPos);
+			
+		} else if (data.gamma > 0 && boxBottomPos - step > 0 ) {
+			boxBottomPos -= step;
+
+			console.log("Gamma is moving box down. Possition: "+ boxBottomPos);
+		}
+
+		lastAlpha = data.alpha;*/
+	});
+
+	socket.on('jump', function() {
+		if (!playerEntity.jumping && !playerEntity.falling) {
+			// set current vel to the maximum defined value
+			// gravity will then do the rest
+			playerEntity.vel.y = -playerEntity.maxVel.y * me.timer.tick;
+			// set the jumping flag
+			playerEntity.jumping = true;
+			// play some audio 
+			me.audio.play("jump");
+		}
+	});
+
+	playerEntity.update();
+
+}
+
+
 function log(message){
 if(typeof console == "object"){
 console.log(message);
@@ -78,6 +150,8 @@ var PlayerEntity = me.ObjectEntity.extend(
 
 		// enable collision
 		this.collidable = true;
+
+		socketMovements(this);
 
 		//follow the player with the viewport
 		//me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
