@@ -19,7 +19,7 @@ var g_resources = [{
 {name: "ship", type:"image", src: "data/sprite/ship.png"},
 // audio resources
 {
-    name: "cling",
+    name: "jump",
     type: "audio",
     src: "data/audio/",
     channel: 2

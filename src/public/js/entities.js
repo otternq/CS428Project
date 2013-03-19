@@ -77,57 +77,6 @@ console.log(message);
 }
 
 /*
- * missile entity
- */
-var MissileEntity = me.ObjectEntity.extend(
-{
-	/*
-	 * constructor
-	 */
-	init: function(x, y)
-	{
-		// call the parent constructor
-		this.parent(x, y, {image: "missile"});
-
-		// set the default horizontal speed (accel vector)
-		this.setVelocity(7, 0);
-	},
-
-	/*
-	 * update function
-	 */
-	update: function()
-	{
-		// calculate missile velocity
-		this.vel.x += this.accel.x * me.timer.tick;
-
-		// if the missile object goes out from the screen,
-		// remove it from the game manager
-		if (!this.visible)
-			me.game.remove(this);
-
-		// check & update missile movement
-		this.computeVelocity(this.vel);
-		this.pos.add(this.vel);
-
-		// collision detection
-		var res = me.game.collide(this);
-		if (res && res.obj.type == me.game.ENEMY_OBJECT)
-		{
-			// remove enemy
-			res.obj.remove();
-			// remove missile
-			me.game.remove(this);
-
-			// update score
-			me.game.HUD.updateItemValue("score", 10);
-		}
-
-		return true;
-	}
-});
-
-/*
  * player entity
  */
 var PlayerEntity = me.ObjectEntity.extend(
@@ -179,8 +128,8 @@ var PlayerEntity = me.ObjectEntity.extend(
 			if (this.pos.x > me.video.getWidth() - this.image.width)
 				this.pos.x = me.video.getWidth() - this.image.width;
 		}
-		else
-			this.vel.x = 0;
+		else{}
+			//this.vel.x = 0;
 
 		// move up
 		if (me.input.isKeyPressed("up"))
@@ -216,16 +165,10 @@ var PlayerEntity = me.ObjectEntity.extend(
 			me.game.sort();
 		}
 
-		//log("vel before compute = " + this.vel.y);
-		// check & update player movement
 		this.computeVelocity(this.vel);
-		//log("vel after compute = " + this.vel.y);
-
-		//log("pos before add = " + this.pos.y);
 		this.pos.add(this.vel);
-		//log("pos after add = " + this.pos.y);
 		this.checkCollision();
-		//log("***************************");
+		
 
 		// update animation if necessary
 		var updated = (this.vel.x != 0 || this.vel.y != 0);
@@ -263,6 +206,56 @@ var PlayerEntity = me.ObjectEntity.extend(
 	}
 });
 
+/*
+ * missile entity
+ */
+var MissileEntity = me.ObjectEntity.extend(
+{
+	/*
+	 * constructor
+	 */
+	init: function(x, y)
+	{
+		// call the parent constructor
+		this.parent(x, y, {image: "missile"});
+
+		// set the default horizontal speed (accel vector)
+		this.setVelocity(7, 0);
+	},
+
+	/*
+	 * update function
+	 */
+	update: function()
+	{
+		// calculate missile velocity
+		this.vel.x += this.accel.x * me.timer.tick;
+
+		// if the missile object goes out from the screen,
+		// remove it from the game manager
+		if (!this.visible)
+			me.game.remove(this);
+
+		// check & update missile movement
+		this.computeVelocity(this.vel);
+		this.pos.add(this.vel);
+
+		// collision detection
+		var res = me.game.collide(this);
+		if (res && res.obj.type == me.game.ENEMY_OBJECT)
+		{
+			// remove enemy
+			res.obj.remove();
+			// remove missile
+			me.game.remove(this);
+
+			// update score
+			me.game.HUD.updateItemValue("score", 10);
+		}
+
+		return true;
+	}
+});
 /*
  * enemy entity
  */
