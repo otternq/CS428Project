@@ -96,7 +96,7 @@ var PlayScreen = me.ScreenObject.extend(
 	init: function(){
 		this.parent(true);
 		this.mapScrollRate = 2;
-		this.posVector =  new me.Vector2d(0,0);
+		this.posVector =  new me.Vector2d(0, 302);
 		
 	},
 
@@ -110,7 +110,7 @@ var PlayScreen = me.ScreenObject.extend(
 		me.game.viewport.follow(this.posVector, me.game.viewport.AXIS.VERTICAL);
 
       // add main player
-		var ship = new PlayerEntity(100, 265, this.mapScrollRate);
+		var ship = new PlayerEntity(302, 0, this.mapScrollRate);
 		me.game.add(ship, 10);
       
 	},
