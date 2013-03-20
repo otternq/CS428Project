@@ -13,6 +13,7 @@ Dependencies
 ----------
 - [Node.js](http://nodejs.org)
 - [Socket.io](http://socket.io/)
+- [melonJS](http://www.melonjs.org/)
 
 Platform/Environment
 ---------
