@@ -23,6 +23,7 @@ function socketMovements(playerEntity) {
 			playerEntity.flipX(false);
 
 			playerEntity.vel.x += playerEntity.accel.x * me.timer.tick;
+			
 			//playerEntity.updateMovement();
 
 		} else if (data.beta < 0 ) {
@@ -32,10 +33,11 @@ function socketMovements(playerEntity) {
 			playerEntity.flipX(true);
 
 			playerEntity.vel.x -= playerEntity.accel.x * me.timer.tick;
+			
 			//playerEntity.updateMovement();
 		}
 
-
+		playerEntity.movedByRemote = true;
 
 
 		/*if (data.gamma > -60 && boxBottomPos + step < window.innerHeight) {
@@ -86,6 +88,9 @@ var PlayerEntity = me.ObjectEntity.extend(
 	 */
 	init: function(x, y, constVel)
 	{
+
+		this.movedByRemote = false;
+
 		// call the parent constructor
 		this.parent(x, y, {image: "ship"});
 
@@ -114,44 +119,53 @@ var PlayerEntity = me.ObjectEntity.extend(
 		// move left
 		if (me.input.isKeyPressed("left"))
 		{
-			//alert("goo");
 			// update the entity velocity
-			this.vel.x -= this.accel.x * me.timer.tick;
-			if (this.pos.x < 0)
-				this.pos.x = 0;
+			this.vel.x -= this.accel.x * me.timer.tick;	
 		}
 		// move right
 		else if (me.input.isKeyPressed("right"))
 		{
 			// update the entity velocity
-			this.vel.x += this.accel.x * me.timer.tick;
-			if (this.pos.x > me.video.getWidth() - this.image.width)
-				this.pos.x = me.video.getWidth() - this.image.width;
+			this.vel.x += this.accel.x * me.timer.tick;	
 		}
-		else{}
-			//this.vel.x = 0;
+		else{
+			if(this.movedByRemote == false)
+				this.vel.x = 0;
+		}
 
 		// move up
 		if (me.input.isKeyPressed("up"))
 		{
 			// update the entity velocity
 			this.vel.y -= this.accel.y * me.timer.tick;
-			if (this.pos.y < me.game.viewport.top)
-				this.pos.y = me.game.viewport.top;
 		}
 		// move down
 		else if (me.input.isKeyPressed("down"))
 		{
 			// update the entity velocity
-			this.vel.y += this.accel.y * me.timer.tick;
-			if (this.pos.y > me.game.viewport.bottom - this.image.height)
-				this.pos.y = me.game.viewport.bottom - this.image.height;
+			this.vel.y += this.accel.y * me.timer.tick;	
 		}
 		else{
-			this.vel.y = this.constVelocity;
-			if (this.pos.y > me.game.viewport.bottom - this.image.height)
-				this.pos.y = me.game.viewport.bottom - this.image.height;
+			this.vel.y = this.constVelocity;	
 		}
+
+		//bounds checking
+		//check left
+		if (this.pos.x < 0)
+				this.pos.x = 0;
+
+		//check right
+		if (this.pos.x > me.video.getWidth() - this.image.width)
+				this.pos.x = me.video.getWidth() - this.image.width;
+
+		//check down
+		if (this.pos.y > me.game.viewport.bottom - this.image.height)
+				this.pos.y = me.game.viewport.bottom - this.image.height;
+
+		//check up
+		if (this.pos.y < me.game.viewport.top)
+				this.pos.y = me.game.viewport.top;
+
 
 		// fire
 		if (me.input.isKeyPressed("fire"))
@@ -169,6 +183,7 @@ var PlayerEntity = me.ObjectEntity.extend(
 		this.pos.add(this.vel);
 		this.checkCollision();
 		
+		this.movedByRemote = false;
 
 		// update animation if necessary
 		var updated = (this.vel.x != 0 || this.vel.y != 0);
