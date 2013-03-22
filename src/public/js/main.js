@@ -7,6 +7,12 @@
  *
  **/
 
+function log(message){
+if(typeof console == "object"){
+console.log(message);
+}
+}
+
 // game resources
 var g_resources = [{
     name: "tileset",
@@ -62,6 +68,8 @@ var jsApp	=
 		me.state.change(me.state.LOADING);
 
 		
+
+		
 	},
 	/* ---
 	
@@ -95,18 +103,20 @@ var PlayScreen = me.ScreenObject.extend(
 
 	init: function(){
 		this.parent(true);
-		this.mapScrollRate = 2;
-		this.posVector =  new me.Vector2d(0, 302);
-		
+		this.mapScrollRate = -2;	
+
+			
 	},
 
    onResetEvent: function()
 	{	
       // stuff to reset on state change
+
       
       //load a level
       	me.levelDirector.loadLevel("map1");
-
+      	log(me.game.currentLevel.realheight);
+      	this.posVector =  new me.Vector2d(0, me.game.currentLevel.realheight-302);
 		me.game.viewport.follow(this.posVector, me.game.viewport.AXIS.VERTICAL);
 
       // add main player

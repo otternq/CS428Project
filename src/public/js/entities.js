@@ -91,8 +91,10 @@ var PlayerEntity = me.ObjectEntity.extend(
 
 		this.movedByRemote = false;
 
+
+
 		// call the parent constructor
-		this.parent(x, y, {image: "ship"});
+		this.parent(x, me.game.viewport.bottom - y, {image: "ship"});
 
 		this.constVelocity = constVel;
 		// set the default horizontal & vertical speed (accel vector)
@@ -106,6 +108,7 @@ var PlayerEntity = me.ObjectEntity.extend(
 		this.collidable = true;
 
 		socketMovements(this);
+
 
 		//follow the player with the viewport
 		//me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
@@ -183,6 +186,8 @@ var PlayerEntity = me.ObjectEntity.extend(
 		this.pos.add(this.vel);
 		this.checkCollision();
 		
+		//log("player position = " + this.pos.x + "  " + this.pos.y);
+
 		this.movedByRemote = false;
 
 		// update animation if necessary
