@@ -14,27 +14,18 @@ console.log(message);
 }
 
 // game resources
-var g_resources = [{
-    name: "tileset",
-    type: "image",
-    src: "data/map1_tileset/tileset.png"
-},
+var g_resources = [
 {name: "bkg0", type: "image", src: "data/sprite/bkg0.png"},
 {name: "bkg1", type: "image", src: "data/sprite/bkg1.png"},
 {name: "map1", type: "tmx", src: "data/map1.tmx"},
 {name: "ship", type:"image", src: "data/sprite/ship.png"},
+{name: "enemy", type:"image", src: "data/sprite/enemy.png"},
+{name: "missile", type:"image", src: "data/sprite/missile.png"},
+{name: "implosion", type:"image", src: "data/sprite/implosion.png"},
 // audio resources
-{
-    name: "jump",
-    type: "audio",
-    src: "data/audio/",
-    channel: 2
-}, {
-    name: "stomp",
-    type: "audio",
-    src: "data/audio/",
-    channel: 1
-}];
+{name: "missile", type:"audio", src: "data/sound/", channel: 1},
+
+];
 
 
 
@@ -120,8 +111,15 @@ var PlayScreen = me.ScreenObject.extend(
 		me.game.viewport.follow(this.posVector, me.game.viewport.AXIS.VERTICAL);
 
       // add main player
-		var ship = new PlayerEntity(302, 0, this.mapScrollRate);
+		var ship = new UserControlledEntity(302, 0, this.mapScrollRate);
 		me.game.add(ship, 10);
+
+		// add enemy fleet
+		me.game.add(new EnemyFleet(), 10);
+
+		// make sure everything is in the right order
+		me.game.sort();
+
       
 	},
 	update: function(){

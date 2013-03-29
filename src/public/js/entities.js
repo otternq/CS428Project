@@ -81,7 +81,7 @@ console.log(message);
 /*
  * player entity
  */
-var PlayerEntity = me.ObjectEntity.extend(
+var UserControlledEntity = me.ObjectEntity.extend(
 {
 	/*
 	 * constructor
@@ -90,8 +90,6 @@ var PlayerEntity = me.ObjectEntity.extend(
 	{
 
 		this.movedByRemote = false;
-
-
 
 		// call the parent constructor
 		this.parent(x, me.game.viewport.bottom - y, {image: "ship"});
@@ -108,10 +106,6 @@ var PlayerEntity = me.ObjectEntity.extend(
 		this.collidable = true;
 
 		socketMovements(this);
-
-
-		//follow the player with the viewport
-		//me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
 	},
 
 	/*
@@ -177,7 +171,7 @@ var PlayerEntity = me.ObjectEntity.extend(
 			me.audio.play("missile");
 
 			// create a missile entity
-			var missile = new MissileEntity(this.pos.x + 34, this.pos.y + 15);
+			var missile = new ProjectileEntity(this.pos.x + 15, this.pos.y - 34);
 			me.game.add(missile, this.z);
 			me.game.sort();
 		}
@@ -186,8 +180,6 @@ var PlayerEntity = me.ObjectEntity.extend(
 		this.pos.add(this.vel);
 		this.checkCollision();
 		
-		//log("player position = " + this.pos.x + "  " + this.pos.y);
-
 		this.movedByRemote = false;
 
 		// update animation if necessary
@@ -229,18 +221,19 @@ var PlayerEntity = me.ObjectEntity.extend(
 /*
  * missile entity
  */
-var MissileEntity = me.ObjectEntity.extend(
+var ProjectileEntity = me.ObjectEntity.extend(
 {
 	/*
 	 * constructor
 	 */
 	init: function(x, y)
 	{
+		//log("created a missile at " + x + "," + y);
 		// call the parent constructor
 		this.parent(x, y, {image: "missile"});
 
-		// set the default horizontal speed (accel vector)
-		this.setVelocity(7, 0);
+		// set the default vertical speed (accel vector)
+		this.setVelocity(0, 7);
 	},
 
 	/*
@@ -248,8 +241,9 @@ var MissileEntity = me.ObjectEntity.extend(
 	 */
 	update: function()
 	{
+		log(this.vel.y);
 		// calculate missile velocity
-		this.vel.x += this.accel.x * me.timer.tick;
+		this.vel.y -= this.accel.y * me.timer.tick;
 
 		// if the missile object goes out from the screen,
 		// remove it from the game manager
@@ -304,7 +298,7 @@ var EnemyEntity = me.ObjectEntity.extend(
 		this.gravity = 0;
 
 		// set the default horizontal speed (accel vector)
-		this.setVelocity(2.5, 0);
+		this.setVelocity(0, .5);
 
 		// enable collision
 		this.collidable = true;
@@ -319,11 +313,11 @@ var EnemyEntity = me.ObjectEntity.extend(
 		this.parent(this);
 
 		// calculate velocity
-		this.vel.x -= this.accel.x * me.timer.tick;
+		this.vel.y += this.accel.y * me.timer.tick;
 
 		// if the enemy object goes out from the screen,
 		// remove it from the game manager
-		if (this.pos.x < -this.width)
+		if (this.pos.y > this.bottom)
 			me.game.remove(this);
 
 		// check & update missile movement
@@ -363,7 +357,7 @@ var EnemyFleet = Object.extend(
 	{
 		// init variables
 		this.fps = 0;
-		this.maxY = (me.video.getHeight() / 10) - 5;
+		this.maxX = (me.video.getWidth() / 10) - 5;
 	},
 
 	/*
@@ -372,10 +366,13 @@ var EnemyFleet = Object.extend(
 	update: function()
 	{
 		// every 1/12 second
-		if ((this.fps++) % 12 == 0)
+		if ((this.fps++) % 30 == 0)
 		{
-			var x = me.video.getWidth() + 10;
-			var y = Number.prototype.random(0, this.maxY) * 10;
+			//var x = me.video.getWidth() + 10;
+			//var y = Number.prototype.random(0, this.maxY) * 10;
+			log("top at " + me.game.viewport.top);
+			var y = me.game.viewport.top + 10;
+			var x = Number.prototype.random(0, this.maxX) * 10;
 
 			// add an enemy
 			me.game.add(new EnemyEntity(x, y), 10);
