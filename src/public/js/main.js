@@ -117,7 +117,7 @@ var PlayScreen = me.ScreenObject.extend(
 		me.game.add(ship, 10);
 
 		// add enemy fleet
-		me.game.add(new EnemyFleet(), 10);
+		me.game.add(new EnemyFleet(50), 10);
 
 		// make sure everything is in the right order
 		me.game.sort();

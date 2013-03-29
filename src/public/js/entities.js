@@ -353,10 +353,12 @@ var EnemyFleet = Object.extend(
 	/*
 	 * constructor
 	 */
-	init: function()
+	init: function(num)
 	{
 		// init variables
 		this.fps = 0;
+		this.maxSize = num;
+		this.generated = 0;
 		this.maxX = (me.video.getWidth() / 10) - 5;
 	},
 
@@ -366,7 +368,7 @@ var EnemyFleet = Object.extend(
 	update: function()
 	{
 		// every 1/12 second
-		if ((this.fps++) % 30 == 0)
+		if ((this.fps++) % 30 == 0 && this.generated < this.maxSize)
 		{
 			//var x = me.video.getWidth() + 10;
 			//var y = Number.prototype.random(0, this.maxY) * 10;
@@ -377,6 +379,8 @@ var EnemyFleet = Object.extend(
 			// add an enemy
 			me.game.add(new EnemyEntity(x, y), 10);
 			me.game.sort();
+
+			this.generated += 1;
 		}
 
 		return true;
@@ -399,7 +403,7 @@ var ImplosionAnimation = me.AnimationSheet.extend(
 		this.parent(x, y, image, 45, 42);
 
 		// add animation with all sprites
-		this.addAnimation("implosion", [0,2,4,6,8,10,12], .05);
+		this.addAnimation("implosion", null, .05);
 
 		// set animation
 		this.setCurrentAnimation("implosion", function() {
