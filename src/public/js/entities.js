@@ -241,7 +241,6 @@ var ProjectileEntity = me.ObjectEntity.extend(
 	 */
 	update: function()
 	{
-		log(this.vel.y);
 		// calculate missile velocity
 		this.vel.y -= this.accel.y * me.timer.tick;
 
@@ -298,7 +297,7 @@ var EnemyEntity = me.ObjectEntity.extend(
 		this.gravity = 0;
 
 		// set the default horizontal speed (accel vector)
-		this.setVelocity(0, .5);
+		this.setVelocity(0, 0);
 
 		// enable collision
 		this.collidable = true;
@@ -332,6 +331,7 @@ var EnemyEntity = me.ObjectEntity.extend(
 	 */
 	remove: function()
 	{
+		log("removing enemy");
 		// remove this entity
 		me.game.remove(this, true);
 
@@ -339,7 +339,7 @@ var EnemyEntity = me.ObjectEntity.extend(
 		me.audio.play("implosion");
 
 		// init implosion
-		var implosion = new Implosion(this.pos.x, this.pos.y);
+		var implosion = new ExplosionAnimation(this.pos.x, this.pos.y);
 		me.game.add(implosion, 15);
 		me.game.sort();
 	}
@@ -370,7 +370,7 @@ var EnemyFleet = Object.extend(
 		{
 			//var x = me.video.getWidth() + 10;
 			//var y = Number.prototype.random(0, this.maxY) * 10;
-			log("top at " + me.game.viewport.top);
+			//log("top at " + me.game.viewport.top);
 			var y = me.game.viewport.top + 10;
 			var x = Number.prototype.random(0, this.maxX) * 10;
 
@@ -386,22 +386,46 @@ var EnemyFleet = Object.extend(
 /*
  * implosion animation
  */
-var Implosion = me.AnimationSheet.extend(
+var ImplosionAnimation = me.AnimationSheet.extend(
 {
 	/*
 	 * constructor
 	 */
 	init: function(x, y)
 	{
+		log("imploding");
 		// call parent constructor
 		var image = me.loader.getImage("implosion");
 		this.parent(x, y, image, 45, 42);
 
 		// add animation with all sprites
-		this.addAnimation("implosion", null, 0.4);
+		this.addAnimation("implosion", [0,2,4,6,8,10,12], .05);
 
 		// set animation
 		this.setCurrentAnimation("implosion", function() {
+			me.game.remove(this);
+			me.game.sort();
+		});
+	}
+});
+
+var ExplosionAnimation = me.AnimationSheet.extend(
+{
+	/*
+	 * constructor
+	 */
+	init: function(x, y)
+	{
+		
+		// call parent constructor
+		var image = me.loader.getImage("explosion");
+		this.parent(x, y, image, 45, 42);
+
+		// add animation with all sprites
+		this.addAnimation("explosion", null, .05);
+
+		// set animation
+		this.setCurrentAnimation("explosion", function() {
 			me.game.remove(this);
 			me.game.sort();
 		});

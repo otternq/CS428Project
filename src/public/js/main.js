@@ -22,8 +22,10 @@ var g_resources = [
 {name: "enemy", type:"image", src: "data/sprite/enemy.png"},
 {name: "missile", type:"image", src: "data/sprite/missile.png"},
 {name: "implosion", type:"image", src: "data/sprite/implosion.png"},
+{name: "explosion", type:"image", src: "data/sprite/explosion.png", channel: 1},
 // audio resources
 {name: "missile", type:"audio", src: "data/sound/", channel: 1},
+{name: "implosion", type:"audio", src: "data/sound/", channel: 1},
 
 ];
 
