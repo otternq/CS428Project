@@ -120,7 +120,7 @@ var PlayScreen = me.ScreenObject.extend(
       
       //load a level
       	me.levelDirector.loadLevel("map1");
-      	log(me.game.currentLevel.realheight);
+      	
       	this.posVector =  new me.Vector2d(0, me.game.currentLevel.realheight-302);
 		me.game.viewport.follow(this.posVector, me.game.viewport.AXIS.VERTICAL);
 
