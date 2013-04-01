@@ -16,13 +16,17 @@ console.log(message);
 // game resources
 var g_resources = [
 {name: "bkg0", type: "image", src: "data/sprite/bkg0.png"},
-{name: "bkg1", type: "image", src: "data/sprite/bkg1.png"},
+{name: "bkg1", type: "image", src: "data/sprite/bkg2.png"},
 {name: "map1", type: "tmx", src: "data/map1.tmx"},
-{name: "ship", type:"image", src: "data/sprite/ship.png"},
+{name: "ship", type:"image", src: "data/sprite/ship2.png"},
 {name: "enemy", type:"image", src: "data/sprite/enemy.png"},
 {name: "missile", type:"image", src: "data/sprite/missile.png"},
 {name: "implosion", type:"image", src: "data/sprite/implosion.png"},
 {name: "explosion", type:"image", src: "data/sprite/explosion.png", channel: 1},
+{name: "life0", type:"image", src: "data/sprite/life20.png"},
+	{name: "life1", type:"image", src: "data/sprite/life21.png"},
+	{name: "life2", type:"image", src: "data/sprite/life22.png"},
+	{name: "life3", type:"image", src: "data/sprite/life23.png"},
 // audio resources
 {name: "missile", type:"audio", src: "data/sound/", channel: 1},
 {name: "implosion", type:"audio", src: "data/sound/", channel: 1},
@@ -105,6 +109,14 @@ var PlayScreen = me.ScreenObject.extend(
 	{	
       // stuff to reset on state change
 
+		// add a default HUD
+		me.game.addHUD(0, 0, me.video.getWidth(), 45);
+
+		// add a new HUD item
+		me.game.HUD.addItem("life", new LifeObject(3));
+
+		// add a new HUD item
+		me.game.HUD.addItem("score", new ScoreObject());
       
       //load a level
       	me.levelDirector.loadLevel("map1");

@@ -198,7 +198,7 @@ var UserControlledEntity = me.ObjectEntity.extend(
 		if (res && res.obj.type == me.game.ENEMY_OBJECT)
 		{
 			// play sound
-			me.audio.play("clash");
+			me.audio.play("implosion");
 
 			// update life indicator
 			me.game.HUD.updateItemValue("life", -1);
