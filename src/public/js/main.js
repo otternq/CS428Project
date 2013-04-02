@@ -7,28 +7,31 @@
  *
  **/
 
+function log(message){
+if(typeof console == "object"){
+console.log(message);
+}
+}
+
 // game resources
-var g_resources = [{
-    name: "tileset",
-    type: "image",
-    src: "data/map1_tileset/tileset.png"
-},
+var g_resources = [
 {name: "bkg0", type: "image", src: "data/sprite/bkg0.png"},
-{name: "bkg1", type: "image", src: "data/sprite/bkg1.png"},
+{name: "bkg1", type: "image", src: "data/sprite/bkg2.png"},
 {name: "map1", type: "tmx", src: "data/map1.tmx"},
-{name: "ship", type:"image", src: "data/sprite/ship.png"},
+{name: "ship", type:"image", src: "data/sprite/ship2.png"},
+{name: "enemy", type:"image", src: "data/sprite/enemy.png"},
+{name: "missile", type:"image", src: "data/sprite/missile.png"},
+{name: "implosion", type:"image", src: "data/sprite/implosion.png"},
+{name: "explosion", type:"image", src: "data/sprite/explosion.png", channel: 1},
+{name: "life0", type:"image", src: "data/sprite/life20.png"},
+	{name: "life1", type:"image", src: "data/sprite/life21.png"},
+	{name: "life2", type:"image", src: "data/sprite/life22.png"},
+	{name: "life3", type:"image", src: "data/sprite/life23.png"},
 // audio resources
-{
-    name: "cling",
-    type: "audio",
-    src: "data/audio/",
-    channel: 2
-}, {
-    name: "stomp",
-    type: "audio",
-    src: "data/audio/",
-    channel: 1
-}];
+{name: "missile", type:"audio", src: "data/sound/", channel: 1},
+{name: "implosion", type:"audio", src: "data/sound/", channel: 1},
+
+];
 
 
 
@@ -60,6 +63,8 @@ var jsApp	=
 
 		// load everything & display a loading screen
 		me.state.change(me.state.LOADING);
+
+		
 
 		
 	},
@@ -95,23 +100,40 @@ var PlayScreen = me.ScreenObject.extend(
 
 	init: function(){
 		this.parent(true);
-		this.mapScrollRate = 2;
-		this.posVector =  new me.Vector2d(0,0);
-		
+		this.mapScrollRate = -2;	
+
+			
 	},
 
    onResetEvent: function()
 	{	
       // stuff to reset on state change
+
+		// add a default HUD
+		me.game.addHUD(0, 0, me.video.getWidth(), 45);
+
+		// add a new HUD item
+		me.game.HUD.addItem("life", new LifeObject(3));
+
+		// add a new HUD item
+		me.game.HUD.addItem("score", new ScoreObject());
       
       //load a level
       	me.levelDirector.loadLevel("map1");
-
+      	
+      	this.posVector =  new me.Vector2d(0, me.game.currentLevel.realheight-302);
 		me.game.viewport.follow(this.posVector, me.game.viewport.AXIS.VERTICAL);
 
       // add main player
-		var ship = new PlayerEntity(100, 265, this.mapScrollRate);
+		var ship = new UserControlledEntity(302, 0, this.mapScrollRate);
 		me.game.add(ship, 10);
+
+		// add enemy fleet
+		me.game.add(new EnemyFleet(50), 10);
+
+		// make sure everything is in the right order
+		me.game.sort();
+
       
 	},
 	update: function(){
