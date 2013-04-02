@@ -35,9 +35,9 @@ io.sockets.on('connection', function (socket) {
     socket.broadcast.emit('bcast', "Hi there");
   });
 
-  socket.on('jump', function() {
-    console.log("jumpping!");
-    socket.broadcast.emit('jump');
+  socket.on('shoot', function() {
+    console.log("shooting!");
+    socket.broadcast.emit('shoot');
   });
 
 });

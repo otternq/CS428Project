@@ -55,16 +55,16 @@ function socketMovements(socket, playerEntity) {
 		lastAlpha = data.alpha;*/
 	});
 
-	socket.on('jump', function() {
-		if (!playerEntity.jumping && !playerEntity.falling) {
-			// set current vel to the maximum defined value
-			// gravity will then do the rest
-			playerEntity.vel.y = -playerEntity.maxVel.y * me.timer.tick;
-			// set the jumping flag
-			playerEntity.jumping = true;
-			// play some audio 
-			me.audio.play("jump");
-		}
+	socket.on('shoot', function() {
+		
+		// play sound
+			me.audio.play("missile");
+
+			// create a missile entity
+			var missile = new ProjectileEntity(playerEntity.pos.x + 15, playerEntity.pos.y - 34,7, "Player");
+			me.game.add(missile, playerEntity.z);
+			me.game.sort();
+
 	});
 
 	playerEntity.update();

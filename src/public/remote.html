@@ -20,10 +20,13 @@
 				socket = io.connect();
 
 				window.addEventListener('deviceorientation', onOrientation);
+
+
+				$('body').on('click', function() {
+					$('body').append('clicked');
+					shoot();
+				});
 			});
-
-			
-
 			
 
 		</script>
