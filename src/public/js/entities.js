@@ -1,7 +1,7 @@
-function socketMovements(playerEntity) {
+function socketMovements(socket, playerEntity) {
 
 
-	var socket = io.connect();
+	//var socket = io.connect();
 
 	socket.on('bcast', function(data) {
 		alert('data');
@@ -23,6 +23,7 @@ function socketMovements(playerEntity) {
 			playerEntity.flipX(false);
 
 			playerEntity.vel.x += playerEntity.accel.x * me.timer.tick;
+
 			//playerEntity.updateMovement();
 
 		} else if (data.beta < 0 ) {
@@ -32,10 +33,11 @@ function socketMovements(playerEntity) {
 			playerEntity.flipX(true);
 
 			playerEntity.vel.x -= playerEntity.accel.x * me.timer.tick;
+
 			//playerEntity.updateMovement();
 		}
 
-
+		playerEntity.movedByRemote = true;
 
 
 		/*if (data.gamma > -60 && boxBottomPos + step < window.innerHeight) {
@@ -53,16 +55,16 @@ function socketMovements(playerEntity) {
 		lastAlpha = data.alpha;*/
 	});
 
-	socket.on('jump', function() {
-		if (!playerEntity.jumping && !playerEntity.falling) {
-			// set current vel to the maximum defined value
-			// gravity will then do the rest
-			playerEntity.vel.y = -playerEntity.maxVel.y * me.timer.tick;
-			// set the jumping flag
-			playerEntity.jumping = true;
-			// play some audio 
-			me.audio.play("jump");
-		}
+	socket.on('shoot', function() {
+		
+		// play sound
+			me.audio.play("missile");
+
+			// create a missile entity
+			var missile = new ProjectileEntity(playerEntity.pos.x + 15, playerEntity.pos.y - 34,7, "Player");
+			me.game.add(missile, playerEntity.z);
+			me.game.sort();
+
 	});
 
 	playerEntity.update();
@@ -70,75 +72,22 @@ function socketMovements(playerEntity) {
 }
 
 
-function log(message){
-if(typeof console == "object"){
-console.log(message);
-}
-}
-
-/*
- * missile entity
- */
-var MissileEntity = me.ObjectEntity.extend(
+function log(message)
 {
-	/*
-	 * constructor
-	 */
-	init: function(x, y)
-	{
-		// call the parent constructor
-		this.parent(x, y, {image: "missile"});
-
-		// set the default horizontal speed (accel vector)
-		this.setVelocity(7, 0);
-	},
-
-	/*
-	 * update function
-	 */
-	update: function()
-	{
-		// calculate missile velocity
-		this.vel.x += this.accel.x * me.timer.tick;
-
-		// if the missile object goes out from the screen,
-		// remove it from the game manager
-		if (!this.visible)
-			me.game.remove(this);
-
-		// check & update missile movement
-		this.computeVelocity(this.vel);
-		this.pos.add(this.vel);
-
-		// collision detection
-		var res = me.game.collide(this);
-		if (res && res.obj.type == me.game.ENEMY_OBJECT)
-		{
-			// remove enemy
-			res.obj.remove();
-			// remove missile
-			me.game.remove(this);
-
-			// update score
-			me.game.HUD.updateItemValue("score", 10);
-		}
-
-		return true;
+	if(typeof console == "object"){
+		console.log(message);
 	}
-});
+}
 
-/*
- * player entity
- */
-var PlayerEntity = me.ObjectEntity.extend(
+var UserControlledEntity = me.ObjectEntity.extend(
 {
-	/*
-	 * constructor
-	 */
 	init: function(x, y, constVel)
 	{
+
+		this.movedByRemote = false;
+
 		// call the parent constructor
-		this.parent(x, y, {image: "ship"});
+		this.parent(x, me.game.viewport.bottom - y, {image: "ship"});
 
 		this.constVelocity = constVel;
 		// set the default horizontal & vertical speed (accel vector)
@@ -151,90 +100,85 @@ var PlayerEntity = me.ObjectEntity.extend(
 		// enable collision
 		this.collidable = true;
 
-		socketMovements(this);
-
-		//follow the player with the viewport
-		//me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
+		socketMovements(io.connect(), this);
 	},
 
-	/*
-	 * update the player pos
-	 */
 	update: function()
 	{
-		// move left
+	// move left
 		if (me.input.isKeyPressed("left"))
 		{
-			//alert("goo");
 			// update the entity velocity
-			this.vel.x -= this.accel.x * me.timer.tick;
-			if (this.pos.x < 0)
-				this.pos.x = 0;
+			this.vel.x -= this.accel.x * me.timer.tick;	
 		}
-		// move right
+	// move right
 		else if (me.input.isKeyPressed("right"))
 		{
 			// update the entity velocity
-			this.vel.x += this.accel.x * me.timer.tick;
-			if (this.pos.x > me.video.getWidth() - this.image.width)
-				this.pos.x = me.video.getWidth() - this.image.width;
+			this.vel.x += this.accel.x * me.timer.tick;	
 		}
-		else
-			this.vel.x = 0;
+		else{
+			if(this.movedByRemote == false)
+				this.vel.x = 0;
+		}
 
-		// move up
+	// move up
 		if (me.input.isKeyPressed("up"))
 		{
 			// update the entity velocity
 			this.vel.y -= this.accel.y * me.timer.tick;
-			if (this.pos.y < me.game.viewport.top)
-				this.pos.y = me.game.viewport.top;
 		}
-		// move down
+	// move down
 		else if (me.input.isKeyPressed("down"))
 		{
 			// update the entity velocity
-			this.vel.y += this.accel.y * me.timer.tick;
-			if (this.pos.y > me.game.viewport.bottom - this.image.height)
-				this.pos.y = me.game.viewport.bottom - this.image.height;
+			this.vel.y += this.accel.y * me.timer.tick;	
 		}
 		else{
-			this.vel.y = this.constVelocity;
-			if (this.pos.y > me.game.viewport.bottom - this.image.height)
-				this.pos.y = me.game.viewport.bottom - this.image.height;
+			this.vel.y = this.constVelocity;	
 		}
 
-		// fire
+	//bounds checking
+		//check left
+		if (this.pos.x < 0)
+				this.pos.x = 0;
+
+		//check right
+		if (this.pos.x > me.video.getWidth() - this.image.width)
+				this.pos.x = me.video.getWidth() - this.image.width;
+
+		//check down
+		if (this.pos.y > me.game.viewport.bottom - this.image.height)
+				this.pos.y = me.game.viewport.bottom - this.image.height;
+
+		//check up
+		if (this.pos.y < me.game.viewport.top)
+				this.pos.y = me.game.viewport.top;
+
+
+	// fire
 		if (me.input.isKeyPressed("fire"))
 		{
 			// play sound
 			me.audio.play("missile");
 
 			// create a missile entity
-			var missile = new MissileEntity(this.pos.x + 34, this.pos.y + 15);
+			var missile = new ProjectileEntity(this.pos.x + 15, this.pos.y - 34,7, "Player");
 			me.game.add(missile, this.z);
 			me.game.sort();
 		}
 
-		//log("vel before compute = " + this.vel.y);
-		// check & update player movement
 		this.computeVelocity(this.vel);
-		//log("vel after compute = " + this.vel.y);
-
-		//log("pos before add = " + this.pos.y);
 		this.pos.add(this.vel);
-		//log("pos after add = " + this.pos.y);
 		this.checkCollision();
-		//log("***************************");
+
+		this.movedByRemote = false;
 
 		// update animation if necessary
 		var updated = (this.vel.x != 0 || this.vel.y != 0);
 		return updated;
 	},
 
-	/*
-	 * check collision
-	 */
 	checkCollision: function()
 	{
 		var res = me.game.collide(this);
@@ -243,7 +187,7 @@ var PlayerEntity = me.ObjectEntity.extend(
 		if (res && res.obj.type == me.game.ENEMY_OBJECT)
 		{
 			// play sound
-			me.audio.play("clash");
+			me.audio.play("implosion");
 
 			// update life indicator
 			me.game.HUD.updateItemValue("life", -1);
@@ -263,14 +207,65 @@ var PlayerEntity = me.ObjectEntity.extend(
 	}
 });
 
-/*
- * enemy entity
- */
+
+var ProjectileEntity = me.ObjectEntity.extend(
+{
+	init: function(x, y,vel,from)
+	{
+		this.time = 0;
+		this.shotFrom = from;
+		this.parent(x, y, {image: "missile"});
+		this.setVelocity(0, vel);  // set the default vertical speed (accel vector)
+	},
+
+	update: function()
+	{
+	//determines how long the projectile stays active in the screen
+		this.time++;
+		if(this.time == 60)
+			me.game.remove(this);
+
+	//check for positive or negative velocity and adjust the position accordingly
+		if(this.accel.y < 0)  //enemy projectiles have negative velocity
+			this.vel.y += this.accel.y * me.timer.tick;
+		else
+			this.vel.y -= this.accel.y * me.timer.tick;
+
+	// if the missile object goes out from the screen,
+	// remove it from the game manager
+		if (!this.visible)
+			me.game.remove(this);
+
+	// check & update missile movement
+		this.computeVelocity(this.vel);
+		this.pos.add(this.vel);
+
+	// collision detection
+		var res = me.game.collide(this);
+		if(this.shotFrom == "Player"){
+			if (res && res.obj.type == me.game.ENEMY_OBJECT)  //if projectile collides with an enemy
+			{
+				// remove enemy
+				res.obj.remove();
+				// remove missile
+				me.game.remove(this);
+
+				// update score
+				me.game.HUD.updateItemValue("score", 10);
+			}
+		}
+		else if(res){									//if projectile collides with the player
+			me.game.HUD.updateItemValue("life", -1);
+			res.obj.checkCollision();
+		}
+
+		return true;
+	}
+});
+
+
 var EnemyEntity = me.ObjectEntity.extend(
 {
-	/*
-	 * constructor
-	 */
 	init: function(x, y)
 	{
 		// enemy entity settings
@@ -279,6 +274,7 @@ var EnemyEntity = me.ObjectEntity.extend(
 		settings.spritewidth = 45;
 		settings.spriteheight = 42;
 		settings.type = me.game.ENEMY_OBJECT;
+		this.time = 0;
 
 		// call parent constructor
 		this.parent(x, y, settings);
@@ -291,27 +287,38 @@ var EnemyEntity = me.ObjectEntity.extend(
 		this.gravity = 0;
 
 		// set the default horizontal speed (accel vector)
-		this.setVelocity(2.5, 0);
+		this.setVelocity(0, 0);
 
 		// enable collision
 		this.collidable = true;
 	},
 
-	/*
-	 * update function
-	 */
 	update: function()
 	{
+
 		// call parent constructor
 		this.parent(this);
 
+		if (me.game.viewport.top == 0 || me.game.viewport.bottom == me.game.currentLevel.realheight)
+			this.setVelocity(0, 2);
+		else
+			this.setVelocity(0,0);
+
+
 		// calculate velocity
-		this.vel.x -= this.accel.x * me.timer.tick;
+		this.vel.y += this.accel.y * me.timer.tick;
 
 		// if the enemy object goes out from the screen,
 		// remove it from the game manager
-		if (this.pos.x < -this.width)
+		if (this.pos.y > this.bottom)
 			me.game.remove(this);
+
+		if ( (this.time++) % 90 == 0) {
+		// create a missile entity
+			var missile = new ProjectileEntity(this.pos.x + 15, this.pos.y + this.height + 10, -5,"Enemy");
+			me.game.add(missile, 10);
+			me.game.sort();
+		}
 
 		// check & update missile movement
 		this.computeVelocity(this.vel);
@@ -320,9 +327,6 @@ var EnemyEntity = me.ObjectEntity.extend(
 		return true;
 	},
 
-	/*
-	 * remove function
-	 */
 	remove: function()
 	{
 		// remove this entity
@@ -332,66 +336,78 @@ var EnemyEntity = me.ObjectEntity.extend(
 		me.audio.play("implosion");
 
 		// init implosion
-		var implosion = new Implosion(this.pos.x, this.pos.y);
+		var implosion = new ExplosionAnimation(this.pos.x, this.pos.y);
 		me.game.add(implosion, 15);
 		me.game.sort();
 	}
 });
 
-/*
- * enemy fleet
- */
+
 var EnemyFleet = Object.extend(
 {
-	/*
-	 * constructor
-	 */
-	init: function()
+	init: function(num)
 	{
 		// init variables
 		this.fps = 0;
-		this.maxY = (me.video.getHeight() / 10) - 5;
+		this.maxSize = num;
+		this.generated = 0;
+		this.maxX = (me.video.getWidth() / 10) - 5;
 	},
 
-	/*
-	 * update function
-	 */
 	update: function()
 	{
-		// every 1/12 second
-		if ((this.fps++) % 12 == 0)
+		if ((this.fps++) % 30 == 0 && this.generated < this.maxSize)
 		{
-			var x = me.video.getWidth() + 10;
-			var y = Number.prototype.random(0, this.maxY) * 10;
+			var y = me.game.viewport.top + 10;
+			var x = Number.prototype.random(0, this.maxX) * 10;
 
 			// add an enemy
 			me.game.add(new EnemyEntity(x, y), 10);
 			me.game.sort();
+
+			this.generated += 1;
 		}
 
 		return true;
 	}
 });
 
-/*
- * implosion animation
- */
-var Implosion = me.AnimationSheet.extend(
+
+var ImplosionAnimation = me.AnimationSheet.extend(
 {
-	/*
-	 * constructor
-	 */
 	init: function(x, y)
 	{
+		log("imploding");
 		// call parent constructor
 		var image = me.loader.getImage("implosion");
 		this.parent(x, y, image, 45, 42);
 
 		// add animation with all sprites
-		this.addAnimation("implosion", null, 0.4);
+		this.addAnimation("implosion", null, .05);
 
 		// set animation
 		this.setCurrentAnimation("implosion", function() {
+			me.game.remove(this);
+			me.game.sort();
+		});
+	}
+});
+
+
+var ExplosionAnimation = me.AnimationSheet.extend(
+{
+	init: function(x, y)
+	{
+
+		// call parent constructor
+		var image = me.loader.getImage("explosion");
+		this.parent(x, y, image, 45, 42);
+
+		// add animation with all sprites
+		this.addAnimation("explosion", null, .05);
+
+		// set animation
+		this.setCurrentAnimation("explosion", function() {
 			me.game.remove(this);
 			me.game.sort();
 		});
