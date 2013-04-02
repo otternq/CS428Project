@@ -4,26 +4,7 @@
 	<script src="/socket.io/socket.io.js"></script>
 
 	<script type="text/javascript" language="javascript">
-		
-		function clickButton() {
 
-			
-
-			var socket = io.connect();
-			var data = {
-				button: "clicked"
-			}
-
-			socket.emit('tempClick', data);
-			socket.on('data', function(data) {
-				console.log(data);
-			})
-
-			console.log("Button Clicked");
-
-
-
-		}
 
 	</script>
 

@@ -8,10 +8,12 @@ var app = express();
 var server = app.listen(port);
 var io = require('socket.io').listen(server);
 
+/*
 io.configure(function () { 
   io.set("transports", ["xhr-polling"]); 
   io.set("polling duration", 5); 
 });
+*/
 
 app.configure(function(){
   app.use(express.static(__dirname + '/public/'));

@@ -10,10 +10,10 @@
 	/*						 */
 	/*************************/
 
-function socketMovements(playerEntity) {
+function socketMovements(socket, playerEntity) {
 
 
-	var socket = io.connect();
+	
 	
 	socket.on('bcast', function(data) {
 		alert('data');
@@ -106,7 +106,7 @@ function socketMovements(playerEntity) {
 			me.game.viewport.follow(this.pos, me.game.viewport.AXIS.HORIZONTAL);
 
 
-			socketMovements(this);
+			socketMovements(io.connect(), this);
 			
 		},
 	
