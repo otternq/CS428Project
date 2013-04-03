@@ -274,7 +274,7 @@ var EnemyEntity = me.ObjectEntity.extend(
 		// enemy entity settings
 		var settings = {};
 		settings.image = "enemy";
-		settings.spritewidth = 45;
+		settings.spritewidth = 42;
 		settings.spriteheight = 42;
 		settings.type = me.game.ENEMY_OBJECT;
 		this.time = 0;

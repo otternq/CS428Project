@@ -19,7 +19,7 @@ var g_resources = [
 {name: "bkg1", type: "image", src: "data/sprite/bkg2.png"},
 {name: "map1", type: "tmx", src: "data/map1.tmx"},
 {name: "ship", type:"image", src: "data/sprite/ship2.png"},
-{name: "enemy", type:"image", src: "data/sprite/enemy.png"},
+{name: "enemy", type:"image", src: "data/sprite/enemy2.png"},
 {name: "missile", type:"image", src: "data/sprite/missile.png"},
 {name: "enemyMissile", type:"image", src: "data/sprite/enemyMissile.png"},
 {name: "implosion", type:"image", src: "data/sprite/implosion.png"},
