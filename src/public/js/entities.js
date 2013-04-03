@@ -173,7 +173,7 @@ var UserControlledEntity = me.ObjectEntity.extend(
 		this.pos.add(this.vel);
 		this.checkCollision();
 		
-		this.movedByRemote = false;
+		//this.movedByRemote = false;
 
 		// update animation if necessary
 		var updated = (this.vel.x != 0 || this.vel.y != 0);
