@@ -7,28 +7,42 @@
  *
  **/
 
+function log(message){
+if(typeof console == "object"){
+console.log(message);
+}
+}
+
 // game resources
-var g_resources = [{
-    name: "tileset",
-    type: "image",
-    src: "data/map1_tileset/tileset.png"
-},
+var g_resources = [
 {name: "bkg0", type: "image", src: "data/sprite/bkg0.png"},
-{name: "bkg1", type: "image", src: "data/sprite/bkg1.png"},
+{name: "bkg1", type: "image", src: "data/sprite/bkg2.png"},
 {name: "map1", type: "tmx", src: "data/map1.tmx"},
-{name: "ship", type:"image", src: "data/sprite/ship.png"},
+{name: "ship", type:"image", src: "data/sprite/ship2.png"},
+{name: "enemy", type:"image", src: "data/sprite/enemy2.png"},
+{name: "missile", type:"image", src: "data/sprite/missile.png"},
+{name: "enemyMissile", type:"image", src: "data/sprite/enemyMissile.png"},
+{name: "implosion", type:"image", src: "data/sprite/implosion.png"},
+{name: "explosion", type:"image", src: "data/sprite/explosion.png", channel: 1},
+{name: "life0", type:"image", src: "data/sprite/life20.png"},
+	{name: "life1", type:"image", src: "data/sprite/life21.png"},
+	{name: "life2", type:"image", src: "data/sprite/life22.png"},
+	{name: "life3", type:"image", src: "data/sprite/life23.png"},
+
+//interface resources
+{name: "title", type:"image", src: "data/sprite/title.png"},
+{name: "play", type:"image", src: "data/sprite/play.png"},
+{name: "play_hover", type:"image", src: "data/sprite/play_hover.png"},
+{name: "restart", type:"image", src: "data/sprite/restart.png"},
+{name: "restart_hover", type:"image", src: "data/sprite/restart_hover.png"},
+{name: "menu", type:"image", src: "data/sprite/menu.png"},
+{name: "menu_hover", type:"image", src: "data/sprite/menu_hover.png"},
+
 // audio resources
-{
-    name: "jump",
-    type: "audio",
-    src: "data/audio/",
-    channel: 2
-}, {
-    name: "stomp",
-    type: "audio",
-    src: "data/audio/",
-    channel: 1
-}];
+{name: "missile", type:"audio", src: "data/sound/", channel: 1},
+{name: "implosion", type:"audio", src: "data/sound/", channel: 1},
+
+];
 
 
 
@@ -62,6 +76,8 @@ var jsApp	=
 		me.state.change(me.state.LOADING);
 
 		
+
+		
 	},
 	/* ---
 	
@@ -70,13 +86,10 @@ var jsApp	=
 		---										*/
 	loaded: function ()
 	{
-		// set the "Play/Ingame" Screen Object
-		me.state.set(me.state.PLAY, new PlayScreen());
-
-		
-      
-      // start the game 
-		me.state.change(me.state.PLAY);
+		// Initialize game states
+		me.state.set(me.state.MENU, new MenuScreen());     		// set the "Menu" Screen Object
+		me.state.set(me.state.PLAY, new PlayScreen());    		// set the "Play" Screen Object
+		me.state.set(me.state.GAMEOVER, new GameOverScreen());   // set the "Game over" Screen Object
 
 		// enable the keyboard
 		me.input.bindKey(me.input.KEY.LEFT, "left");
@@ -85,46 +98,12 @@ var jsApp	=
 		me.input.bindKey(me.input.KEY.DOWN, "down");
 		me.input.bindKey(me.input.KEY.SPACE, "fire", true);
 
+		// draw menu
+		me.state.change(me.state.MENU);
+
 	}
 
 }; // jsApp
-
-/* the in game stuff*/
-var PlayScreen = me.ScreenObject.extend(
-{
-
-	init: function(){
-		this.parent(true);
-		this.mapScrollRate = 2;
-		this.posVector =  new me.Vector2d(0,0);
-		
-	},
-
-   onResetEvent: function()
-	{	
-      // stuff to reset on state change
-      
-      //load a level
-      	me.levelDirector.loadLevel("map1");
-
-		me.game.viewport.follow(this.posVector, me.game.viewport.AXIS.VERTICAL);
-
-      // add main player
-		var ship = new PlayerEntity(100, 265, this.mapScrollRate);
-		me.game.add(ship, 10);
-      
-	},
-	update: function(){
-		this.posVector.y += this.mapScrollRate;
-		
-	},
-	onDestroyEvent: function()
-	{
-	
-   }
-
-});
-
 
 //bootstrap :)
 window.onReady(function() 

@@ -13,6 +13,7 @@ Dependencies
 ----------
 - [Node.js](http://nodejs.org)
 - [Socket.io](http://socket.io/)
+- [melonJS](http://www.melonjs.org/)
 
 Platform/Environment
 ---------
@@ -25,14 +26,8 @@ Node.js, HTML/JavaScript
 Hosting
 - Heroku App
 
-Devices (Remote)
-- Google Chrome on Android (tested with Galaxy Nexus running Android 4.1.1)
-- Mozilla Firefox on Android (tested with Galaxy Nexus running Android 4.1.1)
-- Safari on iOS (tested with iPad running iOS 6.1.2)
-
-Devices (Client)
-- Chrome Browser (tested with version 25.0.1364.99 on OSX 10.8.2)
-- Mozilla Firefox (tested with version 18.0.2 on OSX 10.8.2)
+Devices
+See the devices [wiki page](https://github.com/otternq/CS428Project/wiki/Devices)
 
 ###Developed On
 - Mac OSX 10.7 - Lion
