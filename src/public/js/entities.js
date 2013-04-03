@@ -85,6 +85,7 @@ var UserControlledEntity = me.ObjectEntity.extend(
 	{
 
 		this.movedByRemote = false;
+		this.type = "Player";
 
 		// call the parent constructor
 		this.parent(x, me.game.viewport.bottom - y, {image: "ship"});
@@ -213,8 +214,14 @@ var ProjectileEntity = me.ObjectEntity.extend(
 	init: function(x, y,vel,from)
 	{
 		this.time = 0;
+		this.type = "Projectile";
+
 		this.shotFrom = from;
-		this.parent(x, y, {image: "missile"});
+		if(from == "Player")
+			this.parent(x, y, {image: "missile"});
+		else
+			this.parent(x,y, {image: "enemyMissile"});
+
 		this.setVelocity(0, vel);  // set the default vertical speed (accel vector)
 	},
 
@@ -253,10 +260,6 @@ var ProjectileEntity = me.ObjectEntity.extend(
 				// update score
 				me.game.HUD.updateItemValue("score", 10);
 			}
-		}
-		else if(res){									//if projectile collides with the player
-			me.game.HUD.updateItemValue("life", -1);
-			res.obj.checkCollision();
 		}
 
 		return true;
@@ -315,7 +318,7 @@ var EnemyEntity = me.ObjectEntity.extend(
 
 		if ( (this.time++) % 90 == 0) {
 		// create a missile entity
-			var missile = new ProjectileEntity(this.pos.x + 15, this.pos.y + this.height + 10, -5,"Enemy");
+			var missile = new ProjectileEntity(this.pos.x + 15, this.pos.y + this.height + 10, -3,"Enemy");
 			me.game.add(missile, 10);
 			me.game.sort();
 		}
@@ -356,7 +359,9 @@ var EnemyFleet = Object.extend(
 
 	update: function()
 	{
-		if ((this.fps++) % 30 == 0 && this.generated < this.maxSize)
+		
+		
+		if ( this.fps++ % 30 == 0 && this.generated < this.maxSize)
 		{
 			var y = me.game.viewport.top + 10;
 			var x = Number.prototype.random(0, this.maxX) * 10;

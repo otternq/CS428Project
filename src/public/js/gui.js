@@ -131,8 +131,8 @@ var BackgroundLayer = me.ImageLayer.extend(
 	init: function(image, speed)
 	{
 		name = image;
-		width = 1000;
-		height = 450;
+		width = 640;
+		height = 640;
 		z = 1;
 		ratio = 1;
 		this.speed = speed;
@@ -167,8 +167,8 @@ var BackgroundObject = Object.extend(
 	 */
 	init: function()
 	{
-		me.game.add(new BackgroundLayer("bkg0", 0.9), 1); // layer 1
-		me.game.add(new BackgroundLayer("bkg1", 1.5), 2); // layer 2
+		me.game.add(new BackgroundLayer("bkg0", 0), 1); // layer 1
+		me.game.add(new BackgroundLayer("bkg1", 0), 2); // layer 2
 		me.game.sort();
 	},
 
