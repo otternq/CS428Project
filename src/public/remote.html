@@ -15,10 +15,10 @@
 				$('#beta span').html(data.beta);
 				$('#gamma span').html(data.gamma);
 
-				if (data.gamma > -60 && data.gamma > 0) {
+				if (data.gamma > -47 && data.gamma < 0) {
 					console.log("increase velocity. gamma=" + data.gamma);
 					socket.emit('up', {});
-				} else if (data.gamma < -60 && data.gamma > -90) {
+				} else if (data.gamma > 0) {
 					console.log('decrease velocity. gamma=' + data.gamma);
 					socket.emit('down', {});	
 				} else {
@@ -26,12 +26,12 @@
 					//playerEntity.vel.y = playerEntity.constVelocity;	
 				}
 
-				if (data.beta > 0) {
+				if (data.beta > 15) {
 
 					//console.log("Beta is moving box right. Possition: ");
 					socket.emit('right', {});
 
-				} else if (data.beta < 0 ) {
+				} else if (data.beta < -15 ) {
 					console.log("Beta is moving box left.");
 					socket.emit('left', {});
 				}
