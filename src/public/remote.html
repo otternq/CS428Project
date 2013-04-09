@@ -6,10 +6,41 @@
 
 			var socket = null;
 
+			function printCors(data) {
+
+				console.log(data);
+				//alert(cors);
+
+				$('#alpha span').html(data.alpha);
+				$('#beta span').html(data.beta);
+				$('#gamma span').html(data.gamma);
+
+				if (data.gamma > -60 && data.gamma > 0) {
+					console.log("increase velocity. gamma=" + data.gamma);
+					socket.emit('up', {});
+				} else if (data.gamma < -60 && data.gamma > -90) {
+					console.log('decrease velocity. gamma=' + data.gamma);
+					socket.emit('down', {});	
+				} else {
+					//console.log('std velocity gamma=' + data.gamma);
+					//playerEntity.vel.y = playerEntity.constVelocity;	
+				}
+
+				if (data.beta > 0) {
+
+					//console.log("Beta is moving box right. Possition: ");
+					socket.emit('right', {});
+
+				} else if (data.beta < 0 ) {
+					console.log("Beta is moving box left.");
+					socket.emit('left', {});
+				}
+			}
+
 			function onOrientation(event) {
 				var cor = {'alpha': event.alpha, 'beta': event.beta, 'gamma': event.gamma};
-		        	console.log(cor);
-				socket.emit('cor', cor);
+		        
+		        printCors(cor);
 			}
 
 			function shoot() {
@@ -33,7 +64,11 @@
 	</head>
 	<body>
 
-		<a href="Javascript: jump();">JUMP!!</a>
+		<h1>Click Anywhere to Fire!</h1>
+
+		<div id="alpha">Alpha: <span></span></div>
+		<div id="beta">Beta: <span></span></div>
+		<div id="gamma">Gamma: <span></span></div>
 
 	</body>
 </html>

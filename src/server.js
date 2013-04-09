@@ -28,6 +28,26 @@ io.sockets.on('connection', function (socket) {
     socket.broadcast.emit("incor", data);
   });
 
+  socket.on('up', function(data) {
+    console.log("up");
+    socket.broadcast.emit("up", {});
+  });
+
+  socket.on('down', function(data) {
+    console.log("down");
+    socket.broadcast.emit("down", {});
+  });
+
+  socket.on('left', function(data) {
+    console.log("left");
+    socket.broadcast.emit("left", {});
+  });
+
+  socket.on('right', function(data) {
+    console.log("right");
+    socket.broadcast.emit("right", {});
+  });
+
   socket.on('tempClick', function (data) {
     console.log("button clicked:");
     console.log(data);
