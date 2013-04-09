@@ -1,10 +1,14 @@
 <html>
 	<head>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
 		<script src="http://code.jquery.com/jquery-1.9.1.min.js" language="javascript"></script>
 		<script src="/socket.io/socket.io.js"></script>
 		<script  type="text/javascript" language="javascript">
 
 			var socket = null;
+			var stillX = true;
 
 			function printCors(data) {
 
@@ -18,12 +22,20 @@
 				if (data.gamma > -47 && data.gamma < 0) {
 					console.log("increase velocity. gamma=" + data.gamma);
 					socket.emit('up', {});
+					stillX = false;
 				} else if (data.gamma > 0) {
 					console.log('decrease velocity. gamma=' + data.gamma);
 					socket.emit('down', {});	
+					stillX = false;
 				} else {
 					//console.log('std velocity gamma=' + data.gamma);
-					//playerEntity.vel.y = playerEntity.constVelocity;	
+					//playerEntity.vel.y = playerEntity.constVelocity;
+
+					if (stillX == false) {
+						socket.emit('stillx', {});
+						stillX = true;
+					}
+						
 				}
 
 				if (data.beta > 15) {
@@ -53,8 +65,7 @@
 				window.addEventListener('deviceorientation', onOrientation);
 
 
-				$('body').on('click', function() {
-					$('body').append('clicked');
+				$('#fire').on('click', function() {
 					shoot();
 				});
 			});
@@ -64,11 +75,7 @@
 	</head>
 	<body>
 
-		<h1>Click Anywhere to Fire!</h1>
-
-		<div id="alpha">Alpha: <span></span></div>
-		<div id="beta">Beta: <span></span></div>
-		<div id="gamma">Gamma: <span></span></div>
+		<div id="fire" style="width:100%; height:100%; background-color:red;">Fire</div>
 
 	</body>
 </html>
