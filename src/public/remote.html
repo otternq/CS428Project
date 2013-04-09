@@ -1,15 +1,58 @@
 <html>
 	<head>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
 		<script src="http://code.jquery.com/jquery-1.9.1.min.js" language="javascript"></script>
 		<script src="/socket.io/socket.io.js"></script>
 		<script  type="text/javascript" language="javascript">
 
 			var socket = null;
+			var stillX = true;
+
+			function printCors(data) {
+
+				console.log(data);
+				//alert(cors);
+
+				$('#alpha span').html(data.alpha);
+				$('#beta span').html(data.beta);
+				$('#gamma span').html(data.gamma);
+
+				if (data.gamma > -47 && data.gamma < 0) {
+					console.log("increase velocity. gamma=" + data.gamma);
+					socket.emit('up', {});
+					stillX = false;
+				} else if (data.gamma > 0) {
+					console.log('decrease velocity. gamma=' + data.gamma);
+					socket.emit('down', {});	
+					stillX = false;
+				} else {
+					//console.log('std velocity gamma=' + data.gamma);
+					//playerEntity.vel.y = playerEntity.constVelocity;
+
+					if (stillX == false) {
+						socket.emit('stillx', {});
+						stillX = true;
+					}
+						
+				}
+
+				if (data.beta > 15) {
+
+					//console.log("Beta is moving box right. Possition: ");
+					socket.emit('right', {});
+
+				} else if (data.beta < -15 ) {
+					console.log("Beta is moving box left.");
+					socket.emit('left', {});
+				}
+			}
 
 			function onOrientation(event) {
 				var cor = {'alpha': event.alpha, 'beta': event.beta, 'gamma': event.gamma};
-		        	console.log(cor);
-				socket.emit('cor', cor);
+		        
+		        printCors(cor);
 			}
 
 			function shoot() {
@@ -22,8 +65,7 @@
 				window.addEventListener('deviceorientation', onOrientation);
 
 
-				$('body').on('click', function() {
-					$('body').append('clicked');
+				$('#fire').on('click', function() {
 					shoot();
 				});
 			});
@@ -33,7 +75,7 @@
 	</head>
 	<body>
 
-		<a href="Javascript: jump();">JUMP!!</a>
+		<div id="fire" style="width:100%; height:100%; background-color:red;">Fire</div>
 
 	</body>
 </html>

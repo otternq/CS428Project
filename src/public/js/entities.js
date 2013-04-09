@@ -7,63 +7,64 @@ function socketMovements(socket, playerEntity) {
 		alert('data');
 	});
 
-	socket.on('incor', function(data) {
-		//console.log(data);
-		//{"alpha":133.0871375626689,"beta":-0.22927611022410538,"gamma":0.4694779084384395}
-		document.getElementById('alpha').innerHTML = "Alpha: " + data.alpha;
+	socket.on('up', function() {
 
-		document.getElementById('beta').innerHTML = "Beta: " + data.beta;
-
-		document.getElementById('gamma').innerHTML = "Gamma: " + data.gamma;
-
-		if (data.beta > 0) {
-
-			console.log("Beta is moving box right. Possition: ");
-
-			playerEntity.flipX(false);
-
-			playerEntity.vel.x += playerEntity.accel.x * me.timer.tick;
-
-			//playerEntity.updateMovement();
-
-		} else if (data.beta < 0 ) {
-			console.log("Beta is moving box left.");
-
-
-			playerEntity.flipX(true);
-
-			playerEntity.vel.x -= playerEntity.accel.x * me.timer.tick;
-
-			//playerEntity.updateMovement();
-		}
+		playerEntity.vel.y -= playerEntity.accel.y * me.timer.tick;
 
 		playerEntity.movedByRemote = true;
 
+	});
 
-		/*if (data.gamma > -60 && boxBottomPos + step < window.innerHeight) {
+	socket.on('down', function() {
 
-			boxBottomPos += step;
+		console.log('decrease velocity.');
+		playerEntity.vel.y += playerEntity.accel.y * me.timer.tick;	
 
-			console.log("Gamma is moving box up. Possition: "+ boxBottomPos);
-			
-		} else if (data.gamma > 0 && boxBottomPos - step > 0 ) {
-			boxBottomPos -= step;
+		playerEntity.movedByRemote = true;
 
-			console.log("Gamma is moving box down. Possition: "+ boxBottomPos);
-		}
+	});
 
-		lastAlpha = data.alpha;*/
+	socket.on('stillx', function() {
+		playerEntity.vel.x = 0;
+		playerEntity.movedByRemote = true;
+	});
+
+	socket.on('stillY', function() {
+
+		playerEntity.vel.y = playerEntity.constVelocity;
+
+		playerEntity.movedByRemote = true;
+
+	});
+
+	socket.on('left', function() {
+
+		playerEntity.flipX(true);
+		//playerEntity.vel.x -= playerEntity.accel.x * me.timer.tick;
+		playerEntity.vel.x = -(playerEntity.accel.x * me.timer.tick);
+
+		playerEntity.movedByRemote = true;
+
+	});
+
+	socket.on('right', function() {
+
+		playerEntity.flipX(false);
+		playerEntity.vel.x = playerEntity.accel.x * me.timer.tick;
+
+		playerEntity.movedByRemote = true;
+
 	});
 
 	socket.on('shoot', function() {
 		
-		// play sound
-			me.audio.play("missile");
+		// create a missile entity
+		var missile = new ProjectileEntity(playerEntity.pos.x + 15, playerEntity.pos.y - 34,7, "Player");
+		me.game.add(missile, playerEntity.z);
+		me.game.sort();
 
-			// create a missile entity
-			var missile = new ProjectileEntity(playerEntity.pos.x + 15, playerEntity.pos.y - 34,7, "Player");
-			me.game.add(missile, playerEntity.z);
-			me.game.sort();
+		// play sound
+		me.audio.play("missile");
 
 	});
 
@@ -92,7 +93,7 @@ var UserControlledEntity = me.ObjectEntity.extend(
 
 		this.constVelocity = constVel;
 		// set the default horizontal & vertical speed (accel vector)
-		this.setVelocity(2, 2);
+		this.setVelocity(3, 3);
 		this.maxVel = new me.Vector2d(6,6);
 
 		// init variables
