@@ -32,16 +32,16 @@ define([
 			if (me.input.isKeyPressed("left"))
 			{
 				// update the entity velocity
-				this.vel.x -= this.accel.x * me.timer.tick;	
+				this.vel.x -= this.accel.x * me.timer.tick;
 			}
 		// move right
 			else if (me.input.isKeyPressed("right"))
 			{
 				// update the entity velocity
-				this.vel.x += this.accel.x * me.timer.tick;	
+				this.vel.x += this.accel.x * me.timer.tick;
 			}
 			else{
-				if(this.movedByRemote == false)
+				if(this.movedByRemote === false)
 					this.vel.x = 0;
 			}
 
@@ -55,10 +55,10 @@ define([
 			else if (me.input.isKeyPressed("down"))
 			{
 				// update the entity velocity
-				this.vel.y += this.accel.y * me.timer.tick;	
+				this.vel.y += this.accel.y * me.timer.tick;
 			}
 			else{
-				this.vel.y = this.constVelocity;	
+				this.vel.y = this.constVelocity;
 			}
 
 		//bounds checking
@@ -99,7 +99,7 @@ define([
 			//this.movedByRemote = false;
 
 			// update animation if necessary
-			var updated = (this.vel.x != 0 || this.vel.y != 0);
+			var updated = (this.vel.x !== 0 || this.vel.y !== 0);
 			return updated;
 		},
 
