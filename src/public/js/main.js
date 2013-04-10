@@ -28,7 +28,10 @@ require.config({
     backgroundobject: 'libs/app/gui/backgroundobject',
     button: 'libs/app/gui/button',
     lifeobject: 'libs/app/gui/lifeobject',
-    scoreobject: 'libs/app/gui/scoreobject'
+    scoreobject: 'libs/app/gui/scoreobject',
+
+    //the game
+    game: 'game'
   }
 
 });
