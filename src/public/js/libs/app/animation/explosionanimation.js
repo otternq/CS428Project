@@ -8,13 +8,15 @@ define(function(){
 			this.parent(x, y, image, 45, 42);
 
 			// add animation with all sprites
-			this.addAnimation("explosion", null, .05);
+			this.addAnimation("explosion", null, 0.05);
 
 			// set animation
-			this.setCurrentAnimation("explosion", function() {
+			var result = this.setCurrentAnimation("explosion", function() {
 				me.game.remove(this);
 				me.game.sort();
 			});
+
+			//alert(result);
 		}
 	});
 });

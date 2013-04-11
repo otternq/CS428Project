@@ -19,11 +19,11 @@ define([
 				if (!me.video.init('jsapp', 640, 640))
 				{
 					alert("Sorry but your browser does not support html 5 canvas.");
-		         return;
+		         	return 'no canvas support';
 				}
 						
 				// initialize the "audio"
-				me.audio.init("mp3,ogg");
+				//me.audio.init("mp3,ogg");
 				
 				// set all resources to be loaded
 				me.loader.onload = this.loaded.bind(this);
@@ -34,7 +34,7 @@ define([
 				// load everything & display a loading screen
 				me.state.change(me.state.LOADING);
 
-				
+				return true;
 
 				
 			},
