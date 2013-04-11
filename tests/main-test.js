@@ -35,7 +35,10 @@ require({
     
   },
 
-  ['../../tests/game.spec'], function(){
+  [
+    '../../tests/game.spec',
+    '../../tests/menuscreen.spec'
+  ], function(){
     // The "app" dependency is passed in as "App"
     window.__karma__.start();
 });

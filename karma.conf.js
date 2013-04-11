@@ -12,7 +12,7 @@ files = [
   JASMINE_ADAPTER,
   REQUIRE,
   REQUIRE_ADAPTER,
-  {pattern: 'src/public/data/*', included: false},
+  {pattern: 'src/public/data/**/*', included: false},
   {pattern: 'src/public/js/libs/app/*.js', included: false},
   {pattern: 'src/public/js/game.js', included: false},
   {pattern: 'src/public/js/libs/app/**/*.js', included: false},
