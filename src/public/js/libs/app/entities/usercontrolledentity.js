@@ -83,7 +83,7 @@ define([
 			if (me.input.isKeyPressed("fire"))
 			{
 				// play sound
-				me.audio.play("missile");
+				//me.audio.play("missile");
 
 				// create a missile entity
 				var missile = new ProjectileEntity(this.pos.x + 15, this.pos.y - 34,7, "Player");
@@ -111,7 +111,7 @@ define([
 			if (res && res.obj.type == me.game.ENEMY_OBJECT)
 			{
 				// play sound
-				me.audio.play("implosion");
+				//me.audio.play("implosion");
 
 				// update life indicator
 				me.game.HUD.updateItemValue("life", -1);

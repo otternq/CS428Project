@@ -2,6 +2,19 @@
 <html>
 	<head>
 		<title>CS428</title>
+		<script type="text/javascript">
+			Clay = {};
+			Clay.gameKey = "cs438";
+			Clay.readyFunctions = [];
+			Clay.ready = function( fn ) {
+			    Clay.readyFunctions.push( fn );
+			};
+			( function() {
+			    var clay = document.createElement("script");
+			    clay.src = ( "https:" == document.location.protocol ? "https://" : "http://" ) + "clay.io/api/api.js"; 
+			    var tag = document.getElementsByTagName("script")[0]; tag.parentNode.insertBefore(clay, tag);
+			} )();
+		</script>
 	</head>
 	<body bgcolor="black">
 		<div id="info" style="width: 640px;">
@@ -17,6 +30,7 @@
 				<script type="text/javascript" src="js/melonJS-0.9.4-min.js"></script>
 				<script data-main="/js/main" src="/js/libs/require/require.js"></script>
 			</div>
+
 		</div>
 	</body>
 </html>

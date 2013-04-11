@@ -36,6 +36,10 @@ define([
 			// buttons
 			this.restart = new Button("restart", me.state.PLAY, 280);
 			this.menu = new Button("menu", me.state.MENU, 330);
+
+			//report score to Clay.io
+			me.leaderboard.post( { score: this.finalScore } );
+			me.leaderboard.show();
 		},
 
 		/*

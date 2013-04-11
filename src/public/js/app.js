@@ -44,8 +44,8 @@ define([
 		{name: "menu_hover", type:"image", src: "data/sprite/menu_hover.png"},
 
 		// audio resources
-		{name: "missile", type:"audio", src: "data/sound/", channel: 1},
-		{name: "implosion", type:"audio", src: "data/sound/", channel: 1},
+		//{name: "missile", type:"audio", src: "data/sound/", channel: 1},
+		//{name: "implosion", type:"audio", src: "data/sound/", channel: 1},
 
 		];
 
@@ -54,9 +54,24 @@ define([
 		
 
 		//bootstrap :)
-		window.onReady(function() 
+		window.onReady(function()
 		{
-			Game.onload(g_resources);
+			var requireClay = true; // If you pass true for 2nd param, it will make sure they've logged into clay (not anonymous)
+			Clay.ready(function() {
+				var requireClay = true; // If you pass true for 2nd param, it will make sure they've logged into clay (not anonymous)
+				Clay.Player.requireLogin( function( response ) {
+					// Function that is called on successful login, or failed login
+					// response is an object { success: boolean, error: "truthy" }
+					console.log(response);
+					if (response.success === true) {
+						Game.onload(g_resources);
+						me.leaderboard = new Clay.Leaderboard( { id: 1081 } );
+					}
+
+				}, requireClay );
+
+			});
+
 		});
 	}
 
