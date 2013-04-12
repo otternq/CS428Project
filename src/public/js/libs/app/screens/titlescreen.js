@@ -14,6 +14,9 @@ define(function() {
 			
 			this.scroller = "A SMALL STEP BY STEP TUTORIAL FOR GAME CREATION WITH MELONJS       ";
 			this.scrollerpos = 600;
+
+			//report score to Clay.io
+			me.leaderboard.show();
 		},
 		/* ---
 			reset function

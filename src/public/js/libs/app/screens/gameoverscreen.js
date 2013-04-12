@@ -17,6 +17,8 @@ define([
 			this.restart = null;
 			this.menu = null;
 			this.finalScore = null;
+
+			this.leaderboardReported = false;
 		},
 
 		/*
@@ -37,9 +39,18 @@ define([
 			this.restart = new Button("restart", me.state.PLAY, 280);
 			this.menu = new Button("menu", me.state.MENU, 330);
 
-			//report score to Clay.io
-			me.leaderboard.post( { score: this.finalScore } );
-			me.leaderboard.show();
+			if (this.leaderboardReported == false) {
+
+				me.leaderboard.post( { score: score }, function( response ) {
+				    // Callback
+				    console.log( response );
+				    me.leaderboard.show();
+				} );
+
+				this.leaderboardReported = true;
+			}
+			
+
 		},
 
 		/*
@@ -62,6 +73,7 @@ define([
 			var scoreSize = this.score.measureText(context, scoreText);
 
 			this.score.draw(context, scoreText, me.video.getWidth() / 2 - scoreSize.width / 2, 150);
+
 		},
 
 		/*

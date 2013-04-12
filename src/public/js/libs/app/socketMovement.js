@@ -1,4 +1,4 @@
-define(function() {
+define(['projectileentity'], function(ProjectileEntity) {
 
   return {
     initialize: function(socket, playerEntity) {
@@ -66,7 +66,7 @@ define(function() {
         me.game.sort();
 
         // play sound
-        me.audio.play("missile");
+        //me.audio.play("missile");
 
       });
 

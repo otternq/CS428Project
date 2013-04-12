@@ -23,7 +23,7 @@ define([
 			// enable collision
 			this.collidable = true;
 
-			socketMovements.initialize(io.connect(), this);
+			socketMovements.initialize(io.connect('/room'), this);
 		},
 
 		update: function()
@@ -122,6 +122,7 @@ define([
 					// game over
 					me.state.change(me.state.GAMEOVER,
 						me.game.HUD.getItemValue("score"));
+
 					return;
 				}
 

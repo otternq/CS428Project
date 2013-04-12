@@ -59,16 +59,27 @@ define([
 			var requireClay = true; // If you pass true for 2nd param, it will make sure they've logged into clay (not anonymous)
 			Clay.ready(function() {
 				var requireClay = true; // If you pass true for 2nd param, it will make sure they've logged into clay (not anonymous)
-				Clay.Player.requireLogin( function( response ) {
-					// Function that is called on successful login, or failed login
-					// response is an object { success: boolean, error: "truthy" }
-					console.log(response);
-					if (response.success === true) {
-						Game.onload(g_resources);
-						me.leaderboard = new Clay.Leaderboard( { id: 1081 } );
-					}
+				
+				Clay.Player.requireLogin(
+					function( response ) {},
+					requireClay
+				);
 
-				}, requireClay );
+				Clay.Player.onUserReady(function(response) {
+
+					socket = io.connect('/room');
+				    
+				    alert(response.name);
+
+					socket.emit('start', {
+						'playerId': response.name,
+						'clientType': 'game'
+					});
+
+					Game.onload(g_resources);
+
+
+				});
 
 			});
 

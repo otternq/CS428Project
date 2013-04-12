@@ -21,7 +21,7 @@ define([
 					alert("Sorry but your browser does not support html 5 canvas.");
 		         	return 'no canvas support';
 				}
-						
+
 				// initialize the "audio"
 				//me.audio.init("mp3,ogg");
 				
@@ -33,6 +33,9 @@ define([
 
 				// load everything & display a loading screen
 				me.state.change(me.state.LOADING);
+
+				me.leaderboard = new Clay.Leaderboard( { id: 1081 } );
+				me.leaderboard.show();
 
 				return true;
 
