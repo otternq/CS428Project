@@ -68,8 +68,6 @@ define([
 				Clay.Player.onUserReady(function(response) {
 
 					socket = io.connect('/room');
-				    
-				    alert(response.name);
 
 					socket.emit('start', {
 						'playerId': response.name,
