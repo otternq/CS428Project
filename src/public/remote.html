@@ -3,12 +3,28 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
+		<script type="text/javascript">
+			Clay = {};
+			Clay.gameKey = "cs438";
+			Clay.readyFunctions = [];
+			Clay.options = { debug: true };
+			Clay.ready = function( fn ) {
+			    Clay.readyFunctions.push( fn );
+			};
+			( function() {
+			    var clay = document.createElement("script");
+			    clay.src = ( "https:" == document.location.protocol ? "https://" : "http://" ) + "clay.io/api/api.js"; 
+			    var tag = document.getElementsByTagName("script")[0]; tag.parentNode.insertBefore(clay, tag);
+			} )();
+		</script>
+
 		<script src="http://code.jquery.com/jquery-1.9.1.min.js" language="javascript"></script>
 		<script src="/socket.io/socket.io.js"></script>
 		<script  type="text/javascript" language="javascript">
 
 			var socket = null;
-			var stillX = true;
+			var stillY = false;
+			var xState = 0;
 
 			function printCors(data) {
 
@@ -31,9 +47,9 @@
 					//console.log('std velocity gamma=' + data.gamma);
 					//playerEntity.vel.y = playerEntity.constVelocity;
 
-					if (stillX == false) {
-						socket.emit('stillx', {});
-						stillX = true;
+					if (stillX !== false) {
+						socket.emit('stilly', {});
+						stillY = true;
 					}
 						
 				}
@@ -41,11 +57,27 @@
 				if (data.beta > 15) {
 
 					//console.log("Beta is moving box right. Possition: ");
-					socket.emit('right', {});
+					
+					if (xState !== 1) {
+						socket.emit('right', {});
+						xState = 1;
+					}
 
 				} else if (data.beta < -15 ) {
 					console.log("Beta is moving box left.");
-					socket.emit('left', {});
+
+					if (xState !== -1) {
+						socket.emit('left', {});
+						xState = -1;
+					}
+					
+				} else {
+
+					if (xState !== 0) {
+						socket.emit('stillx', {});
+						xState = 0;
+					}
+
 				}
 			}
 
@@ -60,14 +92,34 @@
 			}
 
 			$(document).ready(function() {
-				socket = io.connect();
 
-				window.addEventListener('deviceorientation', onOrientation);
+				var requireClay = true; // If you pass true for 2nd param, it will make sure they've logged into clay (not anonymous)
+				Clay.ready(function() {
+					var requireClay = true; // If you pass true for 2nd param, it will make sure they've logged into clay (not anonymous)
+					Clay.Player.requireLogin(function(){}, requireClay);
+
+					Clay.Player.onUserReady(function( response ) {
+				        //name= response.name; // name or 'Anonymous' if none
+				        //identifier = response.identifier; // unique id associated with user (even if anonymous)
+				        alert(response.name);
+
+				        socket = io.connect('/room');
+
+				        socket.emit('start', {
+				        	'playerId': response.name,
+				        	'clientType': 'remote'
+				        });
+
+						window.addEventListener('deviceorientation', onOrientation);
 
 
-				$('#fire').on('click', function() {
-					shoot();
+						$('#fire').on('touchstart', function() {
+							shoot();
+						});
+				    });
+
 				});
+				
 			});
 			
 
