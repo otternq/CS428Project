@@ -12,8 +12,7 @@ define(function() {
 			this.scrollerfont  =  null;
 			this.scrollertween = null;
 			
-			this.scroller = "A SMALL STEP BY STEP TUTORIAL FOR GAME CREATION WITH MELONJS       ";
-			this.scrollerpos = 600;
+			console.log("Initialized TitleScreen");
 
 			//report score to Clay.io
 			me.leaderboard.show();
@@ -31,11 +30,11 @@ define(function() {
 				// font to display the menu items
 				this.font = new me.BitmapFont("32x32_font", 32);
 				this.font.set("left");
-				
+
 				// set the scroller
 				this.scrollerfont = new me.BitmapFont("32x32_font", 32);
 				this.scrollerfont.set("left");
-							
+
 			}
 	      
 			// reset to default value
@@ -85,10 +84,10 @@ define(function() {
 		
 		draw : function(context)
 		{
-			context.drawImage(this.title, 0,0);
+			//context.drawImage(this.title, 0,0);
 			
 			this.font.draw (context, "PRESS ENTER TO PLAY",	 20, 240);
-			this.scrollerfont.draw(context, this.scroller, this.scrollerpos, 440);
+			
 		},
 		
 		/*---

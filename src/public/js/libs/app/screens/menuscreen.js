@@ -15,6 +15,10 @@ define([
 			this.title = null;
 			this.play = null;
 			this.version = null;
+
+			console.log("Initialized Menu");
+
+			this.font = null;
 		},
 
 		/*
@@ -29,10 +33,7 @@ define([
 			this.title = me.loader.getImage("title");
 
 			// play button
-			this.play = new Button("play", me.state.PLAY, 280);
-
-			// version
-			this.version = new me.Font("Verdana", 20, "white");
+			this.play = new Button("play", null, 280);
 		},
 
 		/*
@@ -46,12 +47,7 @@ define([
 			// draw play button
 			this.play.draw(context);
 
-			// game version
-			var versionText = "0.3";
-			var versionSize = this.version.measureText(context, versionText);
-
-			this.version.draw(context, versionText,
-				me.video.getWidth() - versionSize.width - 3, me.video.getHeight() - 5);
+			console.log("Drawing Menu");
 		},
 
 		/*
@@ -59,8 +55,19 @@ define([
 		 */
 		onDestroyEvent: function()
 		{
+
+			console.log("foo");
+
 			// release mouse event
-			me.input.releaseMouseEvent("mousedown", this.play);
+			me.input.releaseMouseEvent("mousedown",
+				me.state.change(
+					me.state.BriefingScreen,
+					"map1",
+					"On a routine mission your ship is ambushed",
+					"You must alert the fleet to the enemy threat",
+					"Defeat all enemies"
+				)
+			);
 		}
 	});
 });

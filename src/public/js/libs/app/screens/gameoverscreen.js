@@ -6,7 +6,7 @@ define([
 		/*
 		 * constructor
 		 */
-		init: function()
+		init: function(score)
 		{
 			// call parent constructor
 			this.parent(true, true);
@@ -19,6 +19,8 @@ define([
 			this.finalScore = null;
 
 			this.leaderboardReported = false;
+
+			console.log("Initialized GameOver Screen");
 		},
 
 		/*
@@ -26,6 +28,7 @@ define([
 		 */
 		onResetEvent: function(score)
 		{
+
 			this.finalScore = score;
 
 			// add parallax background
@@ -39,17 +42,17 @@ define([
 			this.restart = new Button("restart", me.state.PLAY, 280);
 			this.menu = new Button("menu", me.state.MENU, 330);
 
-			if (this.leaderboardReported == false) {
+			if (this.leaderboardReported === false) {
 
 				me.leaderboard.post( { score: score }, function( response ) {
-				    // Callback
-				    console.log( response );
-				    me.leaderboard.show();
+					// Callback
+					console.log( response );
+					me.leaderboard.show();
 				} );
 
 				this.leaderboardReported = true;
 			}
-			
+
 
 		},
 

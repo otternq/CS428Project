@@ -12,11 +12,11 @@ define([
             this.parent(true);
             this.mapScrollRate = -2;
 
-
+            console.log("Initialized Player Screen");
 
         },
 
-       onResetEvent: function() {
+       onResetEvent: function(map) {
             // stuff to reset on state change
             // add a default HUD
             me.game.addHUD(0, 0, me.video.getWidth(), 45);
@@ -28,7 +28,7 @@ define([
             me.game.HUD.addItem("score", new ScoreObject());
 
             //load a level
-            me.levelDirector.loadLevel("map1");
+            me.levelDirector.loadLevel(map);
 
             this.posVector =  new me.Vector2d(0, me.game.currentLevel.realheight-302);
             me.game.viewport.follow(this.posVector, me.game.viewport.AXIS.VERTICAL);

@@ -13,6 +13,7 @@ require.config({
     playerScreen: 'libs/app/screens/playerscreen',
     gameoverscreen: 'libs/app/screens/gameoverscreen',
     titleScreen: 'libs/app/screens/titlescreen',
+    briefingScreen: 'libs/app/screens/briefingscreen',
 
     //entities
     enemyentity: 'libs/app/entities/enemyentity',

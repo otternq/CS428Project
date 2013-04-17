@@ -63,20 +63,31 @@ define([
 
 		//bounds checking
 			//check left
-			if (this.pos.x < 0)
-					this.pos.x = 0;
+			if (this.pos.x < 0) {
+				this.pos.x = 0;
+			}
 
 			//check right
-			if (this.pos.x > me.video.getWidth() - this.image.width)
-					this.pos.x = me.video.getWidth() - this.image.width;
+			if (this.pos.x > me.video.getWidth() - this.image.width) {
+				this.pos.x = me.video.getWidth() - this.image.width;
+			}
 
 			//check down
-			if (this.pos.y > me.game.viewport.bottom - this.image.height)
-					this.pos.y = me.game.viewport.bottom - this.image.height;
+			if (this.pos.y > me.game.viewport.bottom - this.image.height) {
+				this.pos.y = me.game.viewport.bottom - this.image.height;
+			}
 
 			//check up
-			if (this.pos.y < me.game.viewport.top)
-					this.pos.y = me.game.viewport.top;
+			if (this.pos.y < me.game.viewport.top) {
+				this.pos.y = me.game.viewport.top;
+			}
+
+			if(this.pos.y === 0) {
+				me.state.change(
+					me.state.GAMEOVER,
+					me.game.HUD.getItemValue("score")
+				);
+			}
 
 
 		// fire
