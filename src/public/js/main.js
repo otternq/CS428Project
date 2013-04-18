@@ -12,6 +12,7 @@ require.config({
     menuScreen: 'libs/app/screens/menuscreen',
     playerScreen: 'libs/app/screens/playerscreen',
     gameoverscreen: 'libs/app/screens/gameoverscreen',
+    gamefailscreen: 'libs/app/screens/gamefailscreen',
     titleScreen: 'libs/app/screens/titlescreen',
     briefingScreen: 'libs/app/screens/briefingscreen',
 

@@ -3,8 +3,9 @@ define([
 	'briefingScreen',
 	'playerScreen',
 	'gameoverscreen',
+	'gamefailscreen',
 	'backgroundobject'
-], function(MenuScreen, BriefingScreen, PlayScreen, GameOverScreen, BackgroundObject) {
+], function(MenuScreen, BriefingScreen, PlayScreen, GameOverScreen, GameFailScreen, BackgroundObject) {
 
 	var game = {
 		/* ---
@@ -52,6 +53,7 @@ define([
 			me.state.set(me.state.BRIEFING, new BriefingScreen());
 			me.state.set(me.state.MENU, new MenuScreen());			// set the "Menu" Screen Object
 			me.state.set(me.state.PLAY, new PlayScreen());			// set the "Play" Screen Object
+			//me.state.set(me.state.LEVELFAIL, new GameFailScreen());  // set the "Game over" Screen Object
 			me.state.set(me.state.GAMEOVER, new GameOverScreen());  // set the "Game over" Screen Object
 
 			// enable the keyboard

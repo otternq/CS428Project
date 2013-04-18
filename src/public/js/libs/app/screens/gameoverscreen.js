@@ -66,7 +66,7 @@ define([
 			this.menu.draw(context);
 
 			// draw end label
-			var endText = "Level completed !";
+			var endText = "Level Completed!";
 			var endSize = this.end.measureText(context, endText);
 
 			this.end.draw(context, endText, me.video.getWidth() / 2 - endSize.width / 2, 120);
