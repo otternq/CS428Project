@@ -76,6 +76,10 @@ define([
 			var implosion = new ExplosionAnimation(this.pos.x, this.pos.y);
 			me.game.add(implosion, 15);
 			me.game.sort();
+		},
+
+		removeHealth: function() {
+			this.remove();
 		}
 	});
 

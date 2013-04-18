@@ -7,10 +7,11 @@ define([
 		{
 
 			this.movedByRemote = false;
-			this.type = "Player";
+
+			this.player = true;
 
 			// call the parent constructor
-			this.parent(x, me.game.viewport.bottom - y, {image: "ship"});
+			this.parent(x, me.game.viewport.bottom - y, {image: "ship", type:"Player"});
 
 			this.constVelocity = constVel;
 			// set the default horizontal & vertical speed (accel vector)
@@ -23,7 +24,7 @@ define([
 			// enable collision
 			this.collidable = true;
 
-			socketMovements.initialize(io.connect('/room'), this);
+			//socketMovements.initialize(io.connect('/room'), this);
 		},
 
 		update: function()
@@ -118,27 +119,36 @@ define([
 		{
 			var res = me.game.collide(this);
 
-			// if collided object is an enemy
-			if (res && res.obj.type == me.game.ENEMY_OBJECT)
-			{
-				// play sound
-				//me.audio.play("implosion");
-
-				// update life indicator
-				me.game.HUD.updateItemValue("life", -1);
-
-				// if no more lives
-				if (me.game.HUD.getItemValue("life") <= 0)
+			if (res) {
+				// if collided object is an enemy
+				if (res.obj.type == me.game.ENEMY_OBJECT)
 				{
-					// game over
-					me.state.change(me.state.GAMEOVER,
-						me.game.HUD.getItemValue("score"));
+					// play sound
+					//me.audio.play("implosion");
 
-					return;
+					// update life indicator
+					this.removeHealth();
+
+					// remove enemy
+					res.obj.remove();
+				} else {
+					console.log("Player colliding with: "+ res.obj.type);
+					console.log(res.obj);
 				}
+			}
+		},
 
-				// remove enemy
-				res.obj.remove();
+		removeHealth: function () {
+			me.game.HUD.updateItemValue("life", -1);
+
+			// if no more lives
+			if (me.game.HUD.getItemValue("life") <= 0)
+			{
+				// game over
+				me.state.change(me.state.GAMEOVER,
+					me.game.HUD.getItemValue("score"));
+
+				return;
 			}
 		}
 	});

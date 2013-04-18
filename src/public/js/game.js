@@ -35,7 +35,7 @@ define([
 			me.state.change(me.state.LOADING);
 
 			me.leaderboard = new Clay.Leaderboard( { id: 1081 } );
-			me.leaderboard.show();
+			//me.leaderboard.show();
 
 			return true;
 
