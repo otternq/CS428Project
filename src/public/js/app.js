@@ -11,18 +11,21 @@ define([
 		 *   Step by step game creation tutorial
 		 *
 		 **/
+		
 
 		function log(message){
-		if(typeof console == "object"){
-		console.log(message);
-		}
+			if(typeof console == "object"){
+				console.log(message);
+			}
 		}
 
 		// game resources
 		var g_resources = [
 		{name: "bkg0", type: "image", src: "data/sprite/bkg0.png"},
-		{name: "bkg1", type: "image", src: "data/sprite/bkg2.png"},
+		{name: "bkg1", type: "image", src: "data/sprite/bkg1.png"},
+		{name: "bkg2", type: "image", src: "data/sprite/bkg2.png"},
 		{name: "map1", type: "tmx", src: "data/map1.tmx"},
+		{name: "map2", type: "tmx", src: "data/map2.tmx"},
 		{name: "ship", type:"image", src: "data/sprite/ship2.png"},
 		{name: "enemy", type:"image", src: "data/sprite/enemy2.png"},
 		{name: "missile", type:"image", src: "data/sprite/missile.png"},

@@ -13,8 +13,12 @@ define([
 			Initialize the jsApp
 			
 			---			*/
+
+		
+
 		onload: function(g_resources)
 		{
+
 
 			// init the video
 			if (!me.video.init('jsapp', 640, 640))
@@ -22,6 +26,18 @@ define([
 				alert("Sorry but your browser does not support html 5 canvas.");
 				return 'no canvas support';
 			}
+
+
+			me.gamestat.add("mapIndex", "1");
+			me.gamestat.add("1", new Array("map1",
+				"On a routine mission your ship is ambushed",
+				"You must alert the fleet to the enemy threat",
+				"Defeat all enemies"));
+			me.gamestat.add("2", new Array("map2",
+				"The enemy caught us be surprise",
+				"You must fly through the asteroid belt",
+				"To deliver the acquired battle data"));
+
 
 			// initialize the "audio"
 			//me.audio.init("mp3,ogg");
@@ -39,6 +55,8 @@ define([
 			//me.leaderboard.show();
 
 			return true;
+
+
 
 
 		},

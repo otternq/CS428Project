@@ -84,10 +84,21 @@ define([
 			}
 
 			if(this.pos.y === 0) {
+				/*
 				me.state.change(
 					me.state.GAMEOVER,
 					me.game.HUD.getItemValue("score")
 				);
+				*/
+				
+				console.log("Current mapIndex: " + me.gamestat.getItemValue("mapIndex"));
+				me.state.change(
+					me.state.BriefingScreen,
+					me.gamestat.getItemValue(me.gamestat.getItemValue("mapIndex"))[0],
+					me.gamestat.getItemValue(me.gamestat.getItemValue("mapIndex"))[1],
+					me.gamestat.getItemValue(me.gamestat.getItemValue("mapIndex"))[2],
+					me.gamestat.getItemValue(me.gamestat.getItemValue("mapIndex"))[3]
+				)
 			}
 
 

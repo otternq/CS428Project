@@ -56,17 +56,22 @@ define([
 		onDestroyEvent: function()
 		{
 
-			console.log("foo");
+			//console.log("mapIndex: " + me.gamestat.getItemValue("mapIndex"));
+			var mapIndex = String(me.gamestat.getItemValue("mapIndex"));
+			//console.log("mapIndex: " + mapIndex);
 
 			// release mouse event
 			me.input.releaseMouseEvent("mousedown",
+				
+				
 				me.state.change(
 					me.state.BriefingScreen,
-					"map1",
-					"On a routine mission your ship is ambushed",
-					"You must alert the fleet to the enemy threat",
-					"Defeat all enemies"
+					me.gamestat.getItemValue(mapIndex)[0],
+					me.gamestat.getItemValue(mapIndex)[1],
+					me.gamestat.getItemValue(mapIndex)[2],
+					me.gamestat.getItemValue(mapIndex)[3]
 				)
+				
 			);
 		}
 	});

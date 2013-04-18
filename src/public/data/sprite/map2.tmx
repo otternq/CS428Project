@@ -4,13 +4,13 @@
   <property name="test" value="goo foo"/>
  </properties>
  <imagelayer name="Background1" width="20" height="80">
-  <image source="sprite/bkg0.png"/>
+  <image source="bkg2.png"/>
   <properties>
    <property name="ratio" value=".35"/>
   </properties>
  </imagelayer>
  <imagelayer name="Background2" width="20" height="80">
-  <image source="sprite/bkg1.png"/>
+  <image source="bkg1.png"/>
   <properties>
    <property name="ratio" value=".25"/>
   </properties>

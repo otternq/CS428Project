@@ -4,7 +4,7 @@
   <property name="test" value="goo foo"/>
  </properties>
  <imagelayer name="Background1" width="20" height="80">
-  <image source="sprite/bkg0.png"/>
+  <image source="sprite/bkg2.png"/>
   <properties>
    <property name="ratio" value=".35"/>
   </properties>

@@ -29,6 +29,7 @@ define([
 
             //load a level
             me.levelDirector.loadLevel(map);
+           
 
             this.posVector =  new me.Vector2d(0, me.game.currentLevel.realheight-302);
             me.game.viewport.follow(this.posVector, me.game.viewport.AXIS.VERTICAL);
