@@ -30,7 +30,7 @@ define(function() {
 		draw: function(context, x, y)
 		{
 			// draw life indicator
-			//context.drawImage(this.image, this.pos.x + x, this.pos.y + y);
+			context.drawImage(this.image, this.pos.x + x, this.pos.y + y);
 		}
 	});
 });
