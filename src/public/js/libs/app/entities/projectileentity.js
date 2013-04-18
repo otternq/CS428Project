@@ -10,10 +10,10 @@ define(function() {
 			this.shotFrom = from;
 			if(from == "Player") {
 				this.parent(x, y, {image: "missile"});
-				this.collideType(me.game.ENEMY_OBJECT, false);
+				this.target = me.game.ENEMY_OBJECT;
 			} else {
 				this.parent(x,y, {image: "enemyMissile"});
-				this.collideType("Player", false);
+				this.target = "Player";
 			}
 
 			this.setVelocity(0, vel);  // set the default vertical speed (accel vector)
@@ -49,7 +49,7 @@ define(function() {
 		},
 
 		checkCollision: function() {
-			var res = this.collide();
+			var res = this.collideType(this.target);
 			if (res) {
 				res.obj.removeHealth();
 				me.game.remove(this);
