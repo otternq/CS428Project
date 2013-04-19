@@ -15,6 +15,7 @@ require.config({
     gamefailscreen: 'libs/app/screens/gamefailscreen',
     titleScreen: 'libs/app/screens/titlescreen',
     briefingScreen: 'libs/app/screens/briefingscreen',
+    debriefingScreen: 'libs/app/screens/debriefingscreen',
 
     //entities
     enemyentity: 'libs/app/entities/enemyentity',

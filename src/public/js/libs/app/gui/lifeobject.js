@@ -31,6 +31,10 @@ define(function() {
 		{
 			// draw life indicator
 			context.drawImage(this.image, this.pos.x + x, this.pos.y + y);
+		},
+		onDestroyEvent: function()
+		{
+			
 		}
 	});
 });

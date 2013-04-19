@@ -60,16 +60,19 @@ define([
 			var mapIndex = String(me.gamestat.getItemValue("mapIndex"));
 			//console.log("mapIndex: " + mapIndex);
 
+			console.log("changing state from menu");
+
+
 			// release mouse event
 			me.input.releaseMouseEvent("mousedown",
 				
 				
 				me.state.change(
-					me.state.BriefingScreen,
-					me.gamestat.getItemValue(mapIndex)[0],
-					me.gamestat.getItemValue(mapIndex)[1],
-					me.gamestat.getItemValue(mapIndex)[2],
-					me.gamestat.getItemValue(mapIndex)[3]
+					100,
+					me.gamestat.getItemValue("briefing"+ mapIndex)[0],
+					me.gamestat.getItemValue("briefing"+ mapIndex)[1],
+					me.gamestat.getItemValue("briefing"+ mapIndex)[2],
+					me.gamestat.getItemValue("briefing"+ mapIndex)[3]
 				)
 				
 			);

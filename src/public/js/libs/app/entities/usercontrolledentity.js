@@ -91,6 +91,7 @@ define([
 				);
 				*/
 				
+				/*
 				console.log("Current mapIndex: " + me.gamestat.getItemValue("mapIndex"));
 				me.state.change(
 					me.state.BriefingScreen,
@@ -98,6 +99,18 @@ define([
 					me.gamestat.getItemValue(me.gamestat.getItemValue("mapIndex"))[1],
 					me.gamestat.getItemValue(me.gamestat.getItemValue("mapIndex"))[2],
 					me.gamestat.getItemValue(me.gamestat.getItemValue("mapIndex"))[3]
+				)
+				*/
+
+
+				var mapIndex = String(me.gamestat.getItemValue("mapIndex"));
+				console.log("Current mapIndex: " + mapIndex);
+				me.state.change(
+					101,
+					me.gamestat.getItemValue("debriefing"+mapIndex)[0],
+					me.gamestat.getItemValue("debriefing"+mapIndex)[1],
+					me.gamestat.getItemValue("debriefing"+mapIndex)[2]
+					
 				)
 			}
 

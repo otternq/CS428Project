@@ -12,11 +12,11 @@ define([
             this.parent(true);
             this.mapScrollRate = -2;
 
-            console.log("Initialized Player Screen");
-
         },
 
        onResetEvent: function(map) {
+
+            console.log("Initialized Player Screen");
             // stuff to reset on state change
             // add a default HUD
             me.game.addHUD(0, 0, me.video.getWidth(), 45);
@@ -53,7 +53,7 @@ define([
         onDestroyEvent: function()
         {
 
-
+            me.game.disableHUD();
 
        }
 
