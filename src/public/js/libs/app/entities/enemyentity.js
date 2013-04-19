@@ -70,6 +70,8 @@ define([
 			me.game.remove(this, true);
 
 			me.game.HUD.updateItemValue("score", 10);
+			var curScore = me.gamestat.getItemValue("score");
+			me.gamestat.setValue("score", curScore+10);
 
 			// play sound
 			//me.audio.play("implosion");
