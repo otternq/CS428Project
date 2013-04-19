@@ -89,7 +89,7 @@ define([
 			me.state.set(101, new DebriefingScreen());
 			me.state.set(me.state.MENU, new MenuScreen());			// set the "Menu" Screen Object
 			me.state.set(me.state.PLAY, new PlayScreen());			// set the "Play" Screen Object
-			//me.state.set(me.state.LEVELFAIL, new GameFailScreen());  // set the "Game over" Screen Object
+			me.state.set(102, new GameFailScreen());  // set the "Game over" Screen Object
 			me.state.set(me.state.GAMEOVER, new GameOverScreen());  // set the "Game over" Screen Object
 
 			console.log("Briefing: " + me.state.BRIEFING);

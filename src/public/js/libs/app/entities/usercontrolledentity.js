@@ -169,7 +169,7 @@ define([
 			if (me.game.HUD.getItemValue("life") <= 0)
 			{
 				// game over
-				me.state.change(me.state.GAMEOVER,
+				me.state.change(102,
 					me.game.HUD.getItemValue("score"));
 
 				return;
