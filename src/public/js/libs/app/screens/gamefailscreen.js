@@ -20,7 +20,7 @@ define([
 
             this.leaderboardReported = false;
 
-            console.log("Initialized GameOver Screen");
+            console.log("Initialized GameFailed Screen");
         },
 
         /*
