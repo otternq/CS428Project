@@ -65,8 +65,8 @@ define([
 
 			// release mouse event
 			me.input.releaseMouseEvent("mousedown",
-				
-				
+
+
 				me.state.change(
 					100,
 					me.gamestat.getItemValue("briefing"+ mapIndex)[0],
@@ -74,7 +74,7 @@ define([
 					me.gamestat.getItemValue("briefing"+ mapIndex)[2],
 					me.gamestat.getItemValue("briefing"+ mapIndex)[3]
 				)
-				
+
 			);
 		}
 	});

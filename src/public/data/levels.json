@@ -5,7 +5,7 @@
         "resource": {
             "name": "map1",
             "type": "tmx",
-            "src": "data/map3.tmx"
+            "src": "data/map1.tmx"
         },
         "briefing": [
             "On a routine mission your ship is ambushed",
@@ -25,6 +25,25 @@
             "name": "map2",
             "type": "tmx",
             "src": "data/map2.tmx"
+        },
+        "briefing": [
+            "The enemy caught us be surprise",
+            "You must fly through the asteroid belt",
+            "To deliver the acquired battle data"
+        ],
+        "debriefing": [
+            "It was a close call,",
+            "but your flying got you through the asteroid belt",
+            "The data was successfully delivered"
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Level 3",
+        "resource": {
+            "name": "map3",
+            "type": "tmx",
+            "src": "data/map3.tmx"
         },
         "briefing": [
             "The enemy caught us be surprise",
