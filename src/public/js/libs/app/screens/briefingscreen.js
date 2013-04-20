@@ -18,7 +18,7 @@ define([
 
         onResetEvent: function(mapName,line1, line2, line3)
         {
-            // add parallax background
+           // add parallax background
            // me.game.add(new BackgroundObject(), 1);
 
            console.log("Briefing Screen for: " + mapName);
@@ -44,12 +44,12 @@ define([
             if (me.input.isKeyPressed('enter'))
             {
                 var curIndex = parseInt(me.gamestat.getItemValue("mapIndex"), 10);
-                
 
                 me.state.change(me.state.PLAY, this.map);
+
             }
 
-             
+
 
             return true;
         },

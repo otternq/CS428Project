@@ -38,6 +38,8 @@ define([
 
 			var levels = JSON.parse(LevelData);
 
+			me.gamestat.add("levelCount", levels.length);
+
 			for (var i = 0; i < levels.length; i++) {
 				me.gamestat.add("briefing" + levels[i].id, new Array(
 					levels[i].resource.name,

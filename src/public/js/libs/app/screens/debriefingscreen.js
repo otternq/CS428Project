@@ -21,7 +21,7 @@ define([
             // add parallax background
            // me.game.add(new BackgroundObject(), 1);
 
-            
+
             this.line1 = line1;
             this.line2 = line2;
             this.line3 = line3;
@@ -42,7 +42,6 @@ define([
             if (me.input.isKeyPressed('enter'))
             {
                 var curIndex = parseInt(me.gamestat.getItemValue("mapIndex"), 10);
-                
 
                 console.log("Updating mapIndex from " + curIndex);
                 curIndex = curIndex + 1;
@@ -51,18 +50,26 @@ define([
                 me.gamestat.setValue("mapIndex", String(curIndex));
                 var mapIndex = String(me.gamestat.getItemValue("mapIndex"));
 
+                var maxLevel = parseInt(me.gamestat.getItemValue("levelCount"), 10);
 
-                //me.state.change(me.state.PLAY, this.map);
-                me.state.change(
-                    100,
-                    me.gamestat.getItemValue("briefing"+mapIndex)[0],
-                    me.gamestat.getItemValue("briefing"+mapIndex)[1],
-                    me.gamestat.getItemValue("briefing"+mapIndex)[2],
-                    me.gamestat.getItemValue("briefing"+mapIndex)[3]
-                )
+                if (mapIndex <= maxLevel) {
+                    //me.state.change(me.state.PLAY, this.map);
+                    me.state.change(
+                        100,
+                        me.gamestat.getItemValue("briefing"+mapIndex)[0],
+                        me.gamestat.getItemValue("briefing"+mapIndex)[1],
+                        me.gamestat.getItemValue("briefing"+mapIndex)[2],
+                        me.gamestat.getItemValue("briefing"+mapIndex)[3]
+                    );
+                } else {
+                    me.state.change(me.state.GAMEOVER);
+                }
+
+
+                
             }
 
-             
+
 
             return true;
         },
@@ -71,7 +78,6 @@ define([
         {
 
             me.video.clearSurface(context,"Gray");
-            
 
             this.x1 = this.textFont.measureText(context,this.line1).width;
             this.x2 = this.textFont.measureText(context,this.line2).width;
@@ -85,7 +91,7 @@ define([
 
         onDestroyEvent: function()
         {
-             
+
         }
     });
 });
