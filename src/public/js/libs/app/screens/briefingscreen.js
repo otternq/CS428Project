@@ -58,7 +58,7 @@ define([
         {
 
             me.video.clearSurface(context,"Gray");
-            
+
 
             this.x1 = this.textFont.measureText(context,this.line1).width;
             this.x2 = this.textFont.measureText(context,this.line2).width;
@@ -73,7 +73,7 @@ define([
 
         onDestroyEvent: function()
         {
-             
+
         }
     });
 });
