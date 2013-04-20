@@ -21,7 +21,7 @@ define([
 
             this.gravity = 0;
 
-            this.setVelocity(1, 1);
+            this.setVelocity(1, 0);
 
             this.collidable = true;
 
@@ -29,6 +29,10 @@ define([
 
         update: function()
         {
+
+            this.vel.y += this.accel.y * me.timer.tick;
+            this.vel.x += this.accel.x * me.timer.tick;
+
             this.computeVelocity(this.vel);
             this.pos.add(this.vel);
         },

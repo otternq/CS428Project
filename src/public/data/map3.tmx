@@ -18,5 +18,23 @@
  <objectgroup name="AsteroidsLayer" width="20" height="80">
   <object name="AsteroidEntity" x="434" y="143"/>
   <object name="AsteroidEntity" x="77" y="138"/>
+  <object name="AsteroidEntity" x="430" y="623"/>
+  <object name="AsteroidEntity" x="493" y="2352"/>
+  <object name="AsteroidEntity" x="149" y="2160"/>
+  <object name="AsteroidEntity" x="366" y="2038"/>
+  <object name="AsteroidEntity" x="367" y="1933"/>
+  <object name="AsteroidEntity" x="588" y="1937"/>
+  <object name="AsteroidEntity" x="179" y="2451"/>
+  <object name="AsteroidEntity" x="546" y="2464"/>
+  <object name="AsteroidEntity" x="404" y="2275"/>
+  <object name="AsteroidEntity" x="217" y="2030"/>
+ </objectgroup>
+ <objectgroup color="#a42221" name="EnemyLayer" width="20" height="80">
+  <object name="EnemyEntity" x="71" y="1808"/>
+  <object name="EnemyEntity" x="498" y="1811"/>
+  <object name="EnemyEntity" x="578" y="2154"/>
+  <object name="EnemyEntity" x="235" y="1968"/>
+  <object name="EnemyEntity" x="65" y="2268"/>
+  <object name="EnemyEntity" x="84" y="2028"/>
  </objectgroup>
 </map>

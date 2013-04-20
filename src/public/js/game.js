@@ -6,8 +6,9 @@ define([
 	'gameoverscreen',
 	'gamefailscreen',
 	'backgroundobject',
-	'asteroidentity'
-], function(MenuScreen, BriefingScreen, DebriefingScreen, PlayScreen, GameOverScreen, GameFailScreen, BackgroundObject, AsteroidEntity) {
+	'asteroidentity',
+	'enemyentity'
+], function(MenuScreen, BriefingScreen, DebriefingScreen, PlayScreen, GameOverScreen, GameFailScreen, BackgroundObject, AsteroidEntity, EnemyEntity) {
 
 	var game = {
 		/* ---
@@ -96,7 +97,9 @@ define([
 			console.log("Briefing: " + me.state.BRIEFING);
 			console.log("Debriefing: " + me.state.DEBRIEFING);
 
+			//true is basically saying there will be more than one
 			me.entityPool.add("AsteroidEntity", AsteroidEntity, true);
+			me.entityPool.add("EnemyEntity", EnemyEntity, true);
 
 			// enable the keyboard
 			me.input.bindKey(me.input.KEY.LEFT, "left");

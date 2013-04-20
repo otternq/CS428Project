@@ -2,7 +2,7 @@ define([
     'lifeobject',
     'scoreobject',
     'usercontrolledentity',
-    'enemyfleet',
+    'enemyfleet'
 ], function(LifeObject, ScoreObject, UserControlledEntity, EnemyFleet) {
     /* the in game stuff*/
     return me.ScreenObject.extend(
@@ -30,7 +30,7 @@ define([
 
             //load a level
             me.levelDirector.loadLevel(map);
-           
+
 
             this.posVector =  new me.Vector2d(0, me.game.currentLevel.realheight-302);
             me.game.viewport.follow(this.posVector, me.game.viewport.AXIS.VERTICAL);
@@ -40,7 +40,7 @@ define([
             me.game.add(ship, 10);
 
             // add enemy fleet
-            me.game.add(new EnemyFleet(25), 10);
+            //me.game.add(new EnemyFleet(25), 10);
 
             // make sure everything is in the right order
             me.game.sort();

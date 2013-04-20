@@ -11,6 +11,7 @@ define([
 			settings.spritewidth = 42;
 			settings.spriteheight = 42;
 			settings.type = me.game.ENEMY_OBJECT;
+			settings.collidable = true;
 			this.time = 0;
 
 			// call parent constructor
@@ -24,10 +25,7 @@ define([
 			this.gravity = 0;
 
 			// set the default horizontal speed (accel vector)
-			this.setVelocity(0, 0);
-
-			// enable collision
-			this.collidable = true;
+			this.setVelocity(0, 1);
 		},
 
 		update: function()
@@ -36,10 +34,10 @@ define([
 			// call parent constructor
 			this.parent(this);
 
-			if (me.game.viewport.top == 0 || me.game.viewport.bottom == me.game.currentLevel.realheight)
+			/*if (me.game.viewport.top == 0 || me.game.viewport.bottom == me.game.currentLevel.realheight)
 				this.setVelocity(0, 2);
 			else
-				this.setVelocity(0,0);
+				this.setVelocity(0,6);*/
 
 
 			// calculate velocity

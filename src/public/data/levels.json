@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "name": "Level 1",
+        "resource": {
+            "name": "map1",
+            "type": "tmx",
+            "src": "data/map1.tmx"
+        },
+        "briefing": [
+            "On a routine mission your ship is ambushed",
+            "You must alert the fleet to the enemy threat",
+            "Defeat all enemies"
+        ],
+        "debriefing": [
+            "You defeated the enemy units",
+            "After the battle the wreckage was examined",
+            "Vital information was gathered"
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Level 2",
+        "resource": {
+            "name": "map2",
+            "type": "tmx",
+            "src": "data/map2.tmx"
+        }
+    }
+]

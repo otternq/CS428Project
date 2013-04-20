@@ -1,6 +1,8 @@
 define([
-	'game'
-], function(Game) {
+	'game',
+	'text!/data/resources.json',
+	'text!/data/levels.json'
+], function(Game, Resources, LevelsData) {
 
 	var initialize = function(){
 		/*!
@@ -20,39 +22,13 @@ define([
 		}
 
 		// game resources
-		var g_resources = [
-		{name: "bkg0", type: "image", src: "data/sprite/bkg0.png"},
-		{name: "bkg1", type: "image", src: "data/sprite/bkg1.png"},
-		{name: "bkg2", type: "image", src: "data/sprite/bkg2.png"},
-		{name: "map1", type: "tmx", src: "data/map1.tmx"},
-		{name: "map2", type: "tmx", src: "data/map2.tmx"},
-		{name: "map3", type: "tmx", src: "data/map3.tmx"},
-		{name: "ship", type:"image", src: "data/sprite/ship2.png"},
-		{name: "enemy", type:"image", src: "data/sprite/enemy2.png"},
-		{name: "asteroid", type:"image", src: "data/sprite/asteroid.png"},
-		{name: "missile", type:"image", src: "data/sprite/missile.png"},
-		{name: "enemyMissile", type:"image", src: "data/sprite/enemyMissile.png"},
-		{name: "implosion", type:"image", src: "data/sprite/implosion.png"},
-		{name: "explosion", type:"image", src: "data/sprite/explosion.png", channel: 1},
-		{name: "life0", type:"image", src: "data/sprite/life20.png"},
-			{name: "life1", type:"image", src: "data/sprite/life21.png"},
-			{name: "life2", type:"image", src: "data/sprite/life22.png"},
-			{name: "life3", type:"image", src: "data/sprite/life23.png"},
+		var g_resources = JSON.parse(Resources);
 
-		//interface resources
-		{name: "title", type:"image", src: "data/sprite/title.png"},
-		{name: "play", type:"image", src: "data/sprite/play.png"},
-		{name: "play_hover", type:"image", src: "data/sprite/play_hover.png"},
-		{name: "restart", type:"image", src: "data/sprite/restart.png"},
-		{name: "restart_hover", type:"image", src: "data/sprite/restart_hover.png"},
-		{name: "menu", type:"image", src: "data/sprite/menu.png"},
-		{name: "menu_hover", type:"image", src: "data/sprite/menu_hover.png"},
-
-		// audio resources
-		//{name: "missile", type:"audio", src: "data/sound/", channel: 1},
-		//{name: "implosion", type:"audio", src: "data/sound/", channel: 1},
-
-		];
+		//add the levels to the resources array
+		var levels = JSON.parse(LevelsData);
+		for (var i = 0; i < levels.length; i++) {
+			g_resources[g_resources.length] = levels[i].resource;
+		}
 
 
 
