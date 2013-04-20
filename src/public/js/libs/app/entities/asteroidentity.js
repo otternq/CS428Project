@@ -10,14 +10,22 @@ define([
             settings.image = "asteroid";
             settings.spritewidth = 32;
             settings.spriteheight = 32;
+            settings.collidable = true;
             settings.type = "asteroid";
-
             this.time = 0;
 
             this.parent(x, y, settings);
 
-            this.addAnimation("flying", null, 0.2);
-            this.setCurrentAnimation("flying");
+            this.animationList = [];
+
+            for (var i = 0; i < 30; i++) {
+                this.animationList[i] = i;
+            }
+
+            this.addAnimation("spinning", this.animationList, Math.random());
+            this.setCurrentAnimation("spinning");
+
+            this.resize(Math.random() * (1.25));
 
             this.gravity = 0;
 
@@ -33,18 +41,21 @@ define([
 
             this.setVelocity((Math.random() * 2) - Math.random(), 0);
 
-            this.collidable = true;
+
 
         },
 
         update: function()
         {
+            if (this.inViewport === true) {
+                this.parent(this);
 
-            this.vel.y += this.direction * this.accel.y * me.timer.tick;
-            this.vel.x += this.direction * this.accel.x * me.timer.tick;
+                this.vel.y += this.direction * this.accel.y * me.timer.tick;
+                this.vel.x += this.direction * this.accel.x * me.timer.tick;
 
-            this.computeVelocity(this.vel);
-            this.pos.add(this.vel);
+                this.computeVelocity(this.vel);
+                this.pos.add(this.vel);
+            }
         },
 
         remove: function()
