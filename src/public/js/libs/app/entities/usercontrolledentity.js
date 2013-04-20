@@ -155,6 +155,12 @@ define([
 
 					// remove enemy
 					res.obj.remove();
+				} else if (res.obj.type == "asteroid") {
+
+					this.removeHealth();
+
+					res.obj.remove();
+
 				} else {
 					console.log("Player colliding with: "+ res.obj.type);
 					console.log(res.obj);

@@ -21,7 +21,17 @@ define([
 
             this.gravity = 0;
 
-            this.setVelocity(1, 0);
+            this.direction = 1;
+
+            var scale = (Math.random() * 2) - 1;
+
+            if (scale >= 0) {
+                this.direction = 1;
+            } else {
+                this.direction = -1;
+            }
+
+            this.setVelocity((Math.random() * 2) - Math.random(), 0);
 
             this.collidable = true;
 
@@ -30,8 +40,8 @@ define([
         update: function()
         {
 
-            this.vel.y += this.accel.y * me.timer.tick;
-            this.vel.x += this.accel.x * me.timer.tick;
+            this.vel.y += this.direction * this.accel.y * me.timer.tick;
+            this.vel.x += this.direction * this.accel.x * me.timer.tick;
 
             this.computeVelocity(this.vel);
             this.pos.add(this.vel);
