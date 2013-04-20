@@ -23,7 +23,7 @@ define([
             me.game.addHUD(0, 0, me.video.getWidth(), 45);
 
             // add a new HUD item
-            me.game.HUD.addItem("life", new LifeObject(3));
+            me.game.HUD.addItem("life", new LifeObject(215, 1, 100, 10));
 
             // add a new HUD item
             me.game.HUD.addItem("score", new ScoreObject());
