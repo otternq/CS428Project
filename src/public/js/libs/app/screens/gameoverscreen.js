@@ -26,10 +26,10 @@ define([
 		/*
 		 * reset function
 		 */
-		onResetEvent: function(score)
+		onResetEvent: function()
 		{
 
-			this.finalScore = score;
+			this.finalScore = me.gamestat.getItemValue("score");
 
 			// add parallax background
 			me.game.add(new BackgroundObject(), 1);
@@ -44,7 +44,7 @@ define([
 
 			if (this.leaderboardReported === false) {
 
-				me.leaderboard.post( { score: score }, function( response ) {
+				me.leaderboard.post( { score: this.finalScore }, function( response ) {
 					// Callback
 					console.log( response );
 					me.leaderboard.show();
