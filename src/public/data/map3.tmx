@@ -87,7 +87,7 @@
   <object name="AsteroidEntity" x="41" y="1357"/>
   <object name="AsteroidEntity" x="62" y="1118"/>
   <object name="AsteroidEntity" x="86" y="1028"/>
-  <object x="165" y="833"/>
+  <object name="AsteroidEntity" x="165" y="833"/>
  </objectgroup>
  <objectgroup color="#a42221" name="EnemyLayer" width="20" height="80">
   <object name="EnemyEntity" x="256" y="614"/>
