@@ -2,7 +2,6 @@
     {"name": "bkg0", "type": "image", "src": "data/sprite/bkg0.png"},
     {"name": "bkg1", "type": "image", "src": "data/sprite/bkg1.png"},
     {"name": "bkg2", "type": "image", "src": "data/sprite/bkg2.png"},
-    {"name": "map3", "type": "tmx", "src": "data/map3.tmx"},
     {"name": "ship", "type":"image", "src": "data/sprite/ship2.png"},
     {"name": "enemy", "type":"image", "src": "data/sprite/enemy2.png"},
     {"name": "asteroid", "type":"image", "src": "data/sprite/asteroid.png"},

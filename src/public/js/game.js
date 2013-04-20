@@ -7,8 +7,9 @@ define([
 	'gamefailscreen',
 	'backgroundobject',
 	'asteroidentity',
-	'enemyentity'
-], function(MenuScreen, BriefingScreen, DebriefingScreen, PlayScreen, GameOverScreen, GameFailScreen, BackgroundObject, AsteroidEntity, EnemyEntity) {
+	'enemyentity',
+	'text!/data/levels.json'
+], function(MenuScreen, BriefingScreen, DebriefingScreen, PlayScreen, GameOverScreen, GameFailScreen, BackgroundObject, AsteroidEntity, EnemyEntity, LevelData) {
 
 	var game = {
 		/* ---
@@ -34,25 +35,23 @@ define([
 
 			me.gamestat.add("mapIndex", "1");
 
-			me.gamestat.add("briefing1", new Array("map3",
-				"On a routine mission your ship is ambushed",
-				"You must alert the fleet to the enemy threat",
-				"Defeat all enemies"));
-			me.gamestat.add("debriefing1", new Array(
-				"You defeated the enemy units",
-				"After the battle the wreckage was examined",
-				"Vital information was gathered"));
 
+			var levels = JSON.parse(LevelData);
 
-			me.gamestat.add("briefing2", new Array("map2",
-				"The enemy caught us be surprise",
-				"You must fly through the asteroid belt",
-				"To deliver the acquired battle data"));
+			for (var i = 0; i < levels.length; i++) {
+				me.gamestat.add("briefing" + levels[i].id, new Array(
+					levels[i].resource.name,
+					levels[i].briefing[0],
+					levels[i].briefing[1],
+					levels[i].briefing[2]
+				));
 
-			me.gamestat.add("debriefing2", new Array(
-				"It was a close call,",
-				"but your flying got you through the asteroid belt",
-				"The data was successfully delivered"));
+				me.gamestat.add("debriefing1" + levels[i].id, new Array(
+					levels[i].debriefing[0],
+					levels[i].debriefing[1],
+					levels[i].debriefing[2]
+				));
+			}
 
 
 			// initialize the "audio"
