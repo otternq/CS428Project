@@ -2,13 +2,14 @@ define([
     'lifeobject',
     'scoreobject',
     'usercontrolledentity',
-    'enemyfleet'
+    'enemyfleet',
 ], function(LifeObject, ScoreObject, UserControlledEntity, EnemyFleet) {
     /* the in game stuff*/
     return me.ScreenObject.extend(
     {
 
         init: function() {
+
             this.parent(true);
             this.mapScrollRate = -2;
 

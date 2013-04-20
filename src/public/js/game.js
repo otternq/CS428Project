@@ -5,8 +5,9 @@ define([
 	'playerScreen',
 	'gameoverscreen',
 	'gamefailscreen',
-	'backgroundobject'
-], function(MenuScreen, BriefingScreen, DebriefingScreen, PlayScreen, GameOverScreen, GameFailScreen, BackgroundObject) {
+	'backgroundobject',
+	'asteroidentity'
+], function(MenuScreen, BriefingScreen, DebriefingScreen, PlayScreen, GameOverScreen, GameFailScreen, BackgroundObject, AsteroidEntity) {
 
 	var game = {
 		/* ---
@@ -32,7 +33,7 @@ define([
 
 			me.gamestat.add("mapIndex", "1");
 
-			me.gamestat.add("briefing1", new Array("map1",
+			me.gamestat.add("briefing1", new Array("map3",
 				"On a routine mission your ship is ambushed",
 				"You must alert the fleet to the enemy threat",
 				"Defeat all enemies"));
@@ -94,6 +95,8 @@ define([
 
 			console.log("Briefing: " + me.state.BRIEFING);
 			console.log("Debriefing: " + me.state.DEBRIEFING);
+
+			me.entityPool.add("AsteroidEntity", AsteroidEntity, true);
 
 			// enable the keyboard
 			me.input.bindKey(me.input.KEY.LEFT, "left");
