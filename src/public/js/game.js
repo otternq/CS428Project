@@ -18,7 +18,7 @@ define([
 			
 			---			*/
 
-		
+
 
 		onload: function(g_resources)
 		{
@@ -46,7 +46,7 @@ define([
 					levels[i].briefing[2]
 				));
 
-				me.gamestat.add("debriefing1" + levels[i].id, new Array(
+				me.gamestat.add("debriefing" + levels[i].id, new Array(
 					levels[i].debriefing[0],
 					levels[i].debriefing[1],
 					levels[i].debriefing[2]
