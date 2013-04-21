@@ -29,24 +29,25 @@ define([
 
 		update: function()
 		{
-		// move left
+			// move left
 			if (me.input.isKeyPressed("left"))
 			{
 				// update the entity velocity
 				this.vel.x -= this.accel.x * me.timer.tick;
 			}
-		// move right
+			// move right
 			else if (me.input.isKeyPressed("right"))
 			{
 				// update the entity velocity
 				this.vel.x += this.accel.x * me.timer.tick;
 			}
 			else{
-				if(this.movedByRemote === false)
+				if(this.movedByRemote === false) {
 					this.vel.x = 0;
+				}
 			}
 
-		// move up
+			// move up
 			if (me.input.isKeyPressed("up")) {
 				// update the entity velocity
 				this.vel.y -= this.accel.y * me.timer.tick;
@@ -57,7 +58,7 @@ define([
 				this.vel.y = this.constVelocity;
 			}
 
-		//bounds checking
+			//bounds checking
 			//check left
 			if (this.pos.x < 0) {
 				this.pos.x = 0;
@@ -79,24 +80,6 @@ define([
 			}
 
 			if(this.pos.y === 0) {
-				/*
-				me.state.change(
-					me.state.GAMEOVER,
-					me.game.HUD.getItemValue("score")
-				);
-				*/
-				
-				/*
-				console.log("Current mapIndex: " + me.gamestat.getItemValue("mapIndex"));
-				me.state.change(
-					me.state.BriefingScreen,
-					me.gamestat.getItemValue(me.gamestat.getItemValue("mapIndex"))[0],
-					me.gamestat.getItemValue(me.gamestat.getItemValue("mapIndex"))[1],
-					me.gamestat.getItemValue(me.gamestat.getItemValue("mapIndex"))[2],
-					me.gamestat.getItemValue(me.gamestat.getItemValue("mapIndex"))[3]
-				)
-				*/
-
 
 				var mapIndex = String(me.gamestat.getItemValue("mapIndex"));
 				console.log("Current mapIndex: " + mapIndex);
@@ -105,12 +88,12 @@ define([
 					me.gamestat.getItemValue("debriefing"+mapIndex)[0],
 					me.gamestat.getItemValue("debriefing"+mapIndex)[1],
 					me.gamestat.getItemValue("debriefing"+mapIndex)[2]
-					
-				)
+
+				);
 			}
 
 
-		// fire
+			// fire
 			if (me.input.isKeyPressed("fire"))
 			{
 				// play sound
