@@ -33,8 +33,6 @@ define([
 
 			me.gamestat.add("score" , 0);
 
-			me.gamestat.add("mapIndex", "1");
-
 
 			var levels = JSON.parse(LevelData);
 

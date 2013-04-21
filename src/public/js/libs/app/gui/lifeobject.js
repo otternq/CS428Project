@@ -14,7 +14,11 @@ define(function() {
 
 		// update the item value
 		update : function(value) {
-			this.set((this.value + (this.step * value)).clamp(0, this.maxhp));
+
+			var newScore = this.value + (this.step * value);
+
+			this.set((newScore).clamp(0, this.maxhp));
+			
 			return true;
 		},
 

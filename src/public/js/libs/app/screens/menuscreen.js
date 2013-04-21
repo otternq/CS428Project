@@ -26,6 +26,10 @@ define([
 		 */
 		onResetEvent: function()
 		{
+
+
+			me.gamestat.add("mapIndex", "1");
+
 			// add parallax background
 			me.game.add(new BackgroundObject(), 1);
 
