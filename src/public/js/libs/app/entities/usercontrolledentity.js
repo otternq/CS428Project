@@ -1,7 +1,7 @@
 define([
 	'playerMovements',
 	'projectileentity'
-], function(socketMovements, ProjectileEntity) {
+], function(SocketMovements, ProjectileEntity) {
 	return me.ObjectEntity.extend({
 		init: function(x, y, constVel)
 		{
@@ -24,7 +24,7 @@ define([
 			// enable collision
 			this.collidable = true;
 
-			//socketMovements.initialize(io.connect('/room'), this);
+			SocketMovements.initialize(io.connect('/room'), this);
 		},
 
 		update: function()
@@ -47,18 +47,13 @@ define([
 			}
 
 		// move up
-			if (me.input.isKeyPressed("up"))
-			{
+			if (me.input.isKeyPressed("up")) {
 				// update the entity velocity
 				this.vel.y -= this.accel.y * me.timer.tick;
-			}
-		// move down
-			else if (me.input.isKeyPressed("down"))
-			{
+			} else if (me.input.isKeyPressed("down")) {// move down
 				// update the entity velocity
 				this.vel.y += this.accel.y * me.timer.tick;
-			}
-			else{
+			} else {
 				this.vel.y = this.constVelocity;
 			}
 
