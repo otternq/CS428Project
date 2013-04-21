@@ -17,7 +17,8 @@ define(function() {
 		 */
 		draw: function(context, x, y)
 		{
-			var scoreText = "Score : " + this.value;
+			//var scoreText = "Score : " + this.value;
+			var scoreText = "Score : " + me.gamestat.getItemValue("score");
 			var scoreSize = this.score.measureText(context, scoreText);
 
 			this.score.draw(context, scoreText, this.pos.x, scoreSize.height);

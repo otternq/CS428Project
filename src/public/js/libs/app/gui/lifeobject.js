@@ -1,36 +1,64 @@
 define(function() {
 	return me.HUD_Item.extend({
-		/*
-		 * constructor
-		 */
-		init: function(lives)
-		{
-			// call the parent constructor
-			this.parent(me.video.getWidth() - 145, 5, lives);
 
-			// create image
-			this.image = me.loader.getImage("life" + lives);
+		init:function(x, y, val, step)
+		{
+			this.parent(x, y, val);
+			this.maxhp = val;
+
+			this.step = step;
+
+			// manage the alarm
+			this.alarm = false;
 		},
 
-		/*
-		 * decrease life count
-		 */
-		update: function(value)
-		{
-			this.value += value;
+		// update the item value
+		update : function(value) {
 
-			// updating life count
-			this.image = me.loader.getImage("life" + this.value);
+			var newScore = this.value + (this.step * value);
+
+			this.set((newScore).clamp(0, this.maxhp));
+			
 			return true;
 		},
 
-		/*
-		 * drawing function
-		 */
-		draw: function(context, x, y)
+
+		draw : function (context, x, y)
 		{
-			// draw life indicator
-			context.drawImage(this.image, this.pos.x + x, this.pos.y + y);
+
+			var hp = Math.round((this.value / this.maxhp ) * 300);
+			// draw the progress bar
+			context.strokeStyle = "rgba(255,255,255, 0.9)";
+			context.strokeRect(this.pos.x+x, this.pos.y+y, 300, 20);
+			if (hp>150) {
+				// green
+				context.fillStyle = "rgba(0,200,0, 0.9)";
+				if (this.alarm)
+				{
+					me.audio.stop("alarm");
+					this.alarm = false;
+				}
+			}
+			else if (hp>75) {
+				// orange
+				context.fillStyle = "rgba(255,165,0, 0.9)";
+				if (this.alarm)
+				{
+					me.audio.stop("alarm");
+					this.alarm = false;
+				}
+			}
+			else {
+				// red
+				context.fillStyle = "rgba(255,69,0, 0.9)";
+				if (!this.alarm)
+				{
+					//me.audio.play("alarm", true);
+					//this.alarm = true;
+				}
+			}
+
+			context.fillRect(this.pos.x+x+1, this.pos.y+y + 1, hp-1, 18);
 		}
 	});
 });
