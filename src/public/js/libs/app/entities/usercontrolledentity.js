@@ -30,21 +30,18 @@ define([
 		update: function()
 		{
 			// move left
-			if (me.input.isKeyPressed("left"))
-			{
+			if (me.input.isKeyPressed("left")) {
+
 				// update the entity velocity
 				this.vel.x -= this.accel.x * me.timer.tick;
-			}
-			// move right
-			else if (me.input.isKeyPressed("right"))
-			{
+
+			} else if (me.input.isKeyPressed("right")) {// move right
+
 				// update the entity velocity
 				this.vel.x += this.accel.x * me.timer.tick;
-			}
-			else{
-				if(this.movedByRemote === false) {
-					this.vel.x = 0;
-				}
+
+			} else if(this.movedByRemote === false) {
+				this.vel.x = 0;
 			}
 
 			// move up
@@ -79,7 +76,7 @@ define([
 				this.pos.y = me.game.viewport.top;
 			}
 
-			if(this.pos.y === 0) {
+			if (this.pos.y === 0) {
 
 				var mapIndex = String(me.gamestat.getItemValue("mapIndex"));
 				console.log("Current mapIndex: " + mapIndex);
@@ -88,7 +85,6 @@ define([
 					me.gamestat.getItemValue("debriefing"+mapIndex)[0],
 					me.gamestat.getItemValue("debriefing"+mapIndex)[1],
 					me.gamestat.getItemValue("debriefing"+mapIndex)[2]
-
 				);
 			}
 
@@ -123,8 +119,7 @@ define([
 
 			if (res) {
 				// if collided object is an enemy
-				if (res.obj.type == me.game.ENEMY_OBJECT)
-				{
+				if (res.obj.type == me.game.ENEMY_OBJECT) {
 					// play sound
 					//me.audio.play("implosion");
 
@@ -150,8 +145,7 @@ define([
 			me.game.HUD.updateItemValue("life", -1);
 
 			// if no more lives
-			if (me.game.HUD.getItemValue("life") <= 0)
-			{
+			if (me.game.HUD.getItemValue("life") <= 0) {
 				// game over
 				me.state.change(102,
 					me.game.HUD.getItemValue("score"));
