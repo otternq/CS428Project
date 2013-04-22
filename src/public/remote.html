@@ -102,6 +102,23 @@
 				        //alert(response.name);
 
 				        var controllerSettings = {
+				        	left: {
+				        		type: 'dpad',
+				        		dpad: {
+					        		left: {
+					        			touchEnd: function() {
+					        				socket.emit('left', {});
+					        				socket.emit('stillX', {});
+					        			}
+					        		},
+					        		right: {
+					        			touchEnd: function() {
+					        				socket.emit('right', {});
+					        				socket.emit('stillX', {});
+					        			}
+					        		}
+					        	}
+				        	},
 						    right: { 
 						        position: { 
 						            right: '5%' 
@@ -110,7 +127,7 @@
 						        buttons: [
 							        { 
 							            label: 'fire', fontSize: 25, touchStart: function() { 
-							                // do something 
+							                shoot();
 							            },
 							            radius: 40
 							        }, 
