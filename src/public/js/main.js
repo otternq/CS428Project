@@ -15,11 +15,13 @@ require.config({
     gamefailscreen: 'libs/app/screens/gamefailscreen',
     titleScreen: 'libs/app/screens/titlescreen',
     briefingScreen: 'libs/app/screens/briefingscreen',
+    debriefingScreen: 'libs/app/screens/debriefingscreen',
 
     //entities
     enemyentity: 'libs/app/entities/enemyentity',
     projectileentity: 'libs/app/entities/projectileentity',
     usercontrolledentity: 'libs/app/entities/usercontrolledentity',
+    asteroidentity: 'libs/app/entities/asteroidentity',
 
     //animation
     explosionanimation: 'libs/app/animation/explosionanimation',

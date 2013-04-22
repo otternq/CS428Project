@@ -1,7 +1,7 @@
 define([
 	'playerMovements',
 	'projectileentity'
-], function(socketMovements, ProjectileEntity) {
+], function(SocketMovements, ProjectileEntity) {
 	return me.ObjectEntity.extend({
 		init: function(x, y, constVel)
 		{
@@ -24,45 +24,41 @@ define([
 			// enable collision
 			this.collidable = true;
 
-			//socketMovements.initialize(io.connect('/room'), this);
+			SocketMovements.initialize(io.connect('/room'), this);
 		},
 
 		update: function()
 		{
-		// move left
+			// move left
 			if (me.input.isKeyPressed("left"))
 			{
 				// update the entity velocity
 				this.vel.x -= this.accel.x * me.timer.tick;
 			}
-		// move right
+			// move right
 			else if (me.input.isKeyPressed("right"))
 			{
 				// update the entity velocity
 				this.vel.x += this.accel.x * me.timer.tick;
 			}
 			else{
-				if(this.movedByRemote === false)
+				if(this.movedByRemote === false) {
 					this.vel.x = 0;
+				}
 			}
 
-		// move up
-			if (me.input.isKeyPressed("up"))
-			{
+			// move up
+			if (me.input.isKeyPressed("up")) {
 				// update the entity velocity
 				this.vel.y -= this.accel.y * me.timer.tick;
-			}
-		// move down
-			else if (me.input.isKeyPressed("down"))
-			{
+			} else if (me.input.isKeyPressed("down")) {// move down
 				// update the entity velocity
 				this.vel.y += this.accel.y * me.timer.tick;
-			}
-			else{
+			} else {
 				this.vel.y = this.constVelocity;
 			}
 
-		//bounds checking
+			//bounds checking
 			//check left
 			if (this.pos.x < 0) {
 				this.pos.x = 0;
@@ -84,14 +80,20 @@ define([
 			}
 
 			if(this.pos.y === 0) {
+
+				var mapIndex = String(me.gamestat.getItemValue("mapIndex"));
+				console.log("Current mapIndex: " + mapIndex);
 				me.state.change(
-					me.state.GAMEOVER,
-					me.game.HUD.getItemValue("score")
+					101,
+					me.gamestat.getItemValue("debriefing"+mapIndex)[0],
+					me.gamestat.getItemValue("debriefing"+mapIndex)[1],
+					me.gamestat.getItemValue("debriefing"+mapIndex)[2]
+
 				);
 			}
 
 
-		// fire
+			// fire
 			if (me.input.isKeyPressed("fire"))
 			{
 				// play sound
@@ -131,6 +133,12 @@ define([
 
 					// remove enemy
 					res.obj.remove();
+				} else if (res.obj.type == "asteroid") {
+
+					this.removeHealth();
+
+					res.obj.remove();
+
 				} else {
 					console.log("Player colliding with: "+ res.obj.type);
 					console.log(res.obj);
@@ -145,7 +153,7 @@ define([
 			if (me.game.HUD.getItemValue("life") <= 0)
 			{
 				// game over
-				me.state.change(me.state.GAMEOVER,
+				me.state.change(102,
 					me.game.HUD.getItemValue("score"));
 
 				return;

@@ -26,6 +26,10 @@ define([
 		 */
 		onResetEvent: function()
 		{
+
+
+			me.gamestat.add("mapIndex", "1");
+
 			// add parallax background
 			me.game.add(new BackgroundObject(), 1);
 
@@ -56,17 +60,25 @@ define([
 		onDestroyEvent: function()
 		{
 
-			console.log("foo");
+			//console.log("mapIndex: " + me.gamestat.getItemValue("mapIndex"));
+			var mapIndex = String(me.gamestat.getItemValue("mapIndex"));
+			//console.log("mapIndex: " + mapIndex);
+
+			console.log("changing state from menu");
+
 
 			// release mouse event
 			me.input.releaseMouseEvent("mousedown",
+
+
 				me.state.change(
-					me.state.BriefingScreen,
-					"map1",
-					"On a routine mission your ship is ambushed",
-					"You must alert the fleet to the enemy threat",
-					"Defeat all enemies"
+					100,
+					me.gamestat.getItemValue("briefing"+ mapIndex)[0],
+					me.gamestat.getItemValue("briefing"+ mapIndex)[1],
+					me.gamestat.getItemValue("briefing"+ mapIndex)[2],
+					me.gamestat.getItemValue("briefing"+ mapIndex)[3]
 				)
+
 			);
 		}
 	});
