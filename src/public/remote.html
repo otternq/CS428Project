@@ -7,9 +7,11 @@
 			Clay.gameKey = "cs438";
 			Clay.readyFunctions = [];
 			Clay.options = { debug: true };
+
 			Clay.ready = function( fn ) {
 			    Clay.readyFunctions.push( fn );
 			};
+			
 			( function() {
 			    var clay = document.createElement("script");
 			    clay.src = ( "https:" == document.location.protocol ? "https://" : "http://" ) + "clay.io/api/api.js"; 
