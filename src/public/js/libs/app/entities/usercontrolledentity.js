@@ -1,7 +1,8 @@
 define([
 	'playerMovements',
-	'projectileentity'
-], function(SocketMovements, ProjectileEntity) {
+	'projectileentity',
+	'smallexplosionanimation'
+], function(SocketMovements, ProjectileEntity,SmallExplosionAnimation) {
 	return me.ObjectEntity.extend({
 		init: function(x, y, constVel)
 		{
@@ -142,6 +143,10 @@ define([
 		},
 
 		removeHealth: function () {
+			var smallExplosion = new SmallExplosionAnimation(this.pos.x, this.pos.y);
+			me.game.add(smallExplosion, 15);
+			me.game.sort();
+
 			me.game.HUD.updateItemValue("life", -1);
 
 			// if no more lives

@@ -24,6 +24,7 @@ require.config({
     asteroidentity: 'libs/app/entities/asteroidentity',
 
     //animation
+    smallexplosionanimation: 'libs/app/animation/smallexplosionanimation',
     explosionanimation: 'libs/app/animation/explosionanimation',
     implosionanimations: 'libs/app/animation/implosionanimations',
 
