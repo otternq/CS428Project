@@ -1,8 +1,9 @@
 define([
 	'playerMovements',
 	'projectileentity',
+	'bombentity',
 	'smallexplosionanimation'
-], function(SocketMovements, ProjectileEntity,SmallExplosionAnimation) {
+], function(SocketMovements, ProjectileEntity,BombEntity,SmallExplosionAnimation) {
 	return me.ObjectEntity.extend({
 		init: function(x, y, constVel)
 		{
@@ -97,7 +98,8 @@ define([
 				//me.audio.play("missile");
 
 				// create a missile entity
-				var missile = new ProjectileEntity(this.pos.x + 15, this.pos.y - 34,7, "Player");
+				//var missile = new ProjectileEntity(this.pos.x + 15, this.pos.y - 34,7, "Player");
+				var missile = new BombEntity(this.pos.x + 15, this.pos.y - 34,7, "Player");
 				me.game.add(missile, this.z);
 				me.game.sort();
 			}
