@@ -5,7 +5,7 @@ define(function(){
 
 			// call parent constructor
 			var image = me.loader.getImage("bombexplosionanimation");
-			this.parent(x, y, image, 128, 128);
+			this.parent(x, y, image, 160, 160);
 
 			// add animation with all sprites
 			this.addAnimation("bombexplosionanimation", null, 0.05);
