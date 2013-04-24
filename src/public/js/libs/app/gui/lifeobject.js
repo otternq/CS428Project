@@ -18,7 +18,7 @@ define(function() {
 			var newScore = this.value + (this.step * value);
 
 			this.set((newScore).clamp(0, this.maxhp));
-			
+
 			return true;
 		},
 
