@@ -15,7 +15,7 @@ define([
 			if(from == "Player") {
 				this.parent(x, y, {image: "bombaoe"});
 				this.target = me.game.ENEMY_OBJECT;
-			} 
+			}
 
 			this.setVelocity(0, 0);  // set the default vertical speed (accel vector)
 		},
@@ -23,7 +23,7 @@ define([
 		update: function()
 		{
 		//determines how long the projectile stays active in the screen
-			
+
 			if(this.time == 1)
 				this.remove();
 

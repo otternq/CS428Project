@@ -25,7 +25,13 @@ define([
             this.addAnimation("spinning", this.animationList, Math.random());
             this.setCurrentAnimation("spinning");
 
-            this.resize(Math.random() * (1.25));
+            var ratio = Math.random() * (1.25);
+
+            if (ratio < 0.25) {
+                ratio = 0.25;
+            }
+
+            this.resize();
 
             this.gravity = 0;
 

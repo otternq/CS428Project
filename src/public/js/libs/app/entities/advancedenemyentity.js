@@ -1,13 +1,16 @@
 define([
     'enemyentity',
-    'projectileentity'
-], function(EnemyEntity, ProjectileEntity) {
+    'projectileentity',
+    'explosionanimation'
+], function(EnemyEntity, ProjectileEntity, ExplosionAnimation) {
 
     return EnemyEntity.extend({
 
         init: function(x,y)
         {
             this.parent(x,y);
+            this.health = 2;
+            this.points = 15;
         },
 
         fire: function() {

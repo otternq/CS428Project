@@ -14,6 +14,9 @@ define([
 			settings.collidable = true;
 			this.time = 0;
 
+			this.health = 1;
+			this.points = 10;
+
 			// call parent constructor
 			this.parent(x, y, settings);
 
@@ -71,21 +74,28 @@ define([
 			// remove this entity
 			me.game.remove(this, true);
 
-			me.game.HUD.updateItemValue("score", 10);
+			me.game.HUD.updateItemValue("score", this.points);
 			var curScore = me.gamestat.getItemValue("score");
-			me.gamestat.setValue("score", curScore+10);
+			me.gamestat.setValue("score", curScore+this.points);
 
-			// play sound
-			//me.audio.play("implosion");
 
-			// init implosion
-			var implosion = new ExplosionAnimation(this.pos.x, this.pos.y);
-			me.game.add(implosion, 15);
-			me.game.sort();
 		},
 
 		removeHealth: function() {
-			this.remove();
+
+			this.health -= 1;
+
+            // play sound
+            //me.audio.play("implosion");
+
+            // init implosion
+            var implosion = new ExplosionAnimation(this.pos.x, this.pos.y);
+            me.game.add(implosion, 15);
+            me.game.sort();
+
+            if (this.health === 0) {
+                this.remove();
+            }
 		}
 	});
 
