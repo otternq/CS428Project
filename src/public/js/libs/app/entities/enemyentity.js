@@ -28,6 +28,13 @@ define([
 			this.setVelocity(0, 1);
 		},
 
+		fire: function() {
+			// create a missile entity
+			var missile = new ProjectileEntity(this.pos.x + 15, this.pos.y + this.height + 10, -3,"Enemy");
+			me.game.add(missile, 10);
+			me.game.sort();
+		},
+
 		update: function()
 		{
 
@@ -49,10 +56,7 @@ define([
 				me.game.remove(this);
 
 			if ( (this.time++) % 90 == 0) {
-			// create a missile entity
-				var missile = new ProjectileEntity(this.pos.x + 15, this.pos.y + this.height + 10, -3,"Enemy");
-				me.game.add(missile, 10);
-				me.game.sort();
+				this.fire();
 			}
 
 			// check & update missile movement

@@ -39,6 +39,24 @@ define([
 			SocketMovements.initialize(io.connect('/room'), this);
 		},
 
+		fire: function() {
+			// play sound
+			//me.audio.play("missile");
+
+			// create a missile entity
+			if (me.gamestat.getItemValue("score") > 50) {
+				var missle1 = new ProjectileEntity(this.pos.x, this.pos.y - 34,7, "Player");
+				var missle2 = new ProjectileEntity(this.pos.x + 30, this.pos.y - 34,7, "Player");
+				me.game.add(missle1, this.z);
+				me.game.add(missle2, this.z);
+			} else {
+				var missile = new ProjectileEntity(this.pos.x + 15, this.pos.y - 34,7, "Player");
+				me.game.add(missile, this.z);
+			}
+
+			me.game.sort();
+		},
+
 		update: function()
 		{
 			// move left
@@ -104,21 +122,7 @@ define([
 			// fire
 			if (me.input.isKeyPressed("fire"))
 			{
-				// play sound
-				//me.audio.play("missile");
-
-				// create a missile entity
-				if (me.gamestat.getItemValue("score") > 50) {
-					var missle1 = new ProjectileEntity(this.pos.x, this.pos.y - 34,7, "Player");
-					var missle2 = new ProjectileEntity(this.pos.x + 30, this.pos.y - 34,7, "Player");
-					me.game.add(missle1, this.z);
-					me.game.add(missle2, this.z);
-				} else {
-					var missile = new ProjectileEntity(this.pos.x + 15, this.pos.y - 34,7, "Player");
-					me.game.add(missile, this.z);
-				}
-
-				me.game.sort();
+				this.fire();
 			}
 
 			// fire bomb

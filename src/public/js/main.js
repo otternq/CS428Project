@@ -19,6 +19,7 @@ require.config({
 
     //entities
     enemyentity: 'libs/app/entities/enemyentity',
+    advancedenemyentity: 'libs/app/entities/advancedenemyentity',
     bombentity: 'libs/app/entities/bombentity',
     bombentityaoe: 'libs/app/entities/bombentityaoe',
     projectileentity: 'libs/app/entities/projectileentity',
