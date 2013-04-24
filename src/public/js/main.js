@@ -19,11 +19,15 @@ require.config({
 
     //entities
     enemyentity: 'libs/app/entities/enemyentity',
+    bombentity: 'libs/app/entities/bombentity',
+    bombentityaoe: 'libs/app/entities/bombentityaoe',
     projectileentity: 'libs/app/entities/projectileentity',
     usercontrolledentity: 'libs/app/entities/usercontrolledentity',
     asteroidentity: 'libs/app/entities/asteroidentity',
 
     //animation
+    bombexplosionanimation: 'libs/app/animation/bombexplosionanimation',
+    smallexplosionanimation: 'libs/app/animation/smallexplosionanimation',
     explosionanimation: 'libs/app/animation/explosionanimation',
     implosionanimations: 'libs/app/animation/implosionanimations',
 
