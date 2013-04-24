@@ -3,6 +3,7 @@
     {"name": "bkg1", "type": "image", "src": "data/sprite/bkg1.png"},
     {"name": "bkg2", "type": "image", "src": "data/sprite/bkg2.png"},
     {"name": "ship", "type":"image", "src": "data/sprite/ship2.png"},
+    {"name": "ShipSpriteSheet2", "type":"image", "src": "data/sprite/ShipSpriteSheet2.png"},
     {"name": "enemy", "type":"image", "src": "data/sprite/enemy2.png"},
     {"name": "asteroid", "type":"image", "src": "data/sprite/asteroid.png"},
     {"name": "missile", "type":"image", "src": "data/sprite/missile.png"},

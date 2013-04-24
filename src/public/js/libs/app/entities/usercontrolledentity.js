@@ -12,8 +12,18 @@ define([
 
 			this.player = true;
 
+			var settings = {
+				image: "ship",
+				spritewidth: 32,
+				spriteheight: 32,
+				type:"Player"
+			};
+
+			this.time = 0;
+
 			// call the parent constructor
-			this.parent(x, me.game.viewport.bottom - y, {image: "ship", type:"Player"});
+			this.parent(x, me.game.viewport.bottom - y, settings);
+
 
 			this.constVelocity = constVel;
 			// set the default horizontal & vertical speed (accel vector)
@@ -38,6 +48,7 @@ define([
 				this.vel.x -= this.accel.x * me.timer.tick;
 
 			} else if (me.input.isKeyPressed("right")) {// move right
+
 
 				// update the entity velocity
 				this.vel.x += this.accel.x * me.timer.tick;
