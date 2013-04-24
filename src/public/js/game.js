@@ -106,6 +106,7 @@ define([
 			me.input.bindKey(me.input.KEY.UP, "up");
 			me.input.bindKey(me.input.KEY.DOWN, "down");
 			me.input.bindKey(me.input.KEY.SPACE, "fire", true);
+			me.input.bindKey(me.input.KEY.B, "firebomb", true);
 
 			// draw menu
 			me.state.change(me.state.MENU);

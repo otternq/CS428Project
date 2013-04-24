@@ -1,7 +1,9 @@
 define([
 	'playerMovements',
-	'projectileentity'
-], function(SocketMovements, ProjectileEntity) {
+	'projectileentity',
+	'bombentity',
+	'smallexplosionanimation'
+], function(SocketMovements, ProjectileEntity,BombEntity,SmallExplosionAnimation) {
 	return me.ObjectEntity.extend({
 		init: function(x, y, constVel)
 		{
@@ -88,7 +90,6 @@ define([
 				);
 			}
 
-
 			// fire
 			if (me.input.isKeyPressed("fire"))
 			{
@@ -97,6 +98,19 @@ define([
 
 				// create a missile entity
 				var missile = new ProjectileEntity(this.pos.x + 15, this.pos.y - 34,7, "Player");
+				me.game.add(missile, this.z);
+				me.game.sort();
+			}
+
+			// fire bomb
+			if (me.input.isKeyPressed("firebomb"))
+			{
+				// play sound
+				//me.audio.play("missile");
+
+				// create a missile entity
+				//var missile = new ProjectileEntity(this.pos.x + 15, this.pos.y - 34,7, "Player");
+				var missile = new BombEntity(this.pos.x + 15, this.pos.y - 34,7, "Player");
 				me.game.add(missile, this.z);
 				me.game.sort();
 			}
@@ -142,6 +156,10 @@ define([
 		},
 
 		removeHealth: function () {
+			var smallExplosion = new SmallExplosionAnimation(this.pos.x, this.pos.y);
+			me.game.add(smallExplosion, 15);
+			me.game.sort();
+
 			me.game.HUD.updateItemValue("life", -1);
 
 			// if no more lives
