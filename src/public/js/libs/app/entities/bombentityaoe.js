@@ -7,6 +7,8 @@ define([
 			this.time = 0;
 			this.type = 3;
 
+			this.firstCollision = null;
+
 			this.collidable = true;
 
 			this.shotFrom = from;
@@ -50,11 +52,32 @@ define([
 		},
 
 		checkCollision: function() {
-			var res = this.collideType(this.target);
+			var res = this.collide();
+
+			if (this.firstCollision !== null && Math.abs((this.firstCollision - new Date()) / 1000) > 1) {
+				me.game.remove(this, true);
+			}
+
 			if (res) {
-				res.obj.removeHealth();
-				//me.game.remove(this);
-				this.remove();
+
+				if (res.obj.type == this.target) {
+
+					if (this.firstCollision === null) {
+						this.firstCollision = new Date();
+					}
+
+					res.obj.removeHealth();
+					this.remove();
+				} else if (res.obj.type == "asteroid") {
+
+					if (this.firstCollision === null) {
+						this.firstCollision = new Date();
+					}
+
+					res.obj.remove();
+					this.remove();
+				}
+
 			}
 		},
 
@@ -69,7 +92,7 @@ define([
 			me.game.sort();
 
 			// remove this entity
-			me.game.remove(this, true);
+			//me.game.remove(this, true);
 		},
 	});
 });
