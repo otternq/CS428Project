@@ -18,20 +18,22 @@
 		</script>
 	</head>
 	<body bgcolor="black">
-		<div id="info" style="width: 640px;">
-			<div id="alpha"></div>
-			<div id="beta"></div>
-			<div id="gamma"></div>
+		<div id="container" style="width:100%; height:100%;">
+			<div id="info" style="width: 640px;margin: 0 auto;">
+				<div id="alpha"></div>
+				<div id="beta"></div>
+				<div id="gamma"></div>
 
-			<div id="jsapp">
-				<font color="#FFFFFF", style="position: absolute; font-size: 10px; font-family: Courier New">
-					<span id="framecounter">(0/0 fps)</span>
-				</font>
-				<script src="/socket.io/socket.io.js"></script>
-				<script type="text/javascript" src="js/melonJS-0.9.6-min.js"></script>
-				<script data-main="/js/main" src="/js/libs/require/require.js"></script>
+				<div id="jsapp">
+					<font color="#FFFFFF", style="position: absolute; font-size: 10px; font-family: Courier New">
+						<span id="framecounter">(0/0 fps)</span>
+					</font>
+					<script src="/socket.io/socket.io.js"></script>
+					<script type="text/javascript" src="js/melonJS-0.9.6-min.js"></script>
+					<script data-main="/js/main" src="/js/libs/require/require.js"></script>
+				</div>
+
 			</div>
-
 		</div>
 	</body>
 </html>
