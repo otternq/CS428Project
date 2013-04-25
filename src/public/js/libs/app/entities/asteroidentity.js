@@ -11,7 +11,8 @@ define([
             settings.spritewidth = 32;
             settings.spriteheight = 32;
             settings.collidable = true;
-            settings.type = "asteroid";
+            
+            settings.type = me.game.ENEMY_OBJECT; //asteroid
             this.time = 0;
 
             this.parent(x, y, settings);
@@ -63,6 +64,19 @@ define([
                 this.pos.add(this.vel);
             }
         },
+        removeHealth: function() {
+
+           // play sound
+            //me.audio.play("implosion");
+
+            // init implosion
+            var explosion = new ExplosionAnimation(this.pos.x, this.pos.y);
+            me.game.add(explosion, 15);
+            me.game.sort();
+
+            me.game.remove(this, true);
+           
+        },
 
         remove: function()
         {
@@ -75,7 +89,7 @@ define([
 
             // init implosion
             var implosion = new ExplosionAnimation(this.pos.x, this.pos.y);
-            me.game.add(implosion, 15);
+            me.game.add(explosion, 15);
             me.game.sort();
 
         }
