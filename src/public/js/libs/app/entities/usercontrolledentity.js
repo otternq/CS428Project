@@ -37,6 +37,7 @@ define([
 			this.collidable = true;
 
 			SocketMovements.initialize(io.connect('/room'), this);
+			me.input.bindKey(me.input.KEY.B, "firebomb", true);
 		},
 
 		fire: function() {
@@ -107,6 +108,7 @@ define([
 				this.pos.y = me.game.viewport.top;
 			}
 
+			// Moves to next level 
 			if (this.pos.y === 0) {
 
 				var mapIndex = String(me.gamestat.getItemValue("mapIndex"));
@@ -115,7 +117,8 @@ define([
 					101,
 					me.gamestat.getItemValue("debriefing"+mapIndex)[0],
 					me.gamestat.getItemValue("debriefing"+mapIndex)[1],
-					me.gamestat.getItemValue("debriefing"+mapIndex)[2]
+					me.gamestat.getItemValue("debriefing"+mapIndex)[2],
+					me.gamestat.getItemValue("debriefing"+mapIndex)[3]
 				);
 			}
 

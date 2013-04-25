@@ -13,9 +13,10 @@
             "Defeat all enemies"
         ],
         "debriefing": [
-            "You defeated the enemy units",
-            "After the battle the wreckage was examined",
-            "Vital information was gathered"
+            "You defeated the scouts, and gathered intel",
+            "Choose your mission:",
+            "A: Deliver intel   B: Destory scout fleet",
+            [ 2,3]
         ]
     },
     {
@@ -34,7 +35,8 @@
         "debriefing": [
             "It was a close call,",
             "but your flying got you through the asteroid belt",
-            "The data was successfully delivered"
+            "The data was successfully delivered",
+            [4]
         ]
     },
     {
@@ -46,14 +48,15 @@
             "src": "data/map3.tmx"
         },
         "briefing": [
-            "The enemy caught us be surprise",
-            "You must fly through the asteroid belt",
-            "To deliver the acquired battle data"
+            "We must cut off the enemy scouting party",
+            "They can't be allowed to divulge our whereabouts",
+            "Intercept and destroy them"
         ],
         "debriefing": [
-            "It was a close call,",
-            "but your flying got you through the asteroid belt",
-            "The data was successfully delivered"
+            "We were successful in our mission",
+            "Aboard one of the ships was a prototype weapon",
+            "Your ship has been fitted with the new weapon",
+            [4]
         ]
     }
 ]
