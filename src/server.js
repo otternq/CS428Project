@@ -15,53 +15,47 @@ var io = require('socket.io').listen(server);
 });*/
 
 
+
 app.configure(function(){
   app.use(express.static(__dirname + '/public/'));
 });
 
 
-io.sockets.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
+var room = io.of('/room').on('connection', function (socket) {
 
-  socket.on('cor', function (data) {
-    //console.log(data);
-    socket.broadcast.emit("incor", data);
+  var room = null;
+
+  socket.on('start', function (data) {
+    socket.join(data.playerId);
   });
 
   socket.on('up', function(data) {
     //console.log("up");
-    socket.broadcast.emit("up", {});
+    socket.broadcast.to(room).emit("up", {});
   });
 
   socket.on('down', function(data) {
     //console.log("down");
-    socket.broadcast.emit("down", {});
+    socket.broadcast.to(room).emit("down", {});
   });
 
   socket.on('left', function(data) {
     //console.log("left");
-    socket.broadcast.emit("left", {});
+    socket.broadcast.to(room).emit("left", {});
   });
 
   socket.on('right', function(data) {
     //console.log("right");
-    socket.broadcast.emit("right", {});
+    socket.broadcast.to(room).emit("right", {});
   });
 
   socket.on('stillx', function(data) {
-    socket.broadcast.emit("stillx", {});
-  });
-
-  socket.on('tempClick', function (data) {
-    console.log("button clicked:");
-    console.log(data);
-    socket.emit("data", {click: "You clicked it!"});
-    socket.broadcast.emit('bcast', "Hi there");
+    socket.broadcast.to(room).emit("stillx", {});
   });
 
   socket.on('shoot', function() {
     //console.log("shooting!");
-    socket.broadcast.emit('shoot');
+    socket.broadcast.to(room).emit('shoot', {});
   });
 
 });

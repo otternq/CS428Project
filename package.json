@@ -4,11 +4,16 @@
 	"private": true,
 	"dependencies": {
 		"socket.io": "~0.9.6",
-		"express": "3.x"
+		"express": "3.x",
+		"karma": "latest"
 	},
 	"engines": {
 		"node": "0.8.x",
 		"npm": "1.1.x"
+	},
+
+	"scripts": {
+   		"test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS"
 	}
 
 }
