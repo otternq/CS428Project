@@ -89,9 +89,9 @@
   <object name="AsteroidEntity" x="86" y="1028"/>
   <object name="AsteroidEntity" x="165" y="833"/>
  </objectgroup>
- <objectgroup color="#a42221" name="EnemyLayer" width="20" height="80">
-  <object name="EnemyEntity" x="256" y="614"/>
-  <object name="EnemyEntity" x="250" y="380"/>
-  <object name="EnemyEntity" x="322" y="122"/>
+ <objectgroup color="#a42221" name="MineLayer" width="20" height="80">
+  <object name="MineEntity" x="256" y="614"/>
+  <object name="MineEntity" x="250" y="380"/>
+  <object name="MineEntity" x="322" y="122"/>
  </objectgroup>
 </map>

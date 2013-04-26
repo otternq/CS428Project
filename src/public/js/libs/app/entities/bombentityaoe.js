@@ -7,7 +7,7 @@ define([
 			this.time = 0;
 			this.type = 3;
 
-			this.firstCollision = null;
+			//this.firstCollision = null;
 
 			this.collidable = true;
 
@@ -24,8 +24,10 @@ define([
 		{
 		//determines how long the projectile stays active in the screen
 
-			if(this.time == 1)
+			if(this.time == 1) {
 				this.remove();
+				me.game.remove(this, true);
+			}
 
 		//check for positive or negative velocity and adjust the position accordingly
 			if(this.accel.y < 0){  //enemy projectiles have negative velocity
@@ -54,25 +56,25 @@ define([
 		checkCollision: function() {
 			var res = this.collide();
 
-			if (this.firstCollision !== null && Math.abs((this.firstCollision - new Date()) / 1000) > 1) {
+			/*if (this.firstCollision !== null && Math.abs((this.firstCollision - new Date()) / 1000) > 1) {
 				me.game.remove(this, true);
-			}
+			}*/
 
 			if (res) {
 
 				if (res.obj.type == this.target) {
 
-					if (this.firstCollision === null) {
+					/*if (this.firstCollision === null) {
 						this.firstCollision = new Date();
-					}
+					}*/
 
 					res.obj.removeHealth();
 					this.remove();
 				} else if (res.obj.type == "asteroid") {
 
-					if (this.firstCollision === null) {
+					/*if (this.firstCollision === null) {
 						this.firstCollision = new Date();
-					}
+					}*/
 
 					res.obj.remove();
 					this.remove();

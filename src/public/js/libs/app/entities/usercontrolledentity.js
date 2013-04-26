@@ -165,7 +165,7 @@ define([
 
 					// remove enemy
 					res.obj.remove();
-				} else if (res.obj.type == "asteroid") {
+				} else if (res.obj.type == "asteroid" || res.obj.type == "mine") {
 
 					this.removeHealth();
 

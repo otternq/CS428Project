@@ -7,10 +7,11 @@ define([
 	'gamefailscreen',
 	'backgroundobject',
 	'asteroidentity',
+	'mineentity',
 	'enemyentity',
 	'advancedenemyentity',
 	'text!/data/levels.json'
-], function(MenuScreen, BriefingScreen, DebriefingScreen, PlayScreen, GameOverScreen, GameFailScreen, BackgroundObject, AsteroidEntity, EnemyEntity, AdvancedEnemyEntity, LevelData) {
+], function(MenuScreen, BriefingScreen, DebriefingScreen, PlayScreen, GameOverScreen, GameFailScreen, BackgroundObject, AsteroidEntity, MineEntity, EnemyEntity, AdvancedEnemyEntity, LevelData) {
 
 	var game = {
 		/* ---
@@ -99,6 +100,7 @@ define([
 
 			//true is basically saying there will be more than one
 			me.entityPool.add("AsteroidEntity", AsteroidEntity, true);
+			me.entityPool.add("MineEntity", MineEntity, true);
 			me.entityPool.add("EnemyEntity", EnemyEntity, true);
 			me.entityPool.add("AdvancedEnemyEntity", AdvancedEnemyEntity, true);
 

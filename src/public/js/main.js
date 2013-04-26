@@ -25,6 +25,7 @@ require.config({
     projectileentity: 'libs/app/entities/projectileentity',
     usercontrolledentity: 'libs/app/entities/usercontrolledentity',
     asteroidentity: 'libs/app/entities/asteroidentity',
+    mineentity: 'libs/app/entities/mineentity',
 
     //animation
     bombexplosionanimation: 'libs/app/animation/bombexplosionanimation',

@@ -8,9 +8,15 @@ define([
 
         init: function(x,y)
         {
-            this.parent(x,y);
+
+            var settings = {};
+            settings.image = "advancedenemy";
+
+            this.parent(x,y, settings);
             this.health = 2;
             this.points = 15;
+
+            //this.image = "advancedenemy";
         },
 
         fire: function() {

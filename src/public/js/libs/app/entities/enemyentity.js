@@ -3,22 +3,36 @@ define([
 	'explosionanimation'
 ],function(ProjectileEntity, ExplosionAnimation) {
 	return me.ObjectEntity.extend({
-		init: function(x, y)
+		init: function(x, y, settings)
 		{
-			// enemy entity settings
-			var settings = {};
-			settings.image = "enemy";
-			settings.spritewidth = 42;
-			settings.spriteheight = 42;
-			settings.type = me.game.ENEMY_OBJECT;
+
+			//var settings = {};
+			if (settings.image === undefined) {
+				settings.image = "enemy";
+			}
+
+			if (settings.spritewidth === undefined) {
+				settings.spritewidth = 42;
+			}
+
+			if (settings.spriteheight === undefined) {
+				settings.spriteheight = 42;
+			}
+
+			if (settings.type === undefined) {
+				settings.type = me.game.ENEMY_OBJECT;
+			}
+
+
 			settings.collidable = true;
+
+			// call parent constructor
+			this.parent(x, y, settings);
+
 			this.time = 0;
 
 			this.health = 1;
 			this.points = 10;
-
-			// call parent constructor
-			this.parent(x, y, settings);
 
 			// add animation with all sprites
 			this.addAnimation("flying", null, 0.2);
