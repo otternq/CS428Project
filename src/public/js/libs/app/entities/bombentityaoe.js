@@ -24,9 +24,10 @@ define([
 		{
 		//determines how long the projectile stays active in the screen
 
-			if(this.time == 1) {
+
+
+			if(this.time == 2){
 				this.remove();
-				me.game.remove(this, true);
 			}
 
 		//check for positive or negative velocity and adjust the position accordingly
@@ -54,11 +55,7 @@ define([
 		},
 
 		checkCollision: function() {
-			var res = this.collide();
-
-			/*if (this.firstCollision !== null && Math.abs((this.firstCollision - new Date()) / 1000) > 1) {
-				me.game.remove(this, true);
-			}*/
+			var res = this.collide(me.game.ENEMY_OBJECT);
 
 			if (res) {
 
@@ -69,15 +66,10 @@ define([
 					}*/
 
 					res.obj.removeHealth();
-					this.remove();
+
 				} else if (res.obj.type == "asteroid") {
-
-					/*if (this.firstCollision === null) {
-						this.firstCollision = new Date();
-					}*/
-
 					res.obj.remove();
-					this.remove();
+
 				}
 
 			}
@@ -87,6 +79,8 @@ define([
 		{
 			// play sound
 			//me.audio.play("implosion");
+
+			console.log("removing bombaoe");
 
 			// init implosion
 			var bombExplosion = new BombExplosionAnimation(this.pos.x, this.pos.y);

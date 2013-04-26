@@ -39,6 +39,8 @@ define([
 			var levels = JSON.parse(LevelData);
 
 			me.gamestat.add("levelCount", levels.length);
+			me.gamestat.add("bombAtLevel", 4);
+			me.gamestat.add("dLaserAtLevel", 4);
 
 			for (var i = 0; i < levels.length; i++) {
 				me.gamestat.add("briefing" + levels[i].id, new Array(
@@ -51,7 +53,8 @@ define([
 				me.gamestat.add("debriefing" + levels[i].id, new Array(
 					levels[i].debriefing[0],
 					levels[i].debriefing[1],
-					levels[i].debriefing[2]
+					levels[i].debriefing[2],
+					levels[i].debriefing[3]
 				));
 			}
 
