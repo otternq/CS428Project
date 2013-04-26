@@ -17,6 +17,7 @@ define([
             this.restart = null;
             this.menu = null;
             this.finalScore = null;
+            this.title = null;
 
             this.leaderboardReported = false;
 
@@ -31,12 +32,14 @@ define([
             this.finalScore = me.gamestat.getItemValue("score");
 
             // add parallax background
-            me.game.add(new BackgroundObject(), 1);
+           // me.game.add(new BackgroundObject(), 1);
+
+            this.title = me.loader.getImage("title");
 
             // labels
             this.end = new me.Font("Verdana", 25, "white");
             this.score = new me.Font("Verdana", 22, "white");
-            
+
             this.menu = new Button("menu", me.state.MENU, 330);
 
             if (this.leaderboardReported === false) {
@@ -58,21 +61,24 @@ define([
          */
         draw: function(context)
         {
+             me.video.clearSurface(context,"Gray");
+
             // draw buttons
-            this.restart.draw(context);
+           // this.restart.draw(context);
             this.menu.draw(context);
+            context.drawImage(this.title, (me.video.getWidth() / 2 - this.title.width / 2), 50);
 
             // draw end label
             var endText = "You Win!";
             var endSize = this.end.measureText(context, endText);
 
-            this.end.draw(context, endText, me.video.getWidth() / 2 - endSize.width / 2, 120);
+            this.end.draw(context, endText, me.video.getWidth() / 2 - endSize.width / 2, 220);
 
             // draw score label
             var scoreText = "Score : " + this.finalScore;
             var scoreSize = this.score.measureText(context, scoreText);
 
-            this.score.draw(context, scoreText, me.video.getWidth() / 2 - scoreSize.width / 2, 150);
+            this.score.draw(context, scoreText, me.video.getWidth() / 2 - scoreSize.width / 2, 275);
 
         },
 
@@ -82,7 +88,7 @@ define([
         onDestroyEvent: function()
         {
             // release mouse event
-            me.input.releaseMouseEvent("mousedown", this.restart);
+           // me.input.releaseMouseEvent("mousedown", this.restart);
             me.input.releaseMouseEvent("mousedown", this.menu);
         }
     });

@@ -55,10 +55,28 @@ define([
 		},
 
 		checkCollision: function() {
+			/*
 			var res = this.collideType(this.target);
 			if (res) {
 				res.obj.removeHealth();
 				this.remove();
+			}*/
+			
+			
+			var res = this.collideType(this.target);
+			if (res) {
+
+				if (res.obj.type == this.target) {
+					console.log("collided with target");
+					res.obj.removeHealth();
+					this.remove();
+				} else if (res.obj.type == "asteroid") {
+
+					console.log("collided with asteroid");
+					res.obj.remove();
+					this.remove();
+				}
+
 			}
 		},
 
@@ -69,7 +87,7 @@ define([
 			me.game.add(bombAOE, this.z);
 			me.game.sort();
 
-			me.game.remove(this,true);
+			me.game.remove(this);
 		}
 	});
 });

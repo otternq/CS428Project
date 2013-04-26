@@ -4,6 +4,7 @@
     {"name": "bkg2", "type": "image", "src": "data/sprite/bkg2.png"},
     {"name": "ship", "type":"image", "src": "data/sprite/ship2.png"},
     {"name": "ShipSpriteSheet2", "type":"image", "src": "data/sprite/ShipSpriteSheet2.png"},
+    {"name": "briefingbackground", "type":"image", "src": "data/sprite/briefingbackground.png"},
     {"name": "enemy", "type":"image", "src": "data/sprite/enemy2.png"},
     {"name": "advancedenemy", "type":"image", "src": "data/sprite/advancedenemy.png"},
     {"name": "asteroid", "type":"image", "src": "data/sprite/asteroid.png"},
@@ -23,6 +24,10 @@
 
     {"name": "title", "type":"image", "src": "data/sprite/title.png"},
     {"name": "play", "type":"image", "src": "data/sprite/play.png"},
+     {"name": "missiona", "type":"image", "src": "data/sprite/missiona.png"},
+      {"name": "missionb", "type":"image", "src": "data/sprite/missionb.png"},
+    {"name": "missiona_hover", "type":"image", "src": "data/sprite/missiona_hover.png"},
+    {"name": "missionb_hover", "type":"image", "src": "data/sprite/missionb_hover.png"},
     {"name": "play_hover", "type":"image", "src": "data/sprite/play_hover.png"},
     {"name": "restart", "type":"image", "src": "data/sprite/restart.png"},
     {"name": "restart_hover", "type":"image", "src": "data/sprite/restart_hover.png"},

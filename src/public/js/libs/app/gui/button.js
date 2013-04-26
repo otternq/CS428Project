@@ -23,8 +23,8 @@ define(function() {
 		 */
 		clicked: function()
 		{
-			// start action
-			me.state.change(this.action);
+			if(this.action != (me.state.USER +1))
+				me.state.change(this.action);
 		},
 
 		/*

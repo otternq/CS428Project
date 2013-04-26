@@ -33,10 +33,14 @@ define([
 			// init variables
 			this.gravity = 0;
 
+			this.hasBomb = false;
+			this.hasDouble = false;
+
 			// enable collision
 			this.collidable = true;
 
 			SocketMovements.initialize(io.connect('/room'), this);
+			me.input.bindKey(me.input.KEY.B, "firebomb", true);
 		},
 
 		fire: function() {
@@ -44,7 +48,7 @@ define([
 			//me.audio.play("missile");
 
 			// create a missile entity
-			if (me.gamestat.getItemValue("score") > 50) {
+			if (this.hasDouble === true) {
 				var missle1 = new ProjectileEntity(this.pos.x, this.pos.y - 34,7, "Player");
 				var missle2 = new ProjectileEntity(this.pos.x + 30, this.pos.y - 34,7, "Player");
 				me.game.add(missle1, this.z);
@@ -59,6 +63,15 @@ define([
 
 		update: function()
 		{
+
+			if (me.gamestat.getItemValue("mapIndex") == me.gamestat.getItemValue("bombAtLevel")) {
+				this.hasBomb = true;
+			}
+
+			if (me.gamestat.getItemValue("mapIndex") == me.gamestat.getItemValue("dLaserAtLevel")) {
+				this.hasDouble = true;
+			}
+
 			// move left
 			if (me.input.isKeyPressed("left")) {
 
@@ -107,6 +120,7 @@ define([
 				this.pos.y = me.game.viewport.top;
 			}
 
+			// Moves to next level 
 			if (this.pos.y === 0) {
 
 				var mapIndex = String(me.gamestat.getItemValue("mapIndex"));
@@ -115,7 +129,8 @@ define([
 					101,
 					me.gamestat.getItemValue("debriefing"+mapIndex)[0],
 					me.gamestat.getItemValue("debriefing"+mapIndex)[1],
-					me.gamestat.getItemValue("debriefing"+mapIndex)[2]
+					me.gamestat.getItemValue("debriefing"+mapIndex)[2],
+					me.gamestat.getItemValue("debriefing"+mapIndex)[3]
 				);
 			}
 
@@ -126,7 +141,7 @@ define([
 			}
 
 			// fire bomb
-			if (me.input.isKeyPressed("firebomb"))
+			if (me.input.isKeyPressed("firebomb") && this.hasBomb === true)
 			{
 				// play sound
 				//me.audio.play("missile");
