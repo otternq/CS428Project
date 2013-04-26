@@ -19,6 +19,7 @@ define([
 			console.log("Initialized Menu");
 
 			this.font = null;
+
 		},
 
 		/*
@@ -27,6 +28,7 @@ define([
 		onResetEvent: function()
 		{
 
+			me.gamestat.setValue("score", 0);
 
 			me.gamestat.add("mapIndex", "1");
 

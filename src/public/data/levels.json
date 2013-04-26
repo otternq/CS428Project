@@ -15,9 +15,10 @@
         "debriefing": [
             "You defeated the scouts, and gathered intel",
             "Choose your mission:",
-            "A: Deliver intel   B: Destory scout fleet",
-            [ 2,3]
-        ]
+            "A: Destory scout fleet   B: Deliver intel",
+            [2,3]
+        ],
+        "next": [2,3]
     },
     {
         "id": 2,
@@ -26,26 +27,6 @@
             "name": "map2",
             "type": "tmx",
             "src": "data/map2.tmx"
-        },
-        "briefing": [
-            "The enemy caught us be surprise",
-            "You must fly through the asteroid belt",
-            "To deliver the acquired battle data"
-        ],
-        "debriefing": [
-            "It was a close call,",
-            "but your flying got you through the asteroid belt",
-            "The data was successfully delivered",
-            [4]
-        ]
-    },
-    {
-        "id": 3,
-        "name": "Level 3",
-        "resource": {
-            "name": "map3",
-            "type": "tmx",
-            "src": "data/map3.tmx"
         },
         "briefing": [
             "We must cut off the enemy scouting party",
@@ -57,6 +38,49 @@
             "Aboard one of the ships was a prototype weapon",
             "Your ship has been fitted with the new weapon",
             [4]
-        ]
+        ],
+        "next": [4]
+    },
+    {
+        "id": 3,
+        "name": "Level 3",
+        "resource": {
+            "name": "map3",
+            "type": "tmx",
+            "src": "data/map3.tmx"
+        },
+        "briefing": [
+            "The enemy caught us be surprise",
+            "You must fly through the asteroid belt",
+            "To deliver the acquired battle data"
+        ],
+        "debriefing": [
+            "It was a close call,",
+            "but your flying got you through the asteroid belt",
+            "The data was successfully delivered",
+            [4]
+        ],
+        "next": [4]
+    },
+    {
+        "id": 4,
+        "name": "Level 4",
+        "resource": {
+            "name": "map4",
+            "type": "tmx",
+            "src": "data/map4.tmx"
+        },
+        "briefing": [
+            "Hey There",
+            "You have reached level 4",
+            "enjoy"
+        ],
+        "debriefing": [
+            "what a great level",
+            "thats all",
+            "Your ship has been fitted with the new weapon",
+            [5]
+        ],
+        "next": [5]
     }
 ]

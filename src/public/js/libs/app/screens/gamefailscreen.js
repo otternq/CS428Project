@@ -61,7 +61,7 @@ define([
         draw: function(context)
         {
             // draw buttons
-            this.restart.draw(context);
+            //this.restart.draw(context);
             this.menu.draw(context);
 
             // draw end label
@@ -84,7 +84,7 @@ define([
         onDestroyEvent: function()
         {
             // release mouse event
-            me.input.releaseMouseEvent("mousedown", this.restart);
+            //me.input.releaseMouseEvent("mousedown", this.restart);
             me.input.releaseMouseEvent("mousedown", this.menu);
         }
     });

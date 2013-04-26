@@ -39,7 +39,7 @@ define([
             // labels
             this.end = new me.Font("Verdana", 25, "white");
             this.score = new me.Font("Verdana", 22, "white");
-            
+
             this.menu = new Button("menu", me.state.MENU, 330);
 
             if (this.leaderboardReported === false) {
@@ -72,13 +72,13 @@ define([
             var endText = "You Win!";
             var endSize = this.end.measureText(context, endText);
 
-            this.end.draw(context, endText, me.video.getWidth() / 2 - endSize.width / 2, 120);
+            this.end.draw(context, endText, me.video.getWidth() / 2 - endSize.width / 2, 220);
 
             // draw score label
             var scoreText = "Score : " + this.finalScore;
             var scoreSize = this.score.measureText(context, scoreText);
 
-            this.score.draw(context, scoreText, me.video.getWidth() / 2 - scoreSize.width / 2, 150);
+            this.score.draw(context, scoreText, me.video.getWidth() / 2 - scoreSize.width / 2, 275);
 
         },
 

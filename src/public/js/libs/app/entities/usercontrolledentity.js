@@ -33,6 +33,9 @@ define([
 			// init variables
 			this.gravity = 0;
 
+			this.hasBomb = false;
+			this.hasDouble = false;
+
 			// enable collision
 			this.collidable = true;
 
@@ -45,7 +48,7 @@ define([
 			//me.audio.play("missile");
 
 			// create a missile entity
-			if (me.gamestat.getItemValue("score") > 50) {
+			if (this.hasDouble === true) {
 				var missle1 = new ProjectileEntity(this.pos.x, this.pos.y - 34,7, "Player");
 				var missle2 = new ProjectileEntity(this.pos.x + 30, this.pos.y - 34,7, "Player");
 				me.game.add(missle1, this.z);
@@ -60,6 +63,15 @@ define([
 
 		update: function()
 		{
+
+			if (me.gamestat.getItemValue("mapIndex") == me.gamestat.getItemValue("bombAtLevel")) {
+				this.hasBomb = true;
+			}
+
+			if (me.gamestat.getItemValue("mapIndex") == me.gamestat.getItemValue("dLaserAtLevel")) {
+				this.hasDouble = true;
+			}
+
 			// move left
 			if (me.input.isKeyPressed("left")) {
 
@@ -129,7 +141,7 @@ define([
 			}
 
 			// fire bomb
-			if (me.input.isKeyPressed("firebomb"))
+			if (me.input.isKeyPressed("firebomb") && this.hasBomb === true)
 			{
 				// play sound
 				//me.audio.play("missile");
