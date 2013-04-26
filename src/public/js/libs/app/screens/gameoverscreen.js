@@ -17,6 +17,7 @@ define([
             this.restart = null;
             this.menu = null;
             this.finalScore = null;
+            this.title = null;
 
             this.leaderboardReported = false;
 
@@ -31,7 +32,9 @@ define([
             this.finalScore = me.gamestat.getItemValue("score");
 
             // add parallax background
-            me.game.add(new BackgroundObject(), 1);
+           // me.game.add(new BackgroundObject(), 1);
+
+            this.title = me.loader.getImage("title");
 
             // labels
             this.end = new me.Font("Verdana", 25, "white");
@@ -58,9 +61,12 @@ define([
          */
         draw: function(context)
         {
+             me.video.clearSurface(context,"Gray");
+
             // draw buttons
-            this.restart.draw(context);
+           // this.restart.draw(context);
             this.menu.draw(context);
+            context.drawImage(this.title, (me.video.getWidth() / 2 - this.title.width / 2), 50);
 
             // draw end label
             var endText = "You Win!";
@@ -82,7 +88,7 @@ define([
         onDestroyEvent: function()
         {
             // release mouse event
-            me.input.releaseMouseEvent("mousedown", this.restart);
+           // me.input.releaseMouseEvent("mousedown", this.restart);
             me.input.releaseMouseEvent("mousedown", this.menu);
         }
     });

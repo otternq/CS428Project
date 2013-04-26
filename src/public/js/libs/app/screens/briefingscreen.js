@@ -12,7 +12,7 @@ define([
             this.parent(true, true);
             this.textFont = null;
 
-           this.title = null;
+           this.backgroundImage = null;
 
         },
 
@@ -28,9 +28,9 @@ define([
             this.line2 = line2;
             this.line3 = line3;
 
-            this.title = me.loader.getImage("title");
+            this.backgroundImage = me.loader.getImage("briefingbackground");
 
-            this.textFont = new me.Font("Verdana", 26, "white","left");
+            this.textFont = new me.Font("Verdana", 22, "white","left");
 
 
 
@@ -58,6 +58,15 @@ define([
         {
 
             me.video.clearSurface(context,"Gray");
+            context.drawImage(this.backgroundImage, 0,0);
+
+        // Instruction text
+            var instruction1 = "Press 'Enter' To Continue";
+            
+            this.i1 = this.textFont.measureText(context,instruction1 ).width;
+            
+            this.textFont.draw (context, instruction1,     Math.round(me.game.viewport.width/2 - this.i1/2), 75);
+            
 
 
             this.x1 = this.textFont.measureText(context,this.line1).width;

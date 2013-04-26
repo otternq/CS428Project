@@ -51,7 +51,8 @@ define([
 				me.gamestat.add("debriefing" + levels[i].id, new Array(
 					levels[i].debriefing[0],
 					levels[i].debriefing[1],
-					levels[i].debriefing[2]
+					levels[i].debriefing[2],
+					levels[i].debriefing[3]
 				));
 			}
 
