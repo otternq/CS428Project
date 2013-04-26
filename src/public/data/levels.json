@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "name": "Level 1",
+        "resource": {
+            "name": "map1",
+            "type": "tmx",
+            "src": "data/map1.tmx"
+        },
+        "briefing": [
+            "On a routine mission your ship is ambushed",
+            "You must alert the fleet to the enemy threat",
+            "Defeat all enemies"
+        ],
+        "debriefing": [
+            "You defeated the scouts, and gathered intel",
+            "Choose your mission:",
+            "A: Deliver intel   B: Destory scout fleet",
+            [ 2,3]
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Level 2",
+        "resource": {
+            "name": "map2",
+            "type": "tmx",
+            "src": "data/map2.tmx"
+        },
+        "briefing": [
+            "The enemy caught us be surprise",
+            "You must fly through the asteroid belt",
+            "To deliver the acquired battle data"
+        ],
+        "debriefing": [
+            "It was a close call,",
+            "but your flying got you through the asteroid belt",
+            "The data was successfully delivered",
+            [4]
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Level 3",
+        "resource": {
+            "name": "map3",
+            "type": "tmx",
+            "src": "data/map3.tmx"
+        },
+        "briefing": [
+            "We must cut off the enemy scouting party",
+            "They can't be allowed to divulge our whereabouts",
+            "Intercept and destroy them"
+        ],
+        "debriefing": [
+            "We were successful in our mission",
+            "Aboard one of the ships was a prototype weapon",
+            "Your ship has been fitted with the new weapon",
+            [4]
+        ]
+    }
+]
