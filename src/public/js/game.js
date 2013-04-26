@@ -33,6 +33,9 @@ define([
 				return 'no canvas support';
 			}
 
+			// initialize the "audio"
+        	me.audio.init("mp3,ogg");
+
 			me.gamestat.add("score" , 0);
 
 

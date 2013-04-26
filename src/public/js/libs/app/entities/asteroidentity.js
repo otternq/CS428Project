@@ -11,7 +11,7 @@ define([
             settings.spritewidth = 32;
             settings.spriteheight = 32;
             settings.collidable = true;
-            
+
             settings.type = me.game.ENEMY_OBJECT; //asteroid
             this.time = 0;
 
@@ -32,7 +32,7 @@ define([
                 ratio = 0.25;
             }
 
-            this.resize();
+            this.resize(ratio);
 
             this.gravity = 0;
 
@@ -75,7 +75,7 @@ define([
             me.game.sort();
 
             me.game.remove(this, true);
-           
+
         },
 
         remove: function()

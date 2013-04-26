@@ -144,7 +144,7 @@ define([
 			if (me.input.isKeyPressed("firebomb") && this.hasBomb === true)
 			{
 				// play sound
-				//me.audio.play("missile");
+				me.audio.play("missile");
 
 				// create a missile entity
 				//var missile = new ProjectileEntity(this.pos.x + 15, this.pos.y - 34,7, "Player");
