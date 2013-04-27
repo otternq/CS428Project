@@ -1,0 +1,52 @@
+<html>
+<head>
+  <title>Accelerometer - HTML5 SDK for Brass Monkey</title>
+  
+  <script type="text/javascript" src="../../brassmonkey.js"></script>
+  <script type="text/javascript" src="accelerometer.js"></script>
+  
+  <script>
+    bm.init({
+      name: "Accelerometer - SDK Examples",
+      bmMaxPlayers:1,
+      bmAppId:"62e822bc0e6b9f22fc158763591845be",
+      swfURL:"../../swf/bin/brassmonkey.swf",
+      design: {
+        orientation: "portrait",
+        touchEnabled: false,
+        accelerometerEnabled: true
+      }
+    });
+    
+  	bm.onDeviceAvailable(function(device){  		
+  		device.controlMode=bm.MODE_GAMEPAD;
+  		return device;
+  	});
+  	
+    bm.onBrassMonkeyLoaded(function(a){
+    	bm.start();
+    });
+        
+    bm.onShowSlot(function(color){
+      document.getElementById('slot-color').style.background = color;
+    });
+    
+    bm.onDeviceConnected(function(device){
+      bm.enableAccelerometer(device.deviceId,true,1.0/60.0);
+    });
+    
+    bm.onAccelReceived(function(accel){
+      drawAccel(accel.acceleration);
+      //document.getElementById("accel").innerHTML = accel.acceleration.x+" "+accel.acceleration.y+" "+accel.acceleration.z
+		});
+
+    function onload(){
+      init();
+    }
+  </script>
+</head>
+<body style="margin:0px;background:white;" onload="onload();">
+  <div id="slot-color" style="width:100px;height:100px;text-align:center;line-height:100px;font-family:Arial;">Slot Color</div>
+  <canvas id="canvas"></canvas>
+</body>
+</html>

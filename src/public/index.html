@@ -20,16 +20,135 @@
 	<body bgcolor="black">
 		<div id="container" style="width:100%; height:100%;">
 			<div id="info" style="width: 640px;margin: 0 auto;">
-				<div id="alpha"></div>
-				<div id="beta"></div>
-				<div id="gamma"></div>
+				<div id="accel" style="width:100%; height:100px; color:white;">data</div>
 
 				<div id="jsapp">
 					<font color="#FFFFFF", style="position: absolute; font-size: 10px; font-family: Courier New">
 						<span id="framecounter">(0/0 fps)</span>
 					</font>
-					<script src="/socket.io/socket.io.js"></script>
+
 					<script type="text/javascript" src="js/melonJS-0.9.6-min.js"></script>
+					<script type="text/javascript" src="/js/brassmonkey.js"></script>
+
+					<script>
+						bm.init({
+					      name: "CS428",
+					      bmMaxPlayers:1,
+					      design: {
+					        orientation: "portrait",
+					        touchEnabled: false,
+					        accelerometerEnabled: true,
+					        images:[
+					          '/images/background.png',
+					          '/images/button-up.png',
+					          '/images/button-down.png'
+					        ],
+					        layout:[
+						        {
+						          type:   "image",
+						          image:  0,
+						          x:      0,
+						          y:      0,
+						          width:  320,
+						          height: 480
+						        }, 
+						        {
+						          type:       "button",
+						          handler:    "a",
+						          imageUp:    1,
+						          imageDown:  2,
+						          x:          (320-160)/2-3,
+						          y:          (480-160)/2,
+						          width:      160,
+						          height:     160
+						        },
+						        {
+						          type:       "button",
+						          handler:    "b",
+						          imageUp:    1,
+						          imageDown:  2,
+						          x:          0,
+						          y:          0,
+						          width:      160,
+						          height:     160
+						        }
+					        ]
+					      }
+					    });
+					    
+					  	bm.onDeviceAvailable(function(device){  		
+					  		device.controlMode=bm.MODE_GAMEPAD;
+					  		return device;
+					  	});
+				  	    
+					    bm.onDeviceConnected(function(device){
+					      alert('device connected');
+					    });
+					    
+					    bm.onDeviceDisconnected(function(device){
+					      alert('device disconnected');
+					    });
+					    
+					    bm.onShowSlot(function(color){
+					      alert('onShowSlot');
+					    });
+
+					    bm.onInvocation(function(invoke, deviceId){
+					    	console.log(invoke);
+					    	var keyDown = invoke.parameters[0].Value=="down";
+					      if (invoke.methodName == "a") {
+						      
+						      if(keyDown){
+						        console.log("fire down");
+						        me.input.triggerKeyEvent(me.input.KEY.SPACE, true);
+						      } else {
+						      	me.input.triggerKeyEvent(me.input.KEY.SPACE, false);
+						      }
+						  } else if (invoke.methodName == "b") {
+						  	if(keyDown){
+						        console.log("fire down");
+						        me.input.triggerKeyEvent(me.input.KEY.B, true);
+						      } else {
+						      	me.input.triggerKeyEvent(me.input.KEY.B, false);
+						      }
+						  }
+					    });
+
+					    bm.onAccelReceived(function(accel){
+							//drawAccel(accel.acceleration);
+							document.getElementById("accel").innerHTML = accel.acceleration.x+" "+accel.acceleration.y+" "+accel.acceleration.z;
+
+							//move right
+							if (accel.acceleration.y < -0.3 ) {
+								me.input.triggerKeyEvent(me.input.KEY.RIGHT, true);
+							} else {
+								me.input.triggerKeyEvent(me.input.KEY.RIGHT, false);
+							}
+
+
+							//move left
+							if (accel.acceleration.y > 0.3) {
+								me.input.triggerKeyEvent(me.input.KEY.LEFT, true);
+							} else {
+								me.input.triggerKeyEvent(me.input.KEY.LEFT, false);
+							}
+
+							//move right
+							if (accel.acceleration.z < -0.4 ) {
+								me.input.triggerKeyEvent(me.input.KEY.UP, true);
+							} else {
+								me.input.triggerKeyEvent(me.input.KEY.UP, false);
+							}
+
+
+							//move left
+							if (accel.acceleration.z > 0.4) {
+								me.input.triggerKeyEvent(me.input.KEY.DOWN, true);
+							} else {
+								me.input.triggerKeyEvent(me.input.KEY.DOWN, false);
+							}
+						});
+					</script>
 					<script data-main="/js/main" src="/js/libs/require/require.js"></script>
 				</div>
 
