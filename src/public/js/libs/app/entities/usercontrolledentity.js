@@ -39,7 +39,7 @@ define([
 			// enable collision
 			this.collidable = true;
 
-			SocketMovements.initialize(io.connect('/room'), this);
+			//SocketMovements.initialize(io.connect('/room'), this);
 			me.input.bindKey(me.input.KEY.B, "firebomb", true);
 		},
 
