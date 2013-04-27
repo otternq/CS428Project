@@ -28,8 +28,94 @@
 					<font color="#FFFFFF", style="position: absolute; font-size: 10px; font-family: Courier New">
 						<span id="framecounter">(0/0 fps)</span>
 					</font>
-					<script src="/socket.io/socket.io.js"></script>
+
 					<script type="text/javascript" src="js/melonJS-0.9.6-min.js"></script>
+					<script type="text/javascript" src="/js/brassmonkey.js"></script>
+
+					<script>
+						bm.init({
+					      name: "CS428",
+					      bmMaxPlayers:1,
+					      design: {
+					        orientation: "portrait",
+					        touchEnabled: false,
+					        accelerometerEnabled: false,
+					        images:[
+					          '/images/background.png',
+					          '/images/button-up.png',
+					          '/images/button-down.png'
+					        ],
+					        layout:[
+						        {
+						          type:   "image",
+						          image:  0,
+						          x:      0,
+						          y:      0,
+						          width:  320,
+						          height: 480
+						        }, 
+						        {
+						          type:       "button",
+						          handler:    "a",
+						          imageUp:    1,
+						          imageDown:  2,
+						          x:          (320-160)/2-3,
+						          y:          (480-160)/2,
+						          width:      160,
+						          height:     160
+						        },
+						        {
+						          type:       "button",
+						          handler:    "b",
+						          imageUp:    1,
+						          imageDown:  2,
+						          x:          0,
+						          y:          0,
+						          width:      160,
+						          height:     160
+						        }
+					        ]
+					      }
+					    });
+					    
+					  	bm.onDeviceAvailable(function(device){  		
+					  		device.controlMode=bm.MODE_GAMEPAD;
+					  		return device;
+					  	});
+				  	    
+					    bm.onDeviceConnected(function(device){
+					      alert('device connected');
+					    });
+					    
+					    bm.onDeviceDisconnected(function(device){
+					      alert('device disconnected');
+					    });
+					    
+					    bm.onShowSlot(function(color){
+					      alert('onShowSlot');
+					    });
+
+					    bm.onInvocation(function(invoke, deviceId){
+					    	console.log(invoke);
+					    	var keyDown = invoke.parameters[0].Value=="down";
+					      if (invoke.methodName == "a") {
+						      
+						      if(keyDown){
+						        console.log("fire down");
+						        me.input.triggerKeyEvent(me.input.KEY.SPACE, true);
+						      } else {
+						      	me.input.triggerKeyEvent(me.input.KEY.SPACE, false);
+						      }
+						  } else if (invoke.methodName == "b") {
+						  	if(keyDown){
+						        console.log("fire down");
+						        me.input.triggerKeyEvent(me.input.KEY.B, true);
+						      } else {
+						      	me.input.triggerKeyEvent(me.input.KEY.B, false);
+						      }
+						  }
+					    });
+					</script>
 					<script data-main="/js/main" src="/js/libs/require/require.js"></script>
 				</div>
 
