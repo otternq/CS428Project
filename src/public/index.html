@@ -37,7 +37,7 @@
 					      name: "CS428",
 					      bmMaxPlayers:1,
 					      design: {
-					        orientation: "portrait",
+					        orientation: "landscape",
 					        touchEnabled: false,
 					        accelerometerEnabled: true,
 					        images:[
@@ -51,22 +51,12 @@
 						          image:  0,
 						          x:      0,
 						          y:      0,
-						          width:  320,
-						          height: 480
+						          width:  480,
+						          height: 320
 						        }, 
 						        {
 						          type:       "button",
 						          handler:    "space",
-						          imageUp:    1,
-						          imageDown:  2,
-						          x:          (320-160)/2-3,
-						          y:          (480-160)/2,
-						          width:      160,
-						          height:     160
-						        },
-						        {
-						          type:       "button",
-						          handler:    "b",
 						          imageUp:    1,
 						          imageDown:  2,
 						          x:          0,
@@ -76,11 +66,21 @@
 						        },
 						        {
 						          type:       "button",
-						          handler:    "enter",
+						          handler:    "b",
 						          imageUp:    1,
 						          imageDown:  2,
 						          x:          0,
-						          y:          (480 - 160),
+						          y:          160,
+						          width:      160,
+						          height:     160
+						        },
+						        {
+						          type:       "button",
+						          handler:    "enter",
+						          imageUp:    1,
+						          imageDown:  2,
+						          x:          300,
+						          y:          160,
 						          width:      160,
 						          height:     160
 						        }

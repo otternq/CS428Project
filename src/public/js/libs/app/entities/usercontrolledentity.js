@@ -140,7 +140,7 @@ define([
 			}
 
 			// fire bomb
-			if (me.input.isKeyPressed("b") )
+			if (me.input.isKeyPressed("b") && this.hasBomb === true)
 			{
 				// play sound
 				me.audio.play("missile");
