@@ -48,13 +48,6 @@ define([
 
 				Clay.Player.onUserReady(function(response) {
 
-					socket = io.connect('/room');
-
-					socket.emit('start', {
-						'playerId': response.name,
-						'clientType': 'game'
-					});
-
 					Game.onload(g_resources);
 
 
