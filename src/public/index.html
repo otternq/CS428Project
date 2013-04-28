@@ -99,6 +99,13 @@
 					    
 					    bm.onDeviceDisconnected(function(device){
 					      document.getElementById("info").innerHTML = "&#x2717;";
+					      me.input.triggerKeyEvent(me.input.KEY.SPACE, false);
+					      me.input.triggerKeyEvent(me.input.KEY.ENTER, false);
+					      me.input.triggerKeyEvent(me.input.KEY.B, false);
+					      me.input.triggerKeyEvent(me.input.KEY.UP, false);
+					      me.input.triggerKeyEvent(me.input.KEY.DOWN, false);
+					      me.input.triggerKeyEvent(me.input.KEY.LEFT, false);
+					      me.input.triggerKeyEvent(me.input.KEY.RIGHT, false);
 					    });
 					    
 					    bm.onShowSlot(function(color){
