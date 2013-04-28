@@ -19,8 +19,10 @@
 	</head>
 	<body bgcolor="black">
 		<div id="container" style="width:100%; height:100%;">
+			<div id="info" style="text-align: center; width:20px; height:20px; color:white;">
+					&#x2717;
+				</div>
 			<div id="info" style="width: 640px;margin: 0 auto;">
-				<div id="accel" style="width:100%; height:100px; color:white;">data</div>
 
 				<div id="jsapp">
 					<font color="#FFFFFF", style="position: absolute; font-size: 10px; font-family: Courier New">
@@ -54,7 +56,7 @@
 						        }, 
 						        {
 						          type:       "button",
-						          handler:    "a",
+						          handler:    "space",
 						          imageUp:    1,
 						          imageDown:  2,
 						          x:          (320-160)/2-3,
@@ -71,6 +73,16 @@
 						          y:          0,
 						          width:      160,
 						          height:     160
+						        },
+						        {
+						          type:       "button",
+						          handler:    "enter",
+						          imageUp:    1,
+						          imageDown:  2,
+						          x:          0,
+						          y:          (480 - 160),
+						          width:      160,
+						          height:     160
 						        }
 					        ]
 					      }
@@ -82,21 +94,21 @@
 					  	});
 				  	    
 					    bm.onDeviceConnected(function(device){
-					      alert('device connected');
+					      document.getElementById("info").innerHTML = "&#10004;";
 					    });
 					    
 					    bm.onDeviceDisconnected(function(device){
-					      alert('device disconnected');
+					      document.getElementById("info").innerHTML = "&#x2717;";
 					    });
 					    
 					    bm.onShowSlot(function(color){
-					      alert('onShowSlot');
-					    });
+							document.getElementById('info').style.background = color;
+						});
 
 					    bm.onInvocation(function(invoke, deviceId){
 					    	console.log(invoke);
 					    	var keyDown = invoke.parameters[0].Value=="down";
-					      if (invoke.methodName == "a") {
+					      if (invoke.methodName == "space") {
 						      
 						      if(keyDown){
 						        console.log("fire down");
@@ -105,18 +117,27 @@
 						      	me.input.triggerKeyEvent(me.input.KEY.SPACE, false);
 						      }
 						  } else if (invoke.methodName == "b") {
+
+							if(keyDown){
+								console.log("fire down");
+								me.input.triggerKeyEvent(me.input.KEY.B, true);
+							} else {
+								me.input.triggerKeyEvent(me.input.KEY.B, false);
+							}
+
+						  } else if(invoke.methodName == "enter") {
+
 						  	if(keyDown){
-						        console.log("fire down");
-						        me.input.triggerKeyEvent(me.input.KEY.B, true);
-						      } else {
-						      	me.input.triggerKeyEvent(me.input.KEY.B, false);
-						      }
+								console.log("fire down");
+								me.input.triggerKeyEvent(me.input.KEY.ENTER, true);
+							} else {
+								me.input.triggerKeyEvent(me.input.KEY.ENTER, false);
+							}
+
 						  }
 					    });
 
 					    bm.onAccelReceived(function(accel){
-							//drawAccel(accel.acceleration);
-							document.getElementById("accel").innerHTML = accel.acceleration.x+" "+accel.acceleration.y+" "+accel.acceleration.z;
 
 							//move right
 							if (accel.acceleration.y < -0.3 ) {

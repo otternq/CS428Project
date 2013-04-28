@@ -1,9 +1,8 @@
 define([
-	'playerMovements',
 	'projectileentity',
 	'bombentity',
 	'smallexplosionanimation'
-], function(SocketMovements, ProjectileEntity,BombEntity,SmallExplosionAnimation) {
+], function(ProjectileEntity,BombEntity,SmallExplosionAnimation) {
 	return me.ObjectEntity.extend({
 		init: function(x, y, constVel)
 		{
@@ -45,7 +44,7 @@ define([
 
 		fire: function() {
 			// play sound
-			//me.audio.play("missile");
+			me.audio.play("missile");
 
 			// create a missile entity
 			if (this.hasDouble === true) {

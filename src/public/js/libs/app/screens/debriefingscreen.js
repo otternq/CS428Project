@@ -73,9 +73,9 @@ define([
 
         update : function()
         {
-             
+
              if(this.missionChoices.length > 1 ){//!= null){
-                
+
                if (me.input.isKeyPressed('a')){
                     this.changeToMap(this.missionChoices[0]);
                }
