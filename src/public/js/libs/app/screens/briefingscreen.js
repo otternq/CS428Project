@@ -82,7 +82,12 @@ define([
 
         onDestroyEvent: function()
         {
+            var curIndex = parseInt(me.gamestat.getItemValue("mapIndex"), 10);
 
+            Clay.Stats.level({
+                action: 'start',
+                level: curIndex
+            });
         }
     });
 });

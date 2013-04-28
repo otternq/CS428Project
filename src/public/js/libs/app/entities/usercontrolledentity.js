@@ -65,10 +65,22 @@ define([
 
 			if (me.gamestat.getItemValue("mapIndex") == me.gamestat.getItemValue("bombAtLevel")) {
 				this.hasBomb = true;
+
+				var achievement = new Clay.Achievement( { id: 1307 } );
+				achievement.award( function( response ) {
+					// Optional callback on completion
+					console.log( response );
+				} );
 			}
 
 			if (me.gamestat.getItemValue("mapIndex") == me.gamestat.getItemValue("dLaserAtLevel")) {
 				this.hasDouble = true;
+
+				var achievement = new Clay.Achievement( { id: 1306 } );
+				achievement.award( function( response ) {
+					// Optional callback on completion
+					console.log( response );
+				} );
 			}
 
 			// move left
