@@ -17,6 +17,8 @@ define([
             this.option1 = null;
             this.option2 = null;
 
+            this.reportAnalytics = false;
+
         },
 
         onResetEvent: function(line1, line2, line3, nextMissionChoices)
@@ -24,6 +26,16 @@ define([
             // add parallax background
            // me.game.add(new BackgroundObject(), 1);
             console.log("on reset");
+
+            if (this.reportAnalytics === false) {
+
+                var curIndex = parseInt(me.gamestat.getItemValue("mapIndex"), 10);
+
+                Clay.Stats.level({
+                    action: 'pass',
+                    level: curIndex
+                });
+            }
 
             this.line1 = line1;
             this.line2 = line2;
