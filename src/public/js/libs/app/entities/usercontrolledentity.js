@@ -39,7 +39,7 @@ define([
 			this.collidable = true;
 
 			//SocketMovements.initialize(io.connect('/room'), this);
-			me.input.bindKey(me.input.KEY.B, "firebomb", true);
+			//me.input.bindKey(me.input.KEY.B, "firebomb", true);
 		},
 
 		fire: function() {
@@ -140,7 +140,7 @@ define([
 			}
 
 			// fire bomb
-			if (me.input.isKeyPressed("b") && this.hasBomb === true)
+			if (me.input.isKeyPressed("b") )
 			{
 				// play sound
 				me.audio.play("missile");

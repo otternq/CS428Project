@@ -13,7 +13,7 @@ define([
 
 			// init stuff
 			this.title = null;
-			this.play = null;
+			//this.play = null;
 			this.version = null;
 
 			console.log("Initialized Menu");
@@ -40,7 +40,7 @@ define([
 
 			// play button
 			//this.play = new Button("play", null, 280);
-			me.input.bindKey(me.input.KEY.ENTER, "enter");
+			//me.input.bindKey(me.input.KEY.ENTER, "enter");
 
 		},
 
@@ -79,7 +79,7 @@ define([
 		 */
 		onDestroyEvent: function()
 		{
-
+/*
 			//console.log("mapIndex: " + me.gamestat.getItemValue("mapIndex"));
 			var mapIndex = String(me.gamestat.getItemValue("mapIndex"));
 			//console.log("mapIndex: " + mapIndex);
@@ -87,7 +87,7 @@ define([
 			console.log("changing state from menu");
 
 			// release mouse event
-			/*me.input.releaseMouseEvent("mousedown",
+			me.input.releaseMouseEvent("mousedown",
 
 
 				me.state.change(
