@@ -1,7 +1,12 @@
-CS428 Project
+Commonwealth Squadron 428
 ============
 
-A class project for CS 428 at the University of Idaho.
+An arcade style space scroller.
+
+<b>Features</b>:
+- Multiple Weapon Types
+- Multiple Story arcs
+- Control the game with your smart phone
 
 Team Members
 ------------
