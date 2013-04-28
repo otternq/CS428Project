@@ -134,13 +134,13 @@ define([
 			}
 
 			// fire
-			if (me.input.isKeyPressed("fire"))
+			if (me.input.isKeyPressed("space"))
 			{
 				this.fire();
 			}
 
 			// fire bomb
-			if (me.input.isKeyPressed("firebomb") && this.hasBomb === true)
+			if (me.input.isKeyPressed("b") && this.hasBomb === true)
 			{
 				// play sound
 				me.audio.play("missile");

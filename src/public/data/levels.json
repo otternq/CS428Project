@@ -15,7 +15,7 @@
         "debriefing": [
             "You defeated the scouts, and gathered intel",
             "Choose your mission:",
-            "A: Destory scout fleet   B: Deliver intel",
+            "SPACE: Destory scout fleet   B: Deliver intel",
             [2,3]
         ],
         "next": [2,3]
