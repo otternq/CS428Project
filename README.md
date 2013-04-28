@@ -11,15 +11,20 @@ Team Members
 
 Dependencies
 ----------
-- [Node.js](http://nodejs.org)
-- [Socket.io](http://socket.io/)
+
+###Production
 - [melonJS](http://www.melonjs.org/)
+- [Brass Monkey](http://playbrassmonkey.com/) - An API/Application for controlling a game with a smart phone
+
+###Development
+- [Node.js](http://nodejs.org) - A server side implementation of JavaScript
+- [Express.js](http://expressjs.com/) - A web server for node.js
 
 Platform/Environment
 ---------
 
 ###Language###
-Node.js, HTML/JavaScript
+HTML/JavaScript
 
 ####Target
 
