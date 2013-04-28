@@ -50,6 +50,13 @@ define([
                     me.leaderboard.show();
                 } );
 
+                var curIndex = parseInt(me.gamestat.getItemValue("mapIndex"), 10);
+
+                Clay.Stats.level({
+                    action: 'pass',
+                    level: curIndex
+                });
+
                 this.leaderboardReported = true;
             }
 
