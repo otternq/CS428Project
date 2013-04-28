@@ -39,7 +39,25 @@ define([
 			this.title = me.loader.getImage("title");
 
 			// play button
-			this.play = new Button("play", null, 280);
+			//this.play = new Button("play", null, 280);
+			me.input.bindKey(me.input.KEY.ENTER, "enter");
+
+		},
+
+		update: function() {
+
+			//console.log("mapIndex: " + me.gamestat.getItemValue("mapIndex"));
+			var mapIndex = String(me.gamestat.getItemValue("mapIndex"));
+
+			if(me.input.isKeyPressed('enter')) {
+				me.state.change(
+					100,
+					me.gamestat.getItemValue("briefing"+ mapIndex)[0],
+					me.gamestat.getItemValue("briefing"+ mapIndex)[1],
+					me.gamestat.getItemValue("briefing"+ mapIndex)[2],
+					me.gamestat.getItemValue("briefing"+ mapIndex)[3]
+				);
+			}
 		},
 
 		/*
@@ -51,7 +69,7 @@ define([
 			context.drawImage(this.title, (me.video.getWidth() / 2 - this.title.width / 2), 100);
 
 			// draw play button
-			this.play.draw(context);
+			//this.play.draw(context);
 
 			console.log("Drawing Menu");
 		},
@@ -68,9 +86,8 @@ define([
 
 			console.log("changing state from menu");
 
-
 			// release mouse event
-			me.input.releaseMouseEvent("mousedown",
+			/*me.input.releaseMouseEvent("mousedown",
 
 
 				me.state.change(
@@ -81,7 +98,7 @@ define([
 					me.gamestat.getItemValue("briefing"+ mapIndex)[3]
 				)
 
-			);
+			);*/
 		}
 	});
 });

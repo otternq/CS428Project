@@ -1,9 +1,8 @@
 define([
-	'playerMovements',
 	'projectileentity',
 	'bombentity',
 	'smallexplosionanimation'
-], function(SocketMovements, ProjectileEntity,BombEntity,SmallExplosionAnimation) {
+], function(ProjectileEntity,BombEntity,SmallExplosionAnimation) {
 	return me.ObjectEntity.extend({
 		init: function(x, y, constVel)
 		{
@@ -39,13 +38,13 @@ define([
 			// enable collision
 			this.collidable = true;
 
-			SocketMovements.initialize(io.connect('/room'), this);
+			//SocketMovements.initialize(io.connect('/room'), this);
 			me.input.bindKey(me.input.KEY.B, "firebomb", true);
 		},
 
 		fire: function() {
 			// play sound
-			//me.audio.play("missile");
+			me.audio.play("missile");
 
 			// create a missile entity
 			if (this.hasDouble === true) {
@@ -135,13 +134,13 @@ define([
 			}
 
 			// fire
-			if (me.input.isKeyPressed("fire"))
+			if (me.input.isKeyPressed("space"))
 			{
 				this.fire();
 			}
 
 			// fire bomb
-			if (me.input.isKeyPressed("firebomb") && this.hasBomb === true)
+			if (me.input.isKeyPressed("b") && this.hasBomb === true)
 			{
 				// play sound
 				me.audio.play("missile");
