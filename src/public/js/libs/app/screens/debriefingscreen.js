@@ -46,8 +46,8 @@ define([
 
 
             // enable the keyboard
-            me.input.bindKey(me.input.KEY.ENTER, "enter");
-            me.input.bindKey(me.input.KEY.A, "a");
+            //me.input.bindKey(me.input.KEY.ENTER, "enter");
+            //me.input.bindKey(me.input.KEY.SPACE, "space");
             me.input.bindKey(me.input.KEY.B, "b");
         },
 
@@ -73,13 +73,13 @@ define([
 
         update : function()
         {
-             
+
              if(this.missionChoices.length > 1 ){//!= null){
-                
-               if (me.input.isKeyPressed('a')){
+
+               if (me.input.isKeyPressed('space')){
                     this.changeToMap(this.missionChoices[0]);
                }
-               else if (me.input.isKeyPressed('b')){
+               else if (me.input.isKeyPressed("b")){
                     this.changeToMap(this.missionChoices[1]);
                }
             }
@@ -133,8 +133,14 @@ define([
             context.drawImage(this.backgroundImage, 0,0);
 
         // Instruction text
-            var instruction1 = "If no mission options: Press 'Enter' ";
-            var instruction2 = "Otherwise press 'A' or 'B' ";
+        if (this.missionChoices.length > 1) {
+            var instruction1 = "To choose your mission,";
+            var instruction2 = "press 'Space' or 'B' ";
+        } else {
+            var instruction1 = "For your next mission,";
+            var instruction2 = "press 'Enter'";
+        }
+            
 
             this.i1 = this.textFont.measureText(context,instruction1 ).width;
             this.i2 = this.textFont.measureText(context, instruction2 ).width;
