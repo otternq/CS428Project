@@ -37,7 +37,7 @@
 					      name: "CS428",
 					      bmMaxPlayers:1,
 					      design: {
-					        orientation: "portrait",
+					        orientation: "landscape",
 					        touchEnabled: false,
 					        accelerometerEnabled: true,
 					        images:[
@@ -51,22 +51,12 @@
 						          image:  0,
 						          x:      0,
 						          y:      0,
-						          width:  320,
-						          height: 480
+						          width:  480,
+						          height: 320
 						        }, 
 						        {
 						          type:       "button",
 						          handler:    "space",
-						          imageUp:    1,
-						          imageDown:  2,
-						          x:          (320-160)/2-3,
-						          y:          (480-160)/2,
-						          width:      160,
-						          height:     160
-						        },
-						        {
-						          type:       "button",
-						          handler:    "b",
 						          imageUp:    1,
 						          imageDown:  2,
 						          x:          0,
@@ -76,11 +66,21 @@
 						        },
 						        {
 						          type:       "button",
-						          handler:    "enter",
+						          handler:    "b",
 						          imageUp:    1,
 						          imageDown:  2,
 						          x:          0,
-						          y:          (480 - 160),
+						          y:          160,
+						          width:      160,
+						          height:     160
+						        },
+						        {
+						          type:       "button",
+						          handler:    "enter",
+						          imageUp:    1,
+						          imageDown:  2,
+						          x:          300,
+						          y:          160,
 						          width:      160,
 						          height:     160
 						        }
@@ -99,6 +99,13 @@
 					    
 					    bm.onDeviceDisconnected(function(device){
 					      document.getElementById("info").innerHTML = "&#x2717;";
+					      me.input.triggerKeyEvent(me.input.KEY.SPACE, false);
+					      me.input.triggerKeyEvent(me.input.KEY.ENTER, false);
+					      me.input.triggerKeyEvent(me.input.KEY.B, false);
+					      me.input.triggerKeyEvent(me.input.KEY.UP, false);
+					      me.input.triggerKeyEvent(me.input.KEY.DOWN, false);
+					      me.input.triggerKeyEvent(me.input.KEY.LEFT, false);
+					      me.input.triggerKeyEvent(me.input.KEY.RIGHT, false);
 					    });
 					    
 					    bm.onShowSlot(function(color){
@@ -111,7 +118,7 @@
 					      if (invoke.methodName == "space") {
 						      
 						      if(keyDown){
-						        console.log("fire down");
+						        console.log("space down");
 						        me.input.triggerKeyEvent(me.input.KEY.SPACE, true);
 						      } else {
 						      	me.input.triggerKeyEvent(me.input.KEY.SPACE, false);
@@ -119,7 +126,7 @@
 						  } else if (invoke.methodName == "b") {
 
 							if(keyDown){
-								console.log("fire down");
+								console.log("b down");
 								me.input.triggerKeyEvent(me.input.KEY.B, true);
 							} else {
 								me.input.triggerKeyEvent(me.input.KEY.B, false);
@@ -128,7 +135,7 @@
 						  } else if(invoke.methodName == "enter") {
 
 						  	if(keyDown){
-								console.log("fire down");
+								console.log("enter down");
 								me.input.triggerKeyEvent(me.input.KEY.ENTER, true);
 							} else {
 								me.input.triggerKeyEvent(me.input.KEY.ENTER, false);
@@ -140,7 +147,7 @@
 					    bm.onAccelReceived(function(accel){
 
 							//move right
-							if (accel.acceleration.y < -0.3 ) {
+							if (accel.acceleration.y < -0.2 ) {
 								me.input.triggerKeyEvent(me.input.KEY.RIGHT, true);
 							} else {
 								me.input.triggerKeyEvent(me.input.KEY.RIGHT, false);
@@ -148,7 +155,7 @@
 
 
 							//move left
-							if (accel.acceleration.y > 0.3) {
+							if (accel.acceleration.y > 0.2) {
 								me.input.triggerKeyEvent(me.input.KEY.LEFT, true);
 							} else {
 								me.input.triggerKeyEvent(me.input.KEY.LEFT, false);

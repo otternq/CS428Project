@@ -117,6 +117,7 @@ define([
 			me.input.bindKey(me.input.KEY.DOWN, "down");
 			me.input.bindKey(me.input.KEY.SPACE, "space", true);
 			me.input.bindKey(me.input.KEY.B, "b", true);
+			me.input.bindKey(me.input.KEY.ENTER, "enter", true);
 
 			// draw menu
 			me.state.change(me.state.MENU);

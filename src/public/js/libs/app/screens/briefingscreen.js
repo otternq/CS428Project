@@ -35,7 +35,7 @@ define([
 
 
             // enable the keyboard
-            me.input.bindKey(me.input.KEY.ENTER, "enter");
+            
         },
 
         update : function()
