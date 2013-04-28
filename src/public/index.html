@@ -140,7 +140,7 @@
 					    bm.onAccelReceived(function(accel){
 
 							//move right
-							if (accel.acceleration.y < -0.3 ) {
+							if (accel.acceleration.y < -0.2 ) {
 								me.input.triggerKeyEvent(me.input.KEY.RIGHT, true);
 							} else {
 								me.input.triggerKeyEvent(me.input.KEY.RIGHT, false);
@@ -148,7 +148,7 @@
 
 
 							//move left
-							if (accel.acceleration.y > 0.3) {
+							if (accel.acceleration.y > 0.2) {
 								me.input.triggerKeyEvent(me.input.KEY.LEFT, true);
 							} else {
 								me.input.triggerKeyEvent(me.input.KEY.LEFT, false);
