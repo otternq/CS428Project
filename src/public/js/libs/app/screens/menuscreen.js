@@ -13,12 +13,13 @@ define([
 
 			// init stuff
 			this.title = null;
-			this.play = null;
+			//this.play = null;
 			this.version = null;
 
 			console.log("Initialized Menu");
 
 			this.font = null;
+			this.textFont = null;
 
 		},
 
@@ -38,9 +39,7 @@ define([
 			// load title image
 			this.title = me.loader.getImage("title");
 
-			// play button
-			//this.play = new Button("play", null, 280);
-			me.input.bindKey(me.input.KEY.ENTER, "enter");
+			this.textFont = new me.Font("Verdana", 22, "white","left");
 
 		},
 
@@ -65,11 +64,17 @@ define([
 		 */
 		draw: function(context)
 		{
+
+			var instruction1 = "Press 'Enter' To Start";
+            
+            this.i1 = this.textFont.measureText(context,instruction1 ).width;
+            
+            this.textFont.draw (context, instruction1,     Math.round(me.game.viewport.width/2 - this.i1/2), 375);
+
+
 			// draw title
 			context.drawImage(this.title, (me.video.getWidth() / 2 - this.title.width / 2), 100);
 
-			// draw play button
-			//this.play.draw(context);
 
 			console.log("Drawing Menu");
 		},
@@ -79,7 +84,7 @@ define([
 		 */
 		onDestroyEvent: function()
 		{
-
+/*
 			//console.log("mapIndex: " + me.gamestat.getItemValue("mapIndex"));
 			var mapIndex = String(me.gamestat.getItemValue("mapIndex"));
 			//console.log("mapIndex: " + mapIndex);
@@ -87,7 +92,7 @@ define([
 			console.log("changing state from menu");
 
 			// release mouse event
-			/*me.input.releaseMouseEvent("mousedown",
+			me.input.releaseMouseEvent("mousedown",
 
 
 				me.state.change(

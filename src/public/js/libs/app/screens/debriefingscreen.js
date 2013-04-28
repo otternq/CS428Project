@@ -43,12 +43,6 @@ define([
 
             this.textFont = new me.Font("Verdana", 22, "white","left");
 
-
-
-            // enable the keyboard
-            //me.input.bindKey(me.input.KEY.ENTER, "enter");
-            //me.input.bindKey(me.input.KEY.SPACE, "space");
-            me.input.bindKey(me.input.KEY.B, "b");
         },
 
         changeToMap: function(mapNum){
