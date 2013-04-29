@@ -17,169 +17,165 @@
 			} )();
 		</script>
 	</head>
-	<body bgcolor="black">
+	<body style="background-color:black; background-image: url(data/sprite/bkg1.png);">
 		<div id="container" style="width:100%; height:100%;">
 			<div id="info" style="text-align: center; width:20px; height:20px; color:white;">
-					&#x2717;
-				</div>
-			<div id="info" style="width: 640px;margin: 0 auto;">
+				&#x2717;
+			</div>
+			<div id="jsapp" style="width:640px; height: 500px; margin: 0 auto;">
+				<font color="#FFFFFF", style="position: absolute; font-size: 10px; font-family: Courier New">
+					<span id="framecounter">(0/0 fps)</span>
+				</font>
 
-				<div id="jsapp">
-					<font color="#FFFFFF", style="position: absolute; font-size: 10px; font-family: Courier New">
-						<span id="framecounter">(0/0 fps)</span>
-					</font>
+				<script type="text/javascript" src="js/melonJS-0.9.6-min.js"></script>
+				<script type="text/javascript" src="/js/brassmonkey.js"></script>
 
-					<script type="text/javascript" src="js/melonJS-0.9.6-min.js"></script>
-					<script type="text/javascript" src="/js/brassmonkey.js"></script>
+				<script>
+					bm.init({
+				      name: "CS428",
+				      bmMaxPlayers:1,
+				      design: {
+				        orientation: "landscape",
+				        touchEnabled: false,
+				        accelerometerEnabled: true,
+				        images:[
+				          '/images/background.png',
+				          '/images/button-up.png',
+				          '/images/button-down.png'
+				        ],
+				        layout:[
+					        {
+					          type:   "image",
+					          image:  0,
+					          x:      0,
+					          y:      0,
+					          width:  480,
+					          height: 320
+					        }, 
+					        {
+					          type:       "button",
+					          handler:    "space",
+					          imageUp:    1,
+					          imageDown:  2,
+					          x:          0,
+					          y:          0,
+					          width:      160,
+					          height:     160
+					        },
+					        {
+					          type:       "button",
+					          handler:    "b",
+					          imageUp:    1,
+					          imageDown:  2,
+					          x:          0,
+					          y:          160,
+					          width:      160,
+					          height:     160
+					        },
+					        {
+					          type:       "button",
+					          handler:    "enter",
+					          imageUp:    1,
+					          imageDown:  2,
+					          x:          300,
+					          y:          160,
+					          width:      160,
+					          height:     160
+					        }
+				        ]
+				      }
+				    });
+				    
+				  	bm.onDeviceAvailable(function(device){  		
+				  		device.controlMode=bm.MODE_GAMEPAD;
+				  		return device;
+				  	});
+			  	    
+				    bm.onDeviceConnected(function(device){
+				      document.getElementById("info").innerHTML = "&#10004;";
+				    });
+				    
+				    bm.onDeviceDisconnected(function(device){
+				      document.getElementById("info").innerHTML = "&#x2717;";
+				      me.input.triggerKeyEvent(me.input.KEY.SPACE, false);
+				      me.input.triggerKeyEvent(me.input.KEY.ENTER, false);
+				      me.input.triggerKeyEvent(me.input.KEY.B, false);
+				      me.input.triggerKeyEvent(me.input.KEY.UP, false);
+				      me.input.triggerKeyEvent(me.input.KEY.DOWN, false);
+				      me.input.triggerKeyEvent(me.input.KEY.LEFT, false);
+				      me.input.triggerKeyEvent(me.input.KEY.RIGHT, false);
+				    });
+				    
+				    bm.onShowSlot(function(color){
+						document.getElementById('info').style.background = color;
+					});
 
-					<script>
-						bm.init({
-					      name: "CS428",
-					      bmMaxPlayers:1,
-					      design: {
-					        orientation: "landscape",
-					        touchEnabled: false,
-					        accelerometerEnabled: true,
-					        images:[
-					          '/images/background.png',
-					          '/images/button-up.png',
-					          '/images/button-down.png'
-					        ],
-					        layout:[
-						        {
-						          type:   "image",
-						          image:  0,
-						          x:      0,
-						          y:      0,
-						          width:  480,
-						          height: 320
-						        }, 
-						        {
-						          type:       "button",
-						          handler:    "space",
-						          imageUp:    1,
-						          imageDown:  2,
-						          x:          0,
-						          y:          0,
-						          width:      160,
-						          height:     160
-						        },
-						        {
-						          type:       "button",
-						          handler:    "b",
-						          imageUp:    1,
-						          imageDown:  2,
-						          x:          0,
-						          y:          160,
-						          width:      160,
-						          height:     160
-						        },
-						        {
-						          type:       "button",
-						          handler:    "enter",
-						          imageUp:    1,
-						          imageDown:  2,
-						          x:          300,
-						          y:          160,
-						          width:      160,
-						          height:     160
-						        }
-					        ]
+				    bm.onInvocation(function(invoke, deviceId){
+				    	console.log(invoke);
+				    	var keyDown = invoke.parameters[0].Value=="down";
+				      if (invoke.methodName == "space") {
+					      
+					      if(keyDown){
+					        console.log("space down");
+					        me.input.triggerKeyEvent(me.input.KEY.SPACE, true);
+					      } else {
+					      	me.input.triggerKeyEvent(me.input.KEY.SPACE, false);
 					      }
-					    });
-					    
-					  	bm.onDeviceAvailable(function(device){  		
-					  		device.controlMode=bm.MODE_GAMEPAD;
-					  		return device;
-					  	});
-				  	    
-					    bm.onDeviceConnected(function(device){
-					      document.getElementById("info").innerHTML = "&#10004;";
-					    });
-					    
-					    bm.onDeviceDisconnected(function(device){
-					      document.getElementById("info").innerHTML = "&#x2717;";
-					      me.input.triggerKeyEvent(me.input.KEY.SPACE, false);
-					      me.input.triggerKeyEvent(me.input.KEY.ENTER, false);
-					      me.input.triggerKeyEvent(me.input.KEY.B, false);
-					      me.input.triggerKeyEvent(me.input.KEY.UP, false);
-					      me.input.triggerKeyEvent(me.input.KEY.DOWN, false);
-					      me.input.triggerKeyEvent(me.input.KEY.LEFT, false);
-					      me.input.triggerKeyEvent(me.input.KEY.RIGHT, false);
-					    });
-					    
-					    bm.onShowSlot(function(color){
-							document.getElementById('info').style.background = color;
-						});
+					  } else if (invoke.methodName == "b") {
 
-					    bm.onInvocation(function(invoke, deviceId){
-					    	console.log(invoke);
-					    	var keyDown = invoke.parameters[0].Value=="down";
-					      if (invoke.methodName == "space") {
-						      
-						      if(keyDown){
-						        console.log("space down");
-						        me.input.triggerKeyEvent(me.input.KEY.SPACE, true);
-						      } else {
-						      	me.input.triggerKeyEvent(me.input.KEY.SPACE, false);
-						      }
-						  } else if (invoke.methodName == "b") {
+						if(keyDown){
+							console.log("b down");
+							me.input.triggerKeyEvent(me.input.KEY.B, true);
+						} else {
+							me.input.triggerKeyEvent(me.input.KEY.B, false);
+						}
 
-							if(keyDown){
-								console.log("b down");
-								me.input.triggerKeyEvent(me.input.KEY.B, true);
-							} else {
-								me.input.triggerKeyEvent(me.input.KEY.B, false);
-							}
+					  } else if(invoke.methodName == "enter") {
 
-						  } else if(invoke.methodName == "enter") {
+					  	if(keyDown){
+							console.log("enter down");
+							me.input.triggerKeyEvent(me.input.KEY.ENTER, true);
+						} else {
+							me.input.triggerKeyEvent(me.input.KEY.ENTER, false);
+						}
 
-						  	if(keyDown){
-								console.log("enter down");
-								me.input.triggerKeyEvent(me.input.KEY.ENTER, true);
-							} else {
-								me.input.triggerKeyEvent(me.input.KEY.ENTER, false);
-							}
+					  }
+				    });
 
-						  }
-					    });
+				    bm.onAccelReceived(function(accel){
 
-					    bm.onAccelReceived(function(accel){
-
-							//move right
-							if (accel.acceleration.y < -0.2 ) {
-								me.input.triggerKeyEvent(me.input.KEY.RIGHT, true);
-							} else {
-								me.input.triggerKeyEvent(me.input.KEY.RIGHT, false);
-							}
+						//move right
+						if (accel.acceleration.y < -0.2 ) {
+							me.input.triggerKeyEvent(me.input.KEY.RIGHT, true);
+						} else {
+							me.input.triggerKeyEvent(me.input.KEY.RIGHT, false);
+						}
 
 
-							//move left
-							if (accel.acceleration.y > 0.2) {
-								me.input.triggerKeyEvent(me.input.KEY.LEFT, true);
-							} else {
-								me.input.triggerKeyEvent(me.input.KEY.LEFT, false);
-							}
+						//move left
+						if (accel.acceleration.y > 0.2) {
+							me.input.triggerKeyEvent(me.input.KEY.LEFT, true);
+						} else {
+							me.input.triggerKeyEvent(me.input.KEY.LEFT, false);
+						}
 
-							//move right
-							if (accel.acceleration.z < -0.4 ) {
-								me.input.triggerKeyEvent(me.input.KEY.UP, true);
-							} else {
-								me.input.triggerKeyEvent(me.input.KEY.UP, false);
-							}
+						//move right
+						if (accel.acceleration.z < -0.4 ) {
+							me.input.triggerKeyEvent(me.input.KEY.UP, true);
+						} else {
+							me.input.triggerKeyEvent(me.input.KEY.UP, false);
+						}
 
 
-							//move left
-							if (accel.acceleration.z > 0.4) {
-								me.input.triggerKeyEvent(me.input.KEY.DOWN, true);
-							} else {
-								me.input.triggerKeyEvent(me.input.KEY.DOWN, false);
-							}
-						});
-					</script>
-					<script data-main="/js/main" src="/js/libs/require/require.js"></script>
-				</div>
-
+						//move left
+						if (accel.acceleration.z > 0.4) {
+							me.input.triggerKeyEvent(me.input.KEY.DOWN, true);
+						} else {
+							me.input.triggerKeyEvent(me.input.KEY.DOWN, false);
+						}
+					});
+				</script>
+				<script data-main="/js/main" src="/js/libs/require/require.js"></script>
 			</div>
 		</div>
 	</body>

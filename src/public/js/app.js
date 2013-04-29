@@ -39,21 +39,20 @@ define([
 		{
 			var requireClay = true; // If you pass true for 2nd param, it will make sure they've logged into clay (not anonymous)
 			Clay.ready(function() {
-				var requireClay = true; // If you pass true for 2nd param, it will make sure they've logged into clay (not anonymous)
+				var requireClay = false; // If you pass true for 2nd param, it will make sure they've logged into clay (not anonymous)
 				
-				Clay.Player.requireLogin(
-					function( response ) {},
-					requireClay
-				);
+				if( !Clay.Player.loggedIn ) {
 
-				Clay.Player.onUserReady(function(response) {
+					Clay.Player.login(
+						function( response ) {},
+						requireClay
+					);
 
-					Game.onload(g_resources);
-
-
-				});
+				}
 
 			});
+
+			Game.onload(g_resources);
 
 		});
 	}
