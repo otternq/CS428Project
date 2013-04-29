@@ -50,14 +50,9 @@ define([
 
 				}
 
-				Clay.Player.onUserReady(function(response) {
-
-					Game.onload(g_resources);
-
-
-				});
-
 			});
+
+			Game.onload(g_resources);
 
 		});
 	}
