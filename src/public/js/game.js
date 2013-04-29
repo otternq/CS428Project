@@ -34,7 +34,7 @@ define([
 			}
 
 			// initialize the "audio"
-        	me.audio.init("mp3,ogg");
+			me.audio.init("mp3,ogg");
 
 			me.gamestat.add("score" , 0);
 
