@@ -33,6 +33,26 @@ define([
             this.textFont = new me.Font("Verdana", 22, "white","left");
 
 
+            if (me.gamestat.getItemValue("mapIndex") == me.gamestat.getItemValue("bombAtLevel")) {
+                me.gamestat.setValue("hasBomb", true);
+
+                var achievement = new Clay.Achievement( { id: 1307 } );
+                achievement.award( function( response ) {
+                    // Optional callback on completion
+                    console.log( response );
+                } );
+            }
+
+            if (me.gamestat.getItemValue("mapIndex") == me.gamestat.getItemValue("dLaserAtLevel")) {
+                me.gamestat.setValue("hasDouble", true);
+
+                var achievement = new Clay.Achievement( { id: 1306 } );
+                achievement.award( function( response ) {
+                    // Optional callback on completion
+                    console.log( response );
+                } );
+            }
+
 
             // enable the keyboard
             

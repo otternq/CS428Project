@@ -38,6 +38,15 @@ define([
 			// enable collision
 			this.collidable = true;
 
+
+			if (me.gamestat.getItemValue("hasBomb") === true) {
+				this.hasBomb = true;
+			}
+
+			if (me.gamestat.getItemValue("hasDouble") === true) {
+				this.hasDouble = true;
+			}
+
 			//SocketMovements.initialize(io.connect('/room'), this);
 			//me.input.bindKey(me.input.KEY.B, "firebomb", true);
 		},
@@ -47,7 +56,7 @@ define([
 			me.audio.play("missile");
 
 			// create a missile entity
-			if (this.hasDouble === true) {
+			if (this.hasDouble === true && me.gamestat.getItemValue("mapIndex") > me.gamestat.getItemValue("dLaserAtLevel") ) {
 				var missle1 = new ProjectileEntity(this.pos.x, this.pos.y - 34,7, "Player");
 				var missle2 = new ProjectileEntity(this.pos.x + 30, this.pos.y - 34,7, "Player");
 				me.game.add(missle1, this.z);
@@ -60,28 +69,24 @@ define([
 			me.game.sort();
 		},
 
+		fireBomb: function() {
+			if( this.hasBomb === true && me.gamestat.getItemValue("mapIndex") > me.gamestat.getItemValue("bombAtLevel"))
+			{
+				// play sound
+				me.audio.play("missile");
+
+				// create a missile entity
+				//var missile = new ProjectileEntity(this.pos.x + 15, this.pos.y - 34,7, "Player");
+				var missile = new BombEntity(this.pos.x + 15, this.pos.y - 34,7, "Player");
+				me.game.add(missile, this.z);
+				me.game.sort();
+			}
+		},
+
 		update: function()
 		{
 
-			if (me.gamestat.getItemValue("mapIndex") == me.gamestat.getItemValue("bombAtLevel")) {
-				this.hasBomb = true;
-
-				var achievement = new Clay.Achievement( { id: 1307 } );
-				achievement.award( function( response ) {
-					// Optional callback on completion
-					console.log( response );
-				} );
-			}
-
-			if (me.gamestat.getItemValue("mapIndex") == me.gamestat.getItemValue("dLaserAtLevel")) {
-				this.hasDouble = true;
-
-				var achievement = new Clay.Achievement( { id: 1306 } );
-				achievement.award( function( response ) {
-					// Optional callback on completion
-					console.log( response );
-				} );
-			}
+			
 
 			// move left
 			if (me.input.isKeyPressed("left")) {
@@ -152,16 +157,8 @@ define([
 			}
 
 			// fire bomb
-			if (me.input.isKeyPressed("b") && this.hasBomb === true)
-			{
-				// play sound
-				me.audio.play("missile");
-
-				// create a missile entity
-				//var missile = new ProjectileEntity(this.pos.x + 15, this.pos.y - 34,7, "Player");
-				var missile = new BombEntity(this.pos.x + 15, this.pos.y - 34,7, "Player");
-				me.game.add(missile, this.z);
-				me.game.sort();
+			if ( me.input.isKeyPressed("b") ) {
+				this.fireBomb();
 			}
 
 			this.computeVelocity(this.vel);
