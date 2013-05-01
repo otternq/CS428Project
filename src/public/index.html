@@ -19,8 +19,8 @@
 	</head>
 	<body style="background-color:black; background-image: url(data/sprite/bkg1.png);">
 		<div id="container" style="width:100%; height:100%;">
-			<div id="info" style="text-align: center; width:20px; height:20px; color:white;">
-				&#x2717;
+			<div id="info" style="text-align: center; width:175px;padding:5px; height:20px; color:white;">
+				&#x2717; Remote not connected
 			</div>
 			<div id="jsapp" style="width:640px; height: 500px; margin: 0 auto;">
 				<font color="#FFFFFF", style="position: absolute; font-size: 10px; font-family: Courier New">
@@ -92,11 +92,11 @@
 				  	});
 			  	    
 				    bm.onDeviceConnected(function(device){
-				      document.getElementById("info").innerHTML = "&#10004;";
+				      document.getElementById("info").innerHTML = "&#10004; Remote Connected";
 				    });
 				    
 				    bm.onDeviceDisconnected(function(device){
-				      document.getElementById("info").innerHTML = "&#x2717;";
+				      document.getElementById("info").innerHTML = "&#x2717; Remote not connected";
 				      me.input.triggerKeyEvent(me.input.KEY.SPACE, false);
 				      me.input.triggerKeyEvent(me.input.KEY.ENTER, false);
 				      me.input.triggerKeyEvent(me.input.KEY.B, false);

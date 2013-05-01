@@ -27,15 +27,12 @@ define([
            // me.game.add(new BackgroundObject(), 1);
             console.log("on reset");
 
-            if (this.reportAnalytics === false) {
+            var curIndex = parseInt(me.gamestat.getItemValue("mapIndex"), 10);
 
-                var curIndex = parseInt(me.gamestat.getItemValue("mapIndex"), 10);
-
-                Clay.Stats.level({
-                    action: 'pass',
-                    level: curIndex
-                });
-            }
+            Clay.Stats.level({
+                action: 'pass',
+                level: curIndex
+            });
 
             this.line1 = line1;
             this.line2 = line2;

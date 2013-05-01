@@ -187,13 +187,13 @@ define([
 					//me.audio.play("implosion");
 
 					// update life indicator
-					this.removeHealth();
+					this.removeHealth(res.obj.damage);
 
 					// remove enemy
 					res.obj.remove();
 				} else if (res.obj.type == "asteroid" || res.obj.type == "mine") {
 
-					this.removeHealth();
+					this.removeHealth(res.obj.damage);
 
 					res.obj.remove();
 
@@ -204,20 +204,26 @@ define([
 			}
 		},
 
-		removeHealth: function () {
+		removeHealth: function (damage) {
 			var smallExplosion = new SmallExplosionAnimation(this.pos.x, this.pos.y);
 			me.game.add(smallExplosion, 15);
 			me.game.sort();
 
-			me.game.HUD.updateItemValue("life", -1);
+			//alert(damage);
 
-			// if no more lives
-			if (me.game.HUD.getItemValue("life") <= 0) {
-				// game over
-				me.state.change(102,
-					me.game.HUD.getItemValue("score"));
+			if (damage != undefined) {
 
-				return;
+				me.game.HUD.updateItemValue("life", -1 * damage);
+
+				// if no more lives
+				if (me.game.HUD.getItemValue("life") <= 0) {
+
+					var score = me.game.HUD.getItemValue("score");
+					// game over
+					me.state.change(102, score);
+
+					return;
+				}
 			}
 		}
 	});

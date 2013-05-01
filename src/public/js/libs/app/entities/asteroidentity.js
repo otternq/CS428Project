@@ -12,6 +12,8 @@ define([
             settings.spriteheight = 32;
             settings.collidable = true;
 
+            this.ratio = 0;
+
             settings.type = me.game.ENEMY_OBJECT; //asteroid
             this.time = 0;
 
@@ -26,13 +28,15 @@ define([
             this.addAnimation("spinning", this.animationList, Math.random());
             this.setCurrentAnimation("spinning");
 
-            var ratio = Math.random() * (1.25);
+            this.ratio = Math.random() * (1.25);
 
-            if (ratio < 0.25) {
-                ratio = 0.25;
+            if (this.ratio < 0.25) {
+                this.ratio = 0.25;
             }
 
-            this.resize(ratio);
+            this.damage = Math.ceil(this.ratio * 5);
+
+            this.resize(this.ratio);
 
             this.gravity = 0;
 

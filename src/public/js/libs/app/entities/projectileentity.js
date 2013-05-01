@@ -16,6 +16,8 @@ define(function() {
 				this.target = "Player";
 			}
 
+			this.damage = 1;
+
 			this.setVelocity(0, vel);  // set the default vertical speed (accel vector)
 		},
 
@@ -48,10 +50,14 @@ define(function() {
 			return true;
 		},
 
+		damage: function() {
+			return this.damage;
+		},
+
 		checkCollision: function() {
 			var res = this.collideType(this.target);
 			if (res) {
-				res.obj.removeHealth();
+				res.obj.removeHealth(this.damage);
 				me.game.remove(this);
 			}
 		}

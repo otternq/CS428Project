@@ -32,6 +32,7 @@ define([
 			this.time = 0;
 
 			this.health = 1;
+			this.damage = 4;
 			this.points = 10;
 
 			// add animation with all sprites
