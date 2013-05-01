@@ -18,6 +18,8 @@ define([
             settings.type = "mine";
             this.time = 0;
 
+            this.damage = 5;
+
             this.parent(x, y, settings);
 
 
