@@ -42,23 +42,18 @@ define([
 
             this.menu = new Button("menu", me.state.MENU, 330);
 
-            if (this.leaderboardReported === false) {
+            me.leaderboard.post( { score: me.gamestat.getItemValue("score") }, function( response ) {
+                // Callback
+                console.log( response );
+                me.leaderboard.show();
+            } );
 
-                me.leaderboard.post( { score: this.finalScore }, function( response ) {
-                    // Callback
-                    console.log( response );
-                    me.leaderboard.show();
-                } );
+            var curIndex = parseInt(me.gamestat.getItemValue("mapIndex"), 10);
 
-                var curIndex = parseInt(me.gamestat.getItemValue("mapIndex"), 10);
-
-                Clay.Stats.level({
-                    action: 'pass',
-                    level: curIndex
-                });
-
-                this.leaderboardReported = true;
-            }
+            Clay.Stats.level({
+                action: 'pass',
+                level: curIndex
+            });
 
 
         },
