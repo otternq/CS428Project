@@ -30,8 +30,11 @@ define([
 
             this.ratio = Math.random() * (1.25);
 
+            this.health = 2;
+
             if (this.ratio < 0.25) {
                 this.ratio = 0.25;
+                this.health = 1;
             }
 
             this.damage = Math.ceil(this.ratio * 5);
@@ -70,7 +73,10 @@ define([
         },
         removeHealth: function() {
 
-           // play sound
+
+            this.health--;
+
+            // play sound
             //me.audio.play("implosion");
 
             // init implosion
@@ -78,7 +84,10 @@ define([
             me.game.add(explosion, 15);
             me.game.sort();
 
-            me.game.remove(this, true);
+            if (this.health <= 0) {
+                me.game.remove(this, true);
+            }
+           
 
         },
 

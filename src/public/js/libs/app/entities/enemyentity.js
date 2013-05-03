@@ -102,7 +102,7 @@ define([
 			this.health -= 1;
 
             // play sound
-            //me.audio.play("implosion");
+            me.audio.play("implosion");
 
             // init implosion
             var implosion = new ExplosionAnimation(this.pos.x, this.pos.y);

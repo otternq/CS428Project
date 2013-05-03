@@ -92,7 +92,7 @@ define([
 		update: function()
 		{
 
-			this.parent(this);
+			//this.parent(this);
 
 			// move left
 			if (me.input.isKeyPressed("left")) {
@@ -128,13 +128,13 @@ define([
 			}
 
 			//check right
-			if (this.pos.x > me.video.getWidth() - this.image.width) {
-				this.pos.x = me.video.getWidth() - this.image.width;
+			if (this.pos.x > me.video.getWidth() - this.width) {
+				this.pos.x = me.video.getWidth() - this.width;
 			}
 
 			//check down
-			if (this.pos.y > me.game.viewport.bottom - this.image.height) {
-				this.pos.y = me.game.viewport.bottom - this.image.height;
+			if (this.pos.y > me.game.viewport.bottom - this.height) {
+				this.pos.y = me.game.viewport.bottom - this.height;
 			}
 
 			//check up
@@ -215,6 +215,8 @@ define([
 			//alert(damage);
 
 			if (damage != undefined) {
+
+				me.audio.play("implosion");
 
 				me.game.HUD.updateItemValue("life", -1 * damage);
 
