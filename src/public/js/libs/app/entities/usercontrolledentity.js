@@ -13,8 +13,8 @@ define([
 
 			var settings = {
 				image: "ship",
-				spritewidth: 32,
-				spriteheight: 32,
+				spritewidth: 48,
+				spriteheight: 48,
 				type:"Player"
 			};
 
@@ -22,6 +22,11 @@ define([
 
 			// call the parent constructor
 			this.parent(x, me.game.viewport.bottom - y, settings);
+
+
+			// add animation with all sprites
+			this.addAnimation("flying", null, 0.2);
+			this.setCurrentAnimation("flying");
 
 
 			this.constVelocity = constVel;
@@ -86,7 +91,7 @@ define([
 		update: function()
 		{
 
-			
+			this.parent(this);
 
 			// move left
 			if (me.input.isKeyPressed("left")) {
@@ -170,7 +175,7 @@ define([
 
 			// update animation if necessary
 			var updated = (this.vel.x !== 0 || this.vel.y !== 0);
-			return updated;
+			return true;
 		},
 
 		checkCollision: function()
