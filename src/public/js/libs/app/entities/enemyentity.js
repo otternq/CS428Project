@@ -12,11 +12,11 @@ define([
 			}
 
 			if (settings.spritewidth === undefined) {
-				settings.spritewidth = 42;
+				settings.spritewidth = 36;
 			}
 
 			if (settings.spriteheight === undefined) {
-				settings.spriteheight = 42;
+				settings.spriteheight = 36;
 			}
 
 			if (settings.type === undefined) {
