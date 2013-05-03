@@ -43,15 +43,6 @@ define([
 				
 				Game.onload(g_resources);
 
-				if( !Clay.Player.loggedIn ) {
-
-					Clay.Player.login(
-						function( response ) {},
-						requireClay
-					);
-
-				}
-
 			});
 
 			

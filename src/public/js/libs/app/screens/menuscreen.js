@@ -56,6 +56,13 @@ define([
 					me.gamestat.getItemValue("briefing"+ mapIndex)[2],
 					me.gamestat.getItemValue("briefing"+ mapIndex)[3]
 				);
+			} else if (me.input.isKeyPressed('l')) {
+				me.leaderboard.show();
+			} else if (me.input.isKeyPressed('s')) {
+				Clay.Player.login(
+					function( response ) {},
+					false
+				);
 			}
 		},
 
@@ -66,10 +73,14 @@ define([
 		{
 
 			var instruction1 = "Press 'Enter' To Start";
+			var instruction2 = "Press 'S' to Sign in";
+			var instruction3 = "Press 'L' to Show leaderboard";
             
             this.i1 = this.textFont.measureText(context,instruction1 ).width;
             
             this.textFont.draw (context, instruction1,     Math.round(me.game.viewport.width/2 - this.i1/2), 375);
+            this.textFont.draw (context, instruction2,     Math.round(me.game.viewport.width/2 - this.i1/2), 425);
+            this.textFont.draw (context, instruction3,     Math.round(me.game.viewport.width/2 - this.i1/2), 475);
 
 
 			// draw title

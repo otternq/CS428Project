@@ -79,7 +79,7 @@ define([
 			me.state.change(me.state.LOADING);
 
 			me.leaderboard = new Clay.Leaderboard( { id: 1081 } );
-			me.leaderboard.show();
+			
 
 			return true;
 
@@ -120,8 +120,11 @@ define([
 			me.input.bindKey(me.input.KEY.UP, "up");
 			me.input.bindKey(me.input.KEY.DOWN, "down");
 			me.input.bindKey(me.input.KEY.SPACE, "space", true);
-			me.input.bindKey(me.input.KEY.B, "b", true);
 			me.input.bindKey(me.input.KEY.ENTER, "enter", true);
+
+			me.input.bindKey(me.input.KEY.S, "s", true);
+			me.input.bindKey(me.input.KEY.B, "b", true);
+			me.input.bindKey(me.input.KEY.L, "l", true);
 
 			// draw menu
 			me.state.change(me.state.MENU);
