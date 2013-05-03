@@ -4,8 +4,19 @@
 		<title>CS428</title>
 
 		<link rel="icon" type="image/png" href="/favicon.png" />
+	</head>
+	<body style="background-color:black; background-image: url(data/sprite/bkg1.png);">
+		<div id="container" style="width:100%; height:100%;">
+			<div id="info" style="text-align: center; width:175px;padding:5px; height:20px; color:white;">
+				&#x2717; Remote not connected
+			</div>
+			<div id="jsapp" style="width:640px; height: 500px; margin: 0 auto;">
+				<font color="#FFFFFF", style="position: absolute; font-size: 10px; font-family: Courier New">
+					<span id="framecounter">(0/0 fps)</span>
+				</font>
 
-		<script type="text/javascript">
+				<script type="text/javascript" src="js/melonJS-0.9.6-min.js"></script>
+				<script type="text/javascript">
 			Clay = {};
 			Clay.gameKey = "cs438";
 			Clay.readyFunctions = [];
@@ -19,18 +30,6 @@
 			    var tag = document.getElementsByTagName("script")[0]; tag.parentNode.insertBefore(clay, tag);
 			} )();
 		</script>
-	</head>
-	<body style="background-color:black; background-image: url(data/sprite/bkg1.png);">
-		<div id="container" style="width:100%; height:100%;">
-			<div id="info" style="text-align: center; width:175px;padding:5px; height:20px; color:white;">
-				&#x2717; Remote not connected
-			</div>
-			<div id="jsapp" style="width:640px; height: 500px; margin: 0 auto;">
-				<font color="#FFFFFF", style="position: absolute; font-size: 10px; font-family: Courier New">
-					<span id="framecounter">(0/0 fps)</span>
-				</font>
-
-				<script type="text/javascript" src="js/melonJS-0.9.6-min.js"></script>
 				<script type="text/javascript" src="/js/brassmonkey.js"></script>
 
 				<script>
