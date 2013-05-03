@@ -12,7 +12,7 @@ define([
 			this.player = true;
 
 			var settings = {
-				image: "ship",
+				image: "ShipSpriteSheet2",
 				spritewidth: 36,
 				spriteheight: 36,
 				type:"Player"
@@ -25,7 +25,8 @@ define([
 
 
 			// add animation with all sprites
-			this.addAnimation("flying", null, 0.2);
+			this.addAnimation("flying", [2], 0.2);
+
 			this.setCurrentAnimation("flying");
 
 
