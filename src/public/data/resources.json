@@ -2,7 +2,7 @@
     {"name": "bkg0", "type": "image", "src": "data/sprite/bkg0.png"},
     {"name": "bkg1", "type": "image", "src": "data/sprite/bkg1.png"},
     {"name": "bkg2", "type": "image", "src": "data/sprite/bkg2.png"},
-    {"name": "ship", "type":"image", "src": "data/sprite/ship2.png"},
+    {"name": "ship", "type":"image", "src": "data/sprite/Player.png"},
     {"name": "ShipSpriteSheet2", "type":"image", "src": "data/sprite/ShipSpriteSheet2.png"},
     {"name": "briefingbackground", "type":"image", "src": "data/sprite/briefingbackground.png"},
     {"name": "enemy", "type":"image", "src": "data/sprite/BasicEnemy.png"},

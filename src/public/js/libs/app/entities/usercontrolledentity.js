@@ -12,7 +12,7 @@ define([
 			this.player = true;
 
 			var settings = {
-				image: "ShipSpriteSheet2",
+				image: "ship",
 				spritewidth: 36,
 				spriteheight: 36,
 				type:"Player"
