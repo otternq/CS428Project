@@ -202,9 +202,11 @@ define([
 		},
 
 		removeHealth: function (damage) {
+			/*
 			var smallExplosion = new SmallExplosionAnimation(this.pos.x, this.pos.y);
 			me.game.add(smallExplosion, 15);
 			me.game.sort();
+			*/
 
 			//alert(damage);
 
