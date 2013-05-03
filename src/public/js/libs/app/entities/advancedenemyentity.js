@@ -10,6 +10,8 @@ define([
         {
 
             var settings = {};
+            settings.spritewidth = 48;
+            settings.spriteheight = 48;
             settings.image = "advancedenemy";
 
             this.parent(x,y, settings);

@@ -13,8 +13,8 @@ define([
 
 			var settings = {
 				image: "ship",
-				spritewidth: 48,
-				spriteheight: 48,
+				spritewidth: 36,
+				spriteheight: 36,
 				type:"Player"
 			};
 
