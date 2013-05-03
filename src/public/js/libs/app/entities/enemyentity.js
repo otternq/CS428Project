@@ -32,7 +32,7 @@ define([
 			this.time = 0;
 
 			this.health = 1;
-			this.damage = 4;
+			this.damage = 1;
 
 			this.points = 10;
 
@@ -87,14 +87,12 @@ define([
 
 		remove: function()
 		{
-			// remove this entity
-			me.game.remove(this, true);
-
 			me.game.HUD.updateItemValue("score", this.points);
 			var curScore = me.gamestat.getItemValue("score");
 			me.gamestat.setValue("score", curScore+this.points);
 
-
+			// remove this entity
+			me.game.remove(this, true);
 		},
 
 		removeHealth: function(damage) {

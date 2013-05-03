@@ -76,6 +76,7 @@ define(['explosionanimation'],
 		checkCollision: function() {
 			var res = this.collideType(this.target);
 			if (res) {
+				
 				var implosion = new ExplosionAnimation(this.pos.x, this.pos.y);
             	me.game.add(implosion, 15);
             	me.game.sort();
