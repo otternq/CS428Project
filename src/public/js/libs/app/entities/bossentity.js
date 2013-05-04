@@ -14,11 +14,11 @@ define([
 			}
 
 			if (settings.spritewidth === undefined) {
-				settings.spritewidth = 640;
+				settings.spritewidth = 600;
 			}
 
 			if (settings.spriteheight === undefined) {
-				settings.spriteheight = 200;
+				settings.spriteheight = 275;
 			}
 
 			if (settings.type === undefined) {
@@ -30,6 +30,9 @@ define([
 
 			// call parent constructor
 			this.parent(x, y, settings);
+
+			this.addAnimation("fixed", [0], 1);
+            this.setCurrentAnimation("fixed");
 
 			this.time = 0;
 
