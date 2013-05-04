@@ -31,8 +31,8 @@ define([
 			// call parent constructor
 			this.parent(x, y, settings);
 
-			this.addAnimation("fixed", [0], 1);
-            this.setCurrentAnimation("fixed");
+			this.setAnimationFrame(0);
+			this.animationpause = true;
 
 			this.time = 0;
 
@@ -95,10 +95,13 @@ define([
 			// call parent constructor
 			this.parent(this);
 
-			/*if (me.game.viewport.top == 0 || me.game.viewport.bottom == me.game.currentLevel.realheight)
-				this.setVelocity(0, 2);
-			else
-				this.setVelocity(0,6);*/
+			for ( var i = 0; i < 14; i++) {
+				if (this.health > 100 - 14 * (i + 1)) {
+					this.setAnimationFrame(i);
+					this.animationpause = true;
+					break;
+				}
+			}
 
 
 			// calculate velocity
