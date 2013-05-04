@@ -1,3 +1,5 @@
+/*  Boss Entity  */
+
 define([
 	'projectileentity',
 	'explosionanimation'
@@ -8,15 +10,15 @@ define([
 
 			//var settings = {};
 			if (settings.image === undefined) {
-				settings.image = "enemy";
+				settings.image = "boss";
 			}
 
 			if (settings.spritewidth === undefined) {
-				settings.spritewidth = 36;
+				settings.spritewidth = 640;
 			}
 
 			if (settings.spriteheight === undefined) {
-				settings.spriteheight = 36;
+				settings.spriteheight = 200;
 			}
 
 			if (settings.type === undefined) {
@@ -31,25 +33,55 @@ define([
 
 			this.time = 0;
 
-			this.health = 1;
-			this.damage = 1;
+			this.health = 100;
+			this.damage = 50;
 
 			this.points = 10;
+			this.turret = 0;
 
-			// add animation with all sprites
-			this.addAnimation("flying", null, 0.2);
-			this.setCurrentAnimation("flying");
 
 			// init variables
 			this.gravity = 0;
 
 			// set the default horizontal speed (accel vector)
-			this.setVelocity(0, 1);
+			this.setVelocity(0, 0);
 		},
 
 		fire: function() {
 			// create a missile entity
-			var missile = new ProjectileEntity(this.pos.x + 15, this.pos.y + this.height + 10, -3,"Enemy");
+			var xOffset;
+			var yOffset;
+			var type;
+
+			if(this.turret % 5 == 0){
+				xOffset = 160;
+				yOffset = 10;
+				type = "Enemy"
+			}
+			else if(this.turret % 5 == 1){
+				xOffset = 320;
+				yOffset = 10;
+				type = "Enemy"
+			}
+			else if(this.turret % 5 == 2){
+				xOffset = 480;
+				yOffset = 10;
+				type = "Enemy"
+			}
+			else if(this.turret % 5 == 3){
+				xOffset = 90;
+				yOffset = -100;
+				type = "Boss"
+			}
+			else if(this.turret % 5 == 4){
+				xOffset = 520;
+				yOffset = -100;
+				type = "Boss"
+			}
+
+			var missile = new ProjectileEntity(this.pos.x + xOffset, this.pos.y + this.height + yOffset, -3, type);
+			this.turret++;
+
 			me.game.add(missile, 10);
 			me.game.sort();
 		},
@@ -74,7 +106,7 @@ define([
 			if (this.pos.y > this.bottom)
 				me.game.remove(this);
 
-			if ( (this.time++) % 90 == 0) {
+			if ( (this.time++) % 45 == 0) {
 				this.fire();
 			}
 
@@ -93,6 +125,7 @@ define([
 
 			// remove this entity
 			me.game.remove(this, true);
+
 		},
 
 		removeHealth: function(damage) {
@@ -103,9 +136,11 @@ define([
             me.audio.play("implosion");
 
             // init implosion
+            /*
             var implosion = new ExplosionAnimation(this.pos.x, this.pos.y);
             me.game.add(implosion, 15);
             me.game.sort();
+            */
 
             if (this.health === 0) {
                 this.remove();

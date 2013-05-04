@@ -19,6 +19,7 @@ define([
 			};
 
 			this.time = 0;
+			this.damage = 2;
 
 			// call the parent constructor
 			this.parent(x, me.game.viewport.bottom - y, settings);
@@ -184,16 +185,20 @@ define([
 			var res = me.game.collide(this);
 
 			if (res) {
+				// play sound
+					me.audio.play("implosion");
+
 				// if collided object is an enemy
 				if (res.obj.type == me.game.ENEMY_OBJECT) {
-					// play sound
-					//me.audio.play("implosion");
+					
 
 					// update life indicator
 					this.removeHealth(res.obj.damage);
 
 					// remove enemy
-					res.obj.remove();
+					//res.obj.remove();
+					res.obj.removeHealth(this.damage);
+
 				} else if (res.obj.type == "asteroid" || res.obj.type == "mine") {
 
 					this.removeHealth(res.obj.damage);
@@ -208,9 +213,11 @@ define([
 		},
 
 		removeHealth: function (damage) {
+			/*
 			var smallExplosion = new SmallExplosionAnimation(this.pos.x, this.pos.y);
 			me.game.add(smallExplosion, 15);
 			me.game.sort();
+			*/
 
 			//alert(damage);
 
