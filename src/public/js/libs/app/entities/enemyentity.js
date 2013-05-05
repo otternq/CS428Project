@@ -102,10 +102,12 @@ define([
             // play sound
             me.audio.play("implosion");
 
+            /*
             // init implosion
             var implosion = new ExplosionAnimation(this.pos.x, this.pos.y);
             me.game.add(implosion, 15);
             me.game.sort();
+            */
 
             if (this.health === 0) {
                 this.remove();
