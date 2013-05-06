@@ -41,9 +41,13 @@
 				        touchEnabled: false,
 				        accelerometerEnabled: true,
 				        images:[
-				          '/images/button-up.png',
-				          '/images/button-up.png',
-				          '/images/button-down.png'
+				          '/images/background.png',
+				          '/images/Aup.png',
+				          '/images/Adown.png',
+				          '/images/Bup.png',
+				          '/images/Bdown.png',
+				          '/images/Cup.png',
+				          '/images/Cdown.png'
 				        ],
 				        layout:[
 					        {
@@ -54,35 +58,35 @@
 					          width:  480,
 					          height: 320
 					        }, 
-					        {
+					        {//a on controller
 					          type:       "button",
 					          handler:    "space",
 					          imageUp:    1,
 					          imageDown:  2,
 					          x:          0,
 					          y:          0,
-					          width:      160,
-					          height:     160
+					          width:      55,
+					          height:     55
 					        },
-					        {
+					        {//b on controller
 					          type:       "button",
 					          handler:    "b",
-					          imageUp:    1,
-					          imageDown:  2,
+					          imageUp:    3,
+					          imageDown:  4,
 					          x:          0,
 					          y:          160,
-					          width:      160,
-					          height:     160
+					          width:      55,
+					          height:     55
 					        },
-					        {
+					        {//c on controller
 					          type:       "button",
 					          handler:    "enter",
-					          imageUp:    1,
-					          imageDown:  2,
+					          imageUp:    5,
+					          imageDown:  6,
 					          x:          300,
 					          y:          160,
-					          width:      160,
-					          height:     160
+					          width:      55,
+					          height:     55
 					        }
 				        ]
 				      }
@@ -161,16 +165,16 @@
 							me.input.triggerKeyEvent(me.input.KEY.LEFT, false);
 						}
 
-						//move right
-						if (accel.acceleration.z < -0.4 ) {
+						//move up
+						if (accel.acceleration.z < -0.8 ) {
 							me.input.triggerKeyEvent(me.input.KEY.UP, true);
 						} else {
 							me.input.triggerKeyEvent(me.input.KEY.UP, false);
 						}
 
 
-						//move left
-						if (accel.acceleration.z > 0.4) {
+						//move down
+						if (accel.acceleration.z > -0.3) {
 							me.input.triggerKeyEvent(me.input.KEY.DOWN, true);
 						} else {
 							me.input.triggerKeyEvent(me.input.KEY.DOWN, false);
