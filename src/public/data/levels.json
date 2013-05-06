@@ -8,79 +8,205 @@
             "src": "data/map1.tmx"
         },
         "briefing": [
-            "On a routine mission your ship is ambushed",
-            "You must alert the fleet to the enemy threat",
+            "On your way to your new assignment with",
+            "the Commonwealth fleet, you are ambushed.",
             "Defeat all enemies"
         ],
         "debriefing": [
-            "You defeated the scouts, and gathered intel",
+            "You lived!",
             "Choose your mission:",
-            "SPACE: Destory scout fleet   B: Deliver intel",
+            "SPACE: Destory scout fleet   B: Examine Wreckage",
             [2,3]
         ],
         "next": [2,3]
     },
     {
         "id": 2,
-        "name": "Level 2",
+        "name": "Track the Enemy",
         "resource": {
             "name": "map2",
             "type": "tmx",
             "src": "data/map2.tmx"
         },
         "briefing": [
-            "We must cut off the enemy scouting party",
-            "They can't be allowed to divulge our whereabouts",
-            "Intercept and destroy them"
+            "After sending a message home you are",
+            "tasked with looking for missing research vessle",
+            "Rescue the research vessle"
         ],
         "debriefing": [
-            "We were successful in our mission",
-            "Aboard one of the ships was a prototype weapon",
-            "Your ship has been fitted with the new weapon",
+            "",
+            "",
+            "",
             [4]
         ],
         "next": [4]
     },
     {
         "id": 3,
-        "name": "Level 3",
+        "name": "The Wreckage",
         "resource": {
             "name": "map3",
             "type": "tmx",
             "src": "data/map3.tmx"
         },
         "briefing": [
-            "The enemy caught us be surprise",
-            "You must fly through the asteroid belt",
-            "To deliver the acquired battle data"
+            "Communications broke during battle.",
+            "Examine wreckage of your fleet",
+            "kill any enemies you encounter"
         ],
         "debriefing": [
-            "It was a close call,",
-            "but your flying got you through the asteroid belt",
-            "The data was successfully delivered",
+            "You found a cannon still working",
+            "fly to the local outpost to",
+            "have it attached",
             [4]
         ],
         "next": [4]
     },
     {
         "id": 4,
-        "name": "Level 4",
+        "name": "Save the research vessle",
         "resource": {
             "name": "map4",
             "type": "tmx",
             "src": "data/map4.tmx"
         },
         "briefing": [
-            "Hey There",
-            "You have reached level 4",
-            "enjoy"
+            "",
+            "",
+            ""
         ],
         "debriefing": [
-            "what a great level",
-            "thats all",
-            "Your ship has been fitted with the new weapon",
+            "",
+            "",
+            "",
             [5]
         ],
         "next": [5]
+    },
+    {
+        "id": 5,
+        "name": "Not really a shortcut",
+        "resource": {
+            "name": "map4",
+            "type": "tmx",
+            "src": "data/map4.tmx"
+        },
+        "briefing": [
+            "You decide to take a shortcut",
+            "to the outpost and report your",
+            "findings."
+        ],
+        "debriefing": [
+            "",
+            "",
+            "",
+            [5,4]
+        ],
+        "next": [5,4]
+    },
+    {
+        "id": 6,
+        "name": "Level 6",
+        "resource": {
+            "name": "map6",
+            "type": "tmx",
+            "src": "data/map4.tmx"
+        },
+        "briefing": [
+            "",
+            "",
+            ""
+        ],
+        "debriefing": [
+            "",
+            "",
+            "",
+            [7]
+        ],
+        "next": [7]
+    },
+    {
+        "id": 7,
+        "name": "Level 7",
+        "resource": {
+            "name": "map7",
+            "type": "tmx",
+            "src": "data/map7.tmx"
+        },
+        "briefing": [
+            "",
+            "",
+            ""
+        ],
+        "debriefing": [
+            "",
+            "",
+            "",
+            [8,9]
+        ],
+        "next": [8,9]
+    },
+    {
+        "id": 8,
+        "name": "Level 8",
+        "resource": {
+            "name": "map8",
+            "type": "tmx",
+            "src": "data/map8.tmx"
+        },
+        "briefing": [
+            "",
+            "",
+            ""
+        ],
+        "debriefing": [
+            "",
+            "",
+            "",
+            [10]
+        ],
+        "next": [10]
+    },
+    {
+        "id": 9,
+        "name": "Level 9",
+        "resource": {
+            "name": "map9",
+            "type": "tmx",
+            "src": "data/map9.tmx"
+        },
+        "briefing": [
+            "",
+            "",
+            ""
+        ],
+        "debriefing": [
+            "",
+            "",
+            "",
+            [10]
+        ],
+        "next": [10]
+    },
+    {
+        "id": 10,
+        "name": "Level 10",
+        "resource": {
+            "name": "map10",
+            "type": "tmx",
+            "src": "data/map10.tmx"
+        },
+        "briefing": [
+            "",
+            "",
+            ""
+        ],
+        "debriefing": [
+            "",
+            "",
+            "",
+            [11]
+        ],
+        "next": [11]
     }
 ]
