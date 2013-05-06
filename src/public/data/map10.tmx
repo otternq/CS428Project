@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="35" tilewidth="32" tileheight="32">
+ <properties>
+  <property name="test" value="goo foo"/>
+ </properties>
+ <tileset firstgid="1" name="enemy2" tilewidth="42" tileheight="42">
+  <image source="sprite/enemy2.png" width="168" height="42"/>
+ </tileset>
+ <imagelayer name="Background1" width="20" height="35">
+  <image source="sprite/bkg0.png"/>
+  <properties>
+   <property name="ratio" value=".35"/>
+  </properties>
+ </imagelayer>
+ <imagelayer name="Background2" width="20" height="35">
+  <image source="sprite/bkg1.png"/>
+  <properties>
+   <property name="ratio" value=".25"/>
+  </properties>
+ </imagelayer>
+ <objectgroup name="enemy layer" width="20" height="35"/>
+</map>
