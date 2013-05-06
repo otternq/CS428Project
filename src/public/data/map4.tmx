@@ -19,11 +19,30 @@
   </properties>
  </imagelayer>
  <objectgroup name="enemylayer" width="20" height="40">
-  <object name="EnemyEntity" x="434" y="395"/>
-  <object name="EnemyEntity" x="463" y="370"/>
-  <object name="EnemyEntity" x="131" y="326"/>
-  <object name="EnemyEntity" x="163" y="316"/>
-  <object name="AdvancedEnemyEntity" x="334" y="115"/>
-  <object name="EnemyEntity" x="415" y="292"/>
+  <object name="EnemyEntity" x="273" y="50"/>
+  <object name="EnemyEntity" x="242" y="82"/>
+  <object name="EnemyEntity" x="306" y="83"/>
+  <object name="AdvancedEnemyEntity" x="210" y="114"/>
+  <object name="AdvancedEnemyEntity" x="337" y="114"/>
+  <object name="EnemyEntity" x="132" y="995"/>
+  <object name="EnemyEntity" x="161" y="995"/>
+  <object name="EnemyEntity" x="194" y="996"/>
+  <object name="EnemyEntity" x="416" y="997"/>
+  <object name="EnemyEntity" x="450" y="997"/>
+  <object name="EnemyEntity" x="480" y="996"/>
+  <object name="AdvancedEnemyEntity" x="161" y="738"/>
+  <object name="AdvancedEnemyEntity" x="450" y="739"/>
+  <object name="AdvancedEnemyEntity" x="306" y="466"/>
+  <object name="AdvancedEnemyEntity" x="129" y="738"/>
+  <object name="AdvancedEnemyEntity" x="481" y="739"/>
+  <object name="AdvancedEnemyEntity" x="239" y="400"/>
+  <object name="AdvancedEnemyEntity" x="370" y="402"/>
+  <object name="EnemyEntity" x="272" y="432"/>
+  <object name="EnemyEntity" x="336" y="432"/>
+  <object name="EnemyEntity" x="208" y="401"/>
+  <object name="EnemyEntity" x="401" y="402"/>
+  <object name="EnemyEntity" x="305" y="849"/>
+  <object name="EnemyEntity" x="338" y="849"/>
+  <object name="EnemyEntity" x="277" y="849"/>
  </objectgroup>
 </map>
