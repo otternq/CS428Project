@@ -25,7 +25,7 @@ define(['explosionanimation'],
 			else if(from=="AdvancedEnemy"){
 				this.parent(x,y, {image: "enemyMissile"});
 				this.target = "Player";
-				this.lifespan == 800;
+				this.lifespan == 80;
 				this.damage = 2;
 			}
 			else {
