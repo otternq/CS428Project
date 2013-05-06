@@ -102,19 +102,14 @@ define([
 			var x = Math.random();
 			var xOffset = 0;
 
-			if(x < .3)
-				xOffset = 75;
-			else if (x >= .3 && x < .7)
-				xOffset = 135;
-			else
-				xOffset = 180;
+			xOffset = x*320;
 
 			x= Math.random();
 			
 			if(x > .65)
-				enemy = new EnemyEntity(xOffset + 300, this.pos.y + this.height + 10);
+				enemy = new EnemyEntity(xOffset, this.pos.y + this.height + 10);
 			else
-				enemy = new AdvancedEnemyEntity(xOffset+300, this.pos.y + this.height + 10);
+				enemy = new AdvancedEnemyEntity(xOffset, this.pos.y + this.height + 10);
 			
 			me.game.add(enemy, 10);
 			
