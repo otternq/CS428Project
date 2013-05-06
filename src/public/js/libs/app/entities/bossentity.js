@@ -2,8 +2,10 @@
 
 define([
 	'projectileentity',
-	'explosionanimation'
-],function(ProjectileEntity, ExplosionAnimation) {
+	'explosionanimation',
+	'enemyentity',
+	'advancedenemyentity'
+],function(ProjectileEntity, ExplosionAnimation, EnemyEntity, AdvancedEnemyEntity) {
 	return me.ObjectEntity.extend({
 		init: function(x, y, settings)
 		{
@@ -18,7 +20,7 @@ define([
 			}
 
 			if (settings.spriteheight === undefined) {
-				settings.spriteheight = 275;
+				settings.spriteheight = 277;
 			}
 
 			if (settings.type === undefined) {
@@ -26,15 +28,19 @@ define([
 			}
 
 
+			this.settingsCache = settings;
 			settings.collidable = true;
 
 			// call parent constructor
 			this.parent(x, y, settings);
 
+
 			this.setAnimationFrame(0);
 			this.animationpause = true;
 
 			this.time = 0;
+
+			this.shieldUp = false;
 
 			this.health = 100;
 			this.damage = 50;
@@ -87,6 +93,37 @@ define([
 
 			me.game.add(missile, 10);
 			me.game.sort();
+
+			
+		},
+
+		spawnEnemy: function(){
+			var enemy;
+			var x = Math.random();
+			var xOffset = 0;
+
+			xOffset = x*320;
+
+			x= Math.random();
+			
+			if(x > .65)
+				enemy = new EnemyEntity(xOffset, this.pos.y + this.height + 10);
+			else
+				enemy = new AdvancedEnemyEntity(xOffset, this.pos.y + this.height + 10);
+			
+			me.game.add(enemy, 10);
+			
+
+
+			x = Math.random();
+			
+			if(x > .65)
+				enemy = new EnemyEntity(xOffset + 300, this.pos.y + this.height + 10);
+			else
+				enemy = new AdvancedEnemyEntity(xOffset + 300, this.pos.y + this.height + 10);
+			
+			me.game.add(enemy, 10);
+			me.game.sort();
 		},
 
 		update: function()
@@ -115,6 +152,40 @@ define([
 			if ( (this.time++) % 45 == 0) {
 				this.fire();
 			}
+			if ( (this.time) % 225 == 0){
+				this.spawnEnemy();
+			}
+			if ( (this.time) % 150 == 0) {
+				
+				
+				if(this.shieldUp == true){
+					
+					console.log(this.left + " " + this.width + " " + this.top + " " + this.height);
+					console.log(this.collisionBox.left + " " + this.collisionBox.width + " " + this.collisionBox.top + " " + this.collisionBox.height);
+
+					this.image = me.loader.getImage("boss");
+					this.spriteheight = this.height = this.collisionBox.height = 277;
+					this.updateColRect(0,600,0,277);
+					this.offset.y = this.offset.y / 310 * 277;
+
+					console.log("offset: " + this.offset.y);
+					
+					this.shieldUp = false;
+				}
+				else{
+					console.log(this.left + " " + this.width + " " + this.top + " " + this.height);
+					console.log(this.collisionBox.left + " " + this.collisionBox.width + " " + this.collisionBox.top + " " + this.collisionBox.height);
+
+					this.image = me.loader.getImage("bossShield");
+					this.spriteheight = this.height = this.collisionBox.height= 310;
+					this.updateColRect(0,600,0,310);
+					this.offset.y = this.offset.y / 277 * 310;
+
+					console.log("offset: " + this.offset.y);
+
+					this.shieldUp = true;
+				}
+			}
 
 			// check & update missile movement
 			this.computeVelocity(this.vel);
@@ -136,7 +207,9 @@ define([
 
 		removeHealth: function(damage) {
 
-			this.health -= damage;
+			if(this.shieldUp == false){
+				this.health -= damage;
+			}
 
             // play sound
             me.audio.play("implosion");
