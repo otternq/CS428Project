@@ -79,17 +79,17 @@
             "",
             "",
             "",
-            [5]
+            [6]
         ],
-        "next": [5]
+        "next": [6]
     },
     {
         "id": 5,
         "name": "Not really a shortcut",
         "resource": {
-            "name": "map4",
+            "name": "map5",
             "type": "tmx",
-            "src": "data/map4.tmx"
+            "src": "data/map5.tmx"
         },
         "briefing": [
             "You decide to take a shortcut",
@@ -110,7 +110,7 @@
         "resource": {
             "name": "map6",
             "type": "tmx",
-            "src": "data/map4.tmx"
+            "src": "data/map6.tmx"
         },
         "briefing": [
             "",
