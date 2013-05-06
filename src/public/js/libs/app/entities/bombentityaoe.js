@@ -59,18 +59,7 @@ define([
 
 			if (res) {
 
-				if (res.obj.type == this.target) {
-
-					/*if (this.firstCollision === null) {
-						this.firstCollision = new Date();
-					}*/
-
-					res.obj.removeHealth();
-
-				} else if (res.obj.type == "asteroid") {
-					res.obj.remove();
-
-				}
+				res.obj.removeHealth(5);
 
 			}
 		},
@@ -88,7 +77,7 @@ define([
 			me.game.sort();
 
 			// remove this entity
-			//me.game.remove(this, true);
+			me.game.remove(this, true);
 		},
 	});
 });

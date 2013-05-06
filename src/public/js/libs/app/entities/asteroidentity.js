@@ -71,10 +71,10 @@ define([
                 this.pos.add(this.vel);
             }
         },
-        removeHealth: function() {
+        removeHealth: function(damage) {
 
 
-            this.health--;
+            this.health = this.health - damage;
 
             // play sound
             //me.audio.play("implosion");
@@ -87,7 +87,7 @@ define([
             if (this.health <= 0) {
                 me.game.remove(this, true);
             }
-           
+
 
         },
 

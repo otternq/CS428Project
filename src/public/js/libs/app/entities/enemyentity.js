@@ -110,7 +110,7 @@ define([
 			this.health -= damage;
 
             // play sound
-            me.audio.play("implosion");
+            //me.audio.play("implosion");
 
             /*
             // init implosion
@@ -119,7 +119,7 @@ define([
             me.game.sort();
             */
 
-            if (this.health === 0) {
+            if (this.health <= 0) {
                 this.remove();
             }
 		}
