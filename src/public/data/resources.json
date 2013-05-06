@@ -7,7 +7,10 @@
     {"name": "briefingbackground", "type":"image", "src": "data/sprite/briefingbackground.png"},
     {"name": "enemy", "type":"image", "src": "data/sprite/BasicEnemy.png"},
     {"name": "advancedenemy", "type":"image", "src": "data/sprite/HeavyFighter.png"},
-     {"name": "boss", "type":"image", "src": "data/sprite/Boss.png"},
+
+    {"name": "boss", "type":"image", "src": "data/sprite/boss.png"},
+    {"name": "bossShield", "type":"image", "src": "data/sprite/bossShield.png"},
+
     {"name": "asteroid", "type":"image", "src": "data/sprite/asteroid.png"},
     {"name": "mine", "type":"image", "src": "data/sprite/mine.png"},
     {"name": "missile", "type":"image", "src": "data/sprite/missile.png"},

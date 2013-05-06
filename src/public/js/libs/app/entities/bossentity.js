@@ -18,7 +18,7 @@ define([
 			}
 
 			if (settings.spriteheight === undefined) {
-				settings.spriteheight = 275;
+				settings.spriteheight = 277;
 			}
 
 			if (settings.type === undefined) {
@@ -26,15 +26,19 @@ define([
 			}
 
 
+			this.settingsCache = settings;
 			settings.collidable = true;
 
 			// call parent constructor
 			this.parent(x, y, settings);
 
+
 			this.setAnimationFrame(0);
 			this.animationpause = true;
 
 			this.time = 0;
+
+			this.shieldUp = false;
 
 			this.health = 100;
 			this.damage = 50;
@@ -115,6 +119,37 @@ define([
 			if ( (this.time++) % 45 == 0) {
 				this.fire();
 			}
+			if ( (this.time) % 150 == 0) {
+				
+				
+				if(this.shieldUp == true){
+					
+					console.log(this.left + " " + this.width + " " + this.top + " " + this.height);
+					console.log(this.collisionBox.left + " " + this.collisionBox.width + " " + this.collisionBox.top + " " + this.collisionBox.height);
+
+					this.image = me.loader.getImage("boss");
+					this.spriteheight = this.height = this.collisionBox.height = 277;
+					this.updateColRect(0,600,0,277);
+					this.offset.y = this.offset.y / 310 * 277;
+
+					console.log("offset: " + this.offset.y);
+					
+					this.shieldUp = false;
+				}
+				else{
+					console.log(this.left + " " + this.width + " " + this.top + " " + this.height);
+					console.log(this.collisionBox.left + " " + this.collisionBox.width + " " + this.collisionBox.top + " " + this.collisionBox.height);
+
+					this.image = me.loader.getImage("bossShield");
+					this.spriteheight = this.height = this.collisionBox.height= 310;
+					this.updateColRect(0,600,0,310);
+					this.offset.y = this.offset.y / 277 * 310;
+
+					console.log("offset: " + this.offset.y);
+
+					this.shieldUp = true;
+				}
+			}
 
 			// check & update missile movement
 			this.computeVelocity(this.vel);
@@ -136,7 +171,9 @@ define([
 
 		removeHealth: function(damage) {
 
-			this.health -= damage;
+			if(this.shieldUp == false){
+				this.health -= damage;
+			}
 
             // play sound
             me.audio.play("implosion");
