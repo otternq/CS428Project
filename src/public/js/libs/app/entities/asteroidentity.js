@@ -101,9 +101,9 @@ define([
             //me.audio.play("implosion");
 
             // init implosion
-            var implosion = new ExplosionAnimation(this.pos.x, this.pos.y);
-            me.game.add(explosion, 15);
-            me.game.sort();
+            //var implosion = new ExplosionAnimation(this.pos.x, this.pos.y);
+            //me.game.add(explosion, 15);
+            //me.game.sort();
 
         }
     });

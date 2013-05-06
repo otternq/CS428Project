@@ -45,7 +45,7 @@ define([
 			this.health = 100;
 			this.damage = 50;
 
-			this.points = 10;
+			this.points = 50;
 			this.turret = 0;
 
 
