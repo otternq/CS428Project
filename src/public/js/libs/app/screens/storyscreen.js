@@ -23,10 +23,9 @@ define([
 
            console.log("Story Screen");
 
-            
-            this.line1 = "Story Screen";
-            this.line2 = "line2";
-            this.line3 = "line3";
+
+            this.line = [];
+            this.line[0] = "Story Screen";
 
             this.backgroundImage = me.loader.getImage("briefingbackground");
 
@@ -69,14 +68,11 @@ define([
             
 
 
-            this.x1 = this.textFont.measureText(context,this.line1).width;
-            this.x2 = this.textFont.measureText(context,this.line2).width;
-            this.x3 = this.textFont.measureText(context,this.line3).width;
+            for (var i=0; i < this.line.length; i++) {
+                this.x1 = this.textFont.measureText(context,this.line[i]).width;
+                this.textFont.draw (context, this.line[i],     Math.round(me.game.viewport.width/2 - this.x1/2), 200 + (25 * i));
+            }
 
-
-            this.textFont.draw (context, this.line1,     Math.round(me.game.viewport.width/2 - this.x1/2), 200);
-            this.textFont.draw (context, this.line2,     Math.round(me.game.viewport.width/2 - this.x2/2), 250);
-            this.textFont.draw (context, this.line3,     Math.round(me.game.viewport.width/2 - this.x3/2), 300);
         },
 
 
