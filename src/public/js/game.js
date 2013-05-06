@@ -2,6 +2,8 @@ define([
 	'menuScreen',
 	'briefingScreen',
 	'debriefingScreen',
+	'howtoplayscreen',
+	'storyscreen',
 	'playerScreen',
 	'gameoverscreen',
 	'gamefailscreen',
@@ -12,7 +14,7 @@ define([
 	'bossentity',
 	'advancedenemyentity',
 	'text!/data/levels.json'
-], function(MenuScreen, BriefingScreen, DebriefingScreen, PlayScreen, GameOverScreen, GameFailScreen, BackgroundObject, AsteroidEntity, MineEntity, EnemyEntity,BossEntity, AdvancedEnemyEntity, LevelData) {
+], function(MenuScreen, BriefingScreen, DebriefingScreen, HowToPlayScreen, StoryScreen, PlayScreen, GameOverScreen, GameFailScreen, BackgroundObject, AsteroidEntity, MineEntity, EnemyEntity,BossEntity, AdvancedEnemyEntity, LevelData) {
 
 	var game = {
 		/* ---
@@ -95,19 +97,22 @@ define([
 			---										*/
 		loaded: function ()
 		{
-
+			/*
 			var BRIEFING = me.state.USER + 0;
 			var DEBRIEFING = me.state.USER +1;
+			var HOWTOPLAY = me.state.USER + 2;
+			var STORY = me.state.USER + 3;
+			*/
+
 			// Initialize game states
 			me.state.set(100, new BriefingScreen());
 			me.state.set(101, new DebriefingScreen());
 			me.state.set(me.state.MENU, new MenuScreen());			// set the "Menu" Screen Object
 			me.state.set(me.state.PLAY, new PlayScreen());			// set the "Play" Screen Object
-			me.state.set(102, new GameFailScreen());  // set the "Game over" Screen Object
+			me.state.set(102, new GameFailScreen());  				// set the "Game over" Screen Object
 			me.state.set(me.state.GAMEOVER, new GameOverScreen());  // set the "Game over" Screen Object
-
-			console.log("Briefing: " + me.state.BRIEFING);
-			console.log("Debriefing: " + me.state.DEBRIEFING);
+			me.state.set(104, new HowToPlayScreen());
+			me.state.set(103, new StoryScreen());
 
 			//true is basically saying there will be more than one
 			me.entityPool.add("AsteroidEntity", AsteroidEntity, true);

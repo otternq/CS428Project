@@ -16,6 +16,8 @@ require.config({
     titleScreen: 'libs/app/screens/titlescreen',
     briefingScreen: 'libs/app/screens/briefingscreen',
     debriefingScreen: 'libs/app/screens/debriefingscreen',
+    howtoplayscreen: 'libs/app/screens/howtoplayscreen',
+    storyscreen: 'libs/app/screens/storyscreen',
 
     //entities
     enemyentity: 'libs/app/entities/enemyentity',
