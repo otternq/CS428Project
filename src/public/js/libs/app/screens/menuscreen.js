@@ -44,7 +44,7 @@ define([
 		},
 
 		update: function() {
-
+			/*
 			//console.log("mapIndex: " + me.gamestat.getItemValue("mapIndex"));
 			var mapIndex = String(me.gamestat.getItemValue("mapIndex"));
 
@@ -64,6 +64,21 @@ define([
 					false
 				);
 			}
+			*/
+
+			if(me.input.isKeyPressed('enter')) {
+				console.log("enter pressed in menu screen");
+				me.state.change(103);
+			} else if (me.input.isKeyPressed('l')) {
+				me.leaderboard.show();
+			} else if (me.input.isKeyPressed('s')) {
+				Clay.Player.login(
+					function( response ) {},
+					false
+				);
+			}
+
+
 		},
 
 		/*
