@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="20" height="40" tilewidth="32" tileheight="32">
+<map version="1.0" orientation="orthogonal" width="20" height="80" tilewidth="32" tileheight="32">
  <properties>
   <property name="test" value="goo foo"/>
  </properties>
  <tileset firstgid="1" name="enemy2" tilewidth="42" tileheight="42">
   <image source="sprite/enemy2.png" width="168" height="42"/>
  </tileset>
- <imagelayer name="Background1" width="20" height="40">
+ <imagelayer name="Background1" width="20" height="80">
   <image source="sprite/bkg2.png"/>
   <properties>
    <property name="ratio" value=".35"/>
   </properties>
  </imagelayer>
- <imagelayer name="Background2" width="20" height="40">
+ <imagelayer name="Background2" width="20" height="80">
   <image source="sprite/bkg1.png"/>
   <properties>
    <property name="ratio" value=".25"/>
   </properties>
  </imagelayer>
- <objectgroup name="enemylayer" width="20" height="40">
+ <objectgroup name="enemylayer" width="20" height="80">
   <object name="EnemyEntity" x="434" y="395"/>
   <object name="EnemyEntity" x="463" y="370"/>
   <object name="EnemyEntity" x="131" y="326"/>

@@ -30,6 +30,9 @@ define([
 			this.parent(x, y, settings);
 
 			this.time = 0;
+			this.lifespan = 0;
+
+			this.startCounter = false;
 
 			this.health = 1;
 			this.damage = 1;
@@ -69,12 +72,19 @@ define([
 			// calculate velocity
 			this.vel.y += this.accel.y * me.timer.tick;
 
-			// if the enemy object goes out from the screen,
-			// remove it from the game manager
-			if (this.pos.y > this.bottom)
+			if(this.inViewport === true)
+				this.startCounter = true;
+
+			this.time++;
+
+			if(this.startCounter === true)
+				this.lifespan++;
+
+			
+			if(this.lifespan == 400 )
 				me.game.remove(this);
 
-			if ( (this.time++) % 90 == 0) {
+			if ( (this.time) % 90 == 0) {
 				this.fire();
 			}
 
