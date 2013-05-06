@@ -34,7 +34,8 @@ define([
 			// call parent constructor
 			this.parent(x, y, settings);
 
-
+			this.addAnimation("fight", [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14], 1);
+			this.addAnimation("explode", [15,16,17,18,19,20], 1);
 			this.setAnimationFrame(0);
 			this.animationpause = true;
 
@@ -201,8 +202,10 @@ define([
 			var curScore = me.gamestat.getItemValue("score");
 			me.gamestat.setValue("score", curScore+this.points);
 
-			// remove this entity
-			me.game.remove(this, true);
+			this.setCurrentAnimation("explode", function() {
+				// remove this entity
+				me.game.remove(this, true);
+			});
 
 		},
 
