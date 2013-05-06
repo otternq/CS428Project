@@ -19,11 +19,19 @@
   </properties>
  </imagelayer>
  <objectgroup name="enemy layer" width="20" height="35">
-  <object name="EnemyEntity" x="267" y="436"/>
-  <object name="EnemyEntity" x="186" y="357"/>
-  <object name="EnemyEntity" x="224" y="398"/>
-  <object name="EnemyEntity" x="343" y="363"/>
-  <object name="EnemyEntity" x="310" y="402"/>
-  <object name="BossEntity" x="-113" y="90"/>
+  <object name="EnemyEntity" x="336" y="490"/>
+  <object name="EnemyEntity" x="370" y="512"/>
+  <object name="EnemyEntity" x="401" y="541"/>
+  <object name="EnemyEntity" x="441" y="567"/>
+  <object name="EnemyEntity" x="474" y="549"/>
+  <object name="EnemyEntity" x="507" y="515"/>
+  <object name="EnemyEntity" x="544" y="484"/>
+  <object name="EnemyEntity" x="240" y="119"/>
+  <object name="EnemyEntity" x="97" y="176"/>
+  <object name="EnemyEntity" x="137" y="202"/>
+  <object name="EnemyEntity" x="170" y="184"/>
+  <object name="EnemyEntity" x="203" y="150"/>
+  <object name="EnemyEntity" x="66" y="147"/>
+  <object name="EnemyEntity" x="32" y="125"/>
  </objectgroup>
 </map>
