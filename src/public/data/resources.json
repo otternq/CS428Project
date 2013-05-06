@@ -2,6 +2,12 @@
     {"name": "bkg0", "type": "image", "src": "data/sprite/bkg0.png"},
     {"name": "bkg1", "type": "image", "src": "data/sprite/bkg1.png"},
     {"name": "bkg2", "type": "image", "src": "data/sprite/bkg2.png"},
+
+    {"name": "bkg3", "type": "image", "src": "data/sprite/bkg3.png"},
+    {"name": "bkg3", "type": "image", "src": "data/sprite/bkg4.png"},
+    {"name": "bkg3", "type": "image", "src": "data/sprite/bkg5.png"},
+    {"name": "bkg3", "type": "image", "src": "data/sprite/bkg6.png"},
+
     {"name": "ship", "type":"image", "src": "data/sprite/Player.png"},
     {"name": "ShipSpriteSheet2", "type":"image", "src": "data/sprite/ShipSpriteSheet2.png"},
     {"name": "briefingbackground", "type":"image", "src": "data/sprite/briefingbackground.png"},
