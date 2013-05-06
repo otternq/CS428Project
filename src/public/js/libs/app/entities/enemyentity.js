@@ -5,8 +5,8 @@ define([
 	return me.ObjectEntity.extend({
 		init: function(x, y, settings)
 		{
-
-			//var settings = {};
+			if(settings == null)
+				settings = {};
 			if (settings.image === undefined) {
 				settings.image = "enemy";
 			}

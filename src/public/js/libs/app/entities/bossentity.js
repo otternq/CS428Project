@@ -2,8 +2,10 @@
 
 define([
 	'projectileentity',
-	'explosionanimation'
-],function(ProjectileEntity, ExplosionAnimation) {
+	'explosionanimation',
+	'enemyentity',
+	'advancedenemyentity'
+],function(ProjectileEntity, ExplosionAnimation, EnemyEntity, AdvancedEnemyEntity) {
 	return me.ObjectEntity.extend({
 		init: function(x, y, settings)
 		{
@@ -91,6 +93,42 @@ define([
 
 			me.game.add(missile, 10);
 			me.game.sort();
+
+			
+		},
+
+		spawnEnemy: function(){
+			var enemy;
+			var x = Math.random();
+			var xOffset = 0;
+
+			if(x < .3)
+				xOffset = 75;
+			else if (x >= .3 && x < .7)
+				xOffset = 135;
+			else
+				xOffset = 180;
+
+			x= Math.random();
+			
+			if(x > .65)
+				enemy = new EnemyEntity(xOffset + 300, this.pos.y + this.height + 10);
+			else
+				enemy = new AdvancedEnemyEntity(xOffset+300, this.pos.y + this.height + 10);
+			
+			me.game.add(enemy, 10);
+			
+
+
+			x = Math.random();
+			
+			if(x > .65)
+				enemy = new EnemyEntity(xOffset + 300, this.pos.y + this.height + 10);
+			else
+				enemy = new AdvancedEnemyEntity(xOffset + 300, this.pos.y + this.height + 10);
+			
+			me.game.add(enemy, 10);
+			me.game.sort();
 		},
 
 		update: function()
@@ -118,6 +156,9 @@ define([
 
 			if ( (this.time++) % 45 == 0) {
 				this.fire();
+			}
+			if ( (this.time) % 225 == 0){
+				this.spawnEnemy();
 			}
 			if ( (this.time) % 150 == 0) {
 				
