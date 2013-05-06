@@ -111,9 +111,9 @@ define([
 			else
 				enemy = new AdvancedEnemyEntity(xOffset, this.pos.y + this.height + 10);
 			
-			me.game.add(enemy, 10);
+			me.game.add(enemy, 11);
 			
-
+			
 
 			x = Math.random();
 			
@@ -122,7 +122,8 @@ define([
 			else
 				enemy = new AdvancedEnemyEntity(xOffset + 300, this.pos.y + this.height + 10);
 			
-			me.game.add(enemy, 10);
+			me.game.add(enemy, 12);
+			
 			me.game.sort();
 		},
 
