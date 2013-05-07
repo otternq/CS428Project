@@ -149,6 +149,9 @@ define([
             me.audio.play("implosion");
 
            if (this.health <= 0) {
+           		var exp = new BossExplosionAnimation(this.pos.x, this.pos.y, 1);
+				me.game.add(exp, 15);
+				me.game.sort();
                 this.remove();
             }
 		}
