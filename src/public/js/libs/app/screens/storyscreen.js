@@ -25,11 +25,20 @@ define([
 
 
             this.line = [];
-            this.line[0] = "Story Screen";
+            this.line[0] = "";
+
+            this.line[1] ="It's currently the year 2842";
+            this.line[2] ="Mankind has expanded into the vastness of space";
+            this.line[3] ="The alien races we've encountered have been peaceful";
+            this.line[4] ="Until Now";
+            this.line[5] ="This new threat, referred to as the \"Dark Ones\",";
+            this.line[6] ="Calls themselves the Nakaan.";
+            this.line[7] ="They are driven to expand their race";
+            this.line[8] ="Destroying and consuming anything in their way";
 
             this.backgroundImage = me.loader.getImage("briefingbackground");
 
-            this.textFont = new me.Font("Verdana", 22, "white","left");
+            this.textFont = new me.Font("Verdana", 20, "white","left");
 
 
 
