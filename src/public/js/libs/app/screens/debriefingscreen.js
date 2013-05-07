@@ -41,8 +41,8 @@ define([
 
             if(this.missionChoices.length > 1){//!= null){
                 console.log(this.missionChoices);
-                this.option1 = new Button("missiona", me.state.USER +1, 350);
-                this.option2 = new Button("missionb", me.state.USER +1, 400);
+                //this.option1 = new Button("missiona", me.state.USER +1, 350);
+                //this.option2 = new Button("missionb", me.state.USER +1, 400);
             }
             else{
                 console.log("no mission choices");

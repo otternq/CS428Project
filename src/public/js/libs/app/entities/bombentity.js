@@ -22,6 +22,8 @@ define([
 				this.target = me.game.ENEMY_OBJECT;
 			}
 
+			this.damage = 3;
+
 			this.setVelocity(0, vel);  // set the default vertical speed (accel vector)
 		},
 
@@ -61,21 +63,14 @@ define([
 				res.obj.removeHealth();
 				this.remove();
 			}*/
-			
-			
+
+
 			var res = this.collideType(this.target);
 			if (res) {
 
-				if (res.obj.type == this.target) {
-					console.log("collided with target");
-					res.obj.removeHealth();
-					this.remove();
-				} else if (res.obj.type == "asteroid") {
-
-					console.log("collided with asteroid");
-					res.obj.remove();
-					this.remove();
-				}
+				console.log("collided with target");
+				res.obj.removeHealth(this.damage);
+				this.remove();
 
 			}
 		},
@@ -83,11 +78,13 @@ define([
 		remove: function(){
 			console.log("bomb being removed");
 
+			me.game.remove(this, true);
+
 			var bombAOE = new BombEntityAOE(this.pos.x -50, this.pos.y - 128 + 16, "Player");
 			me.game.add(bombAOE, this.z);
 			me.game.sort();
 
-			me.game.remove(this);
+			
 		}
 	});
 });

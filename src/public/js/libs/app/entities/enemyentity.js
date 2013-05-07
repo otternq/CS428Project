@@ -5,18 +5,18 @@ define([
 	return me.ObjectEntity.extend({
 		init: function(x, y, settings)
 		{
-
-			//var settings = {};
+			if(settings == null)
+				settings = {};
 			if (settings.image === undefined) {
 				settings.image = "enemy";
 			}
 
 			if (settings.spritewidth === undefined) {
-				settings.spritewidth = 42;
+				settings.spritewidth = 36;
 			}
 
 			if (settings.spriteheight === undefined) {
-				settings.spriteheight = 42;
+				settings.spriteheight = 36;
 			}
 
 			if (settings.type === undefined) {
@@ -30,9 +30,12 @@ define([
 			this.parent(x, y, settings);
 
 			this.time = 0;
+			this.lifespan = 0;
+
+			this.startCounter = false;
 
 			this.health = 1;
-			this.damage = 4;
+			this.damage = 1;
 
 			this.points = 10;
 
@@ -69,14 +72,23 @@ define([
 			// calculate velocity
 			this.vel.y += this.accel.y * me.timer.tick;
 
-			// if the enemy object goes out from the screen,
-			// remove it from the game manager
-			if (this.pos.y > this.bottom)
+			if(this.inViewport === true){
+				this.startCounter = true;
+				if ( (this.time) % 90 == 0) {
+					this.fire();
+				}
+			}
+
+			this.time++;
+
+			if(this.startCounter === true)
+				this.lifespan++;
+
+			
+			if(this.lifespan == 400 )
 				me.game.remove(this);
 
-			if ( (this.time++) % 90 == 0) {
-				this.fire();
-			}
+			
 
 			// check & update missile movement
 			this.computeVelocity(this.vel);
@@ -87,29 +99,29 @@ define([
 
 		remove: function()
 		{
-			// remove this entity
-			me.game.remove(this, true);
-
 			me.game.HUD.updateItemValue("score", this.points);
 			var curScore = me.gamestat.getItemValue("score");
 			me.gamestat.setValue("score", curScore+this.points);
 
-
+			// remove this entity
+			me.game.remove(this, true);
 		},
 
-		removeHealth: function() {
+		removeHealth: function(damage) {
 
-			this.health -= 1;
+			this.health -= damage;
 
             // play sound
             //me.audio.play("implosion");
 
+            /*
             // init implosion
             var implosion = new ExplosionAnimation(this.pos.x, this.pos.y);
             me.game.add(implosion, 15);
             me.game.sort();
+            */
 
-            if (this.health === 0) {
+            if (this.health <= 0) {
                 this.remove();
             }
 		}

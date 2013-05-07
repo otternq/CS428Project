@@ -8,79 +8,205 @@
             "src": "data/map1.tmx"
         },
         "briefing": [
-            "On a routine mission your ship is ambushed",
-            "You must alert the fleet to the enemy threat",
+            "On a routine fleet patrol",
+            "Your squadron is attacked by 'The Dark Ones'",
             "Defeat all enemies"
         ],
         "debriefing": [
-            "You defeated the scouts, and gathered intel",
-            "Choose your mission:",
-            "SPACE: Destory scout fleet   B: Deliver intel",
+            "You survived the ambush",
+            "Now you must choose your next mission:",
+            "SPACE: Investigate Distress Call  B: Examine Wreckage",
             [2,3]
         ],
         "next": [2,3]
     },
     {
         "id": 2,
-        "name": "Level 2",
+        "name": "Track the Enemy",
         "resource": {
             "name": "map2",
             "type": "tmx",
             "src": "data/map2.tmx"
         },
         "briefing": [
-            "We must cut off the enemy scouting party",
-            "They can't be allowed to divulge our whereabouts",
-            "Intercept and destroy them"
+            "After reporting the attack",
+            "You are orderd to investigate a distress signal",
+            "Received from a nearby research vessel."
         ],
         "debriefing": [
-            "We were successful in our mission",
-            "Aboard one of the ships was a prototype weapon",
-            "Your ship has been fitted with the new weapon",
+            "You reach the research vessel's sector",
+            "And find an attacking enemy squad",
+            "",
             [4]
         ],
         "next": [4]
     },
     {
         "id": 3,
-        "name": "Level 3",
+        "name": "The Wreckage",
         "resource": {
             "name": "map3",
             "type": "tmx",
             "src": "data/map3.tmx"
         },
         "briefing": [
-            "The enemy caught us be surprise",
-            "You must fly through the asteroid belt",
-            "To deliver the acquired battle data"
+            "Communications broke during battle.",
+            "Examine wreckage of your fleet",
+            "kill any enemies you encounter"
         ],
         "debriefing": [
-            "It was a close call,",
-            "but your flying got you through the asteroid belt",
-            "The data was successfully delivered",
-            [4]
+            "You found cache of Commonwealth warheads",
+            "Fly to the nearby outpost to",
+            "Have your ship fitted with the new weapons",
+            [5]
         ],
         "next": [4]
     },
     {
         "id": 4,
-        "name": "Level 4",
+        "name": "Save the research vessle",
         "resource": {
             "name": "map4",
             "type": "tmx",
             "src": "data/map4.tmx"
         },
         "briefing": [
-            "Hey There",
-            "You have reached level 4",
-            "enjoy"
+            "The research vessel contains valuable information",
+            "It must not fall to the enemy",
+            "Protect it at all costs"
         ],
         "debriefing": [
-            "what a great level",
-            "thats all",
-            "Your ship has been fitted with the new weapon",
-            [5]
+            "You were able to fight off the enemy",
+            "For your assistance, you ship was fitted",
+            "With a more powerful laser system",
+            [6]
         ],
-        "next": [5]
+        "next": [6]
+    },
+    {
+        "id": 5,
+        "name": "Not really a shortcut",
+        "resource": {
+            "name": "map5",
+            "type": "tmx",
+            "src": "data/map5.tmx"
+        },
+        "briefing": [
+            "Fight your way to the outpost",
+            "With the losses suffered the this sector's fleet",
+            "Your ship must be equipped with the new weapons"
+        ],
+        "debriefing": [
+            "Your ship was equipeed with powerful bombs",
+            "Choose your next mission",
+            "SPACE: Attack fleet  B: Protect the research outpost",
+            [6,4]
+        ],
+        "next": [6,4]
+    },
+    {
+        "id": 6,
+        "name": "Level 6",
+        "resource": {
+            "name": "map6",
+            "type": "tmx",
+            "src": "data/map6.tmx"
+        },
+        "briefing": [
+            "The local forces are ready ",
+            "For a counter attack",
+            "Destroy the enemy destroyer fleet"
+        ],
+        "debriefing": [
+            "With the destruction of the fleet",
+            "The local forces have time to regroup",
+            "And to plan their next move",
+            [7]
+        ],
+        "next": [7]
+    },
+    {
+        "id": 7,
+        "name": "Level 7",
+        "resource": {
+            "name": "map7",
+            "type": "tmx",
+            "src": "data/map7.tmx"
+        },
+        "briefing": [
+            "You must fight your way to",
+            "The Commonwealth Space Force",
+            "Staging outpost for the final battle"
+        ],
+        "debriefing": [
+            "It's time for the final offensive",
+            "Choose your battle plan",
+            "SPACE: Attack head on   B: Attack from the flank",
+            [8,9]
+        ],
+        "next": [8,9]
+    },
+    {
+        "id": 8,
+        "name": "Level 8",
+        "resource": {
+            "name": "map8",
+            "type": "tmx",
+            "src": "data/map8.tmx"
+        },
+        "briefing": [
+            "The space around the enemy stronghold",
+            "Is very heavily defended",
+            "Cut a path through the enemy defences"
+        ],
+        "debriefing": [
+            "You cleared a path for the fleet",
+            "Commonwealth forces are now in place",
+            "For the final offensive",
+            [10]
+        ],
+        "next": [10]
+    },
+    {
+        "id": 9,
+        "name": "Level 9",
+        "resource": {
+            "name": "map9",
+            "type": "tmx",
+            "src": "data/map9.tmx"
+        },
+        "briefing": [
+            "Approach the enemy from the flank",
+            "Fly hrough the asteroid belt",
+            "and rendevous with the fleet"
+        ],
+        "debriefing": [
+            "Your flight through the asteroid belt",
+            "caught the enemy off gaurd",
+            "Deliver the final strike",
+            [10]
+        ],
+        "next": [10]
+    },
+    {
+        "id": 10,
+        "name": "Level 10",
+        "resource": {
+            "name": "map10",
+            "type": "tmx",
+            "src": "data/map10.tmx"
+        },
+        "briefing": [
+            "It's time for the final battle",
+            "Fly your way to the enemy mothership",
+            "And end this war!"
+        ],
+        "debriefing": [
+            "You successfully destroyed the",
+            "Nakaan fleet. The Commonwealth",
+            "is safe once again thanks to you",
+            [11]
+        ],
+        "next": [11]
     }
 ]

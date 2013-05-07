@@ -4,21 +4,6 @@
 		<title>CS428</title>
 
 		<link rel="icon" type="image/png" href="/favicon.png" />
-
-		<script type="text/javascript">
-			Clay = {};
-			Clay.gameKey = "cs438";
-			Clay.readyFunctions = [];
-			Clay.options = { debug: true };
-			Clay.ready = function( fn ) {
-			    Clay.readyFunctions.push( fn );
-			};
-			( function() {
-			    var clay = document.createElement("script");
-			    clay.src = ( "https:" == document.location.protocol ? "https://" : "http://" ) + "clay.io/api/api.js"; 
-			    var tag = document.getElementsByTagName("script")[0]; tag.parentNode.insertBefore(clay, tag);
-			} )();
-		</script>
 	</head>
 	<body style="background-color:black; background-image: url(data/sprite/bkg1.png);">
 		<div id="container" style="width:100%; height:100%;">
@@ -31,6 +16,20 @@
 				</font>
 
 				<script type="text/javascript" src="js/melonJS-0.9.6-min.js"></script>
+				<script type="text/javascript">
+			Clay = {};
+			Clay.gameKey = "cs438";
+			Clay.readyFunctions = [];
+			Clay.options = { debug: false };
+			Clay.ready = function( fn ) {
+			    Clay.readyFunctions.push( fn );
+			};
+			( function() {
+			    var clay = document.createElement("script");
+			    clay.src = ( "https:" == document.location.protocol ? "https://" : "http://" ) + "clay.io/api/api.js"; 
+			    var tag = document.getElementsByTagName("script")[0]; tag.parentNode.insertBefore(clay, tag);
+			} )();
+		</script>
 				<script type="text/javascript" src="/js/brassmonkey.js"></script>
 
 				<script>
@@ -42,9 +41,13 @@
 				        touchEnabled: false,
 				        accelerometerEnabled: true,
 				        images:[
-				          '/images/controllerHUDsmaller.png',
-				          '/images/button-up.png',
-				          '/images/button-down.png'
+				          '/images/background.png',
+				          '/images/Aup.png',
+				          '/images/Adown.png',
+				          '/images/Bup.png',
+				          '/images/Bdown.png',
+				          '/images/Cup.png',
+				          '/images/Cdown.png'
 				        ],
 				        layout:[
 					        {
@@ -55,35 +58,35 @@
 					          width:  480,
 					          height: 320
 					        }, 
-					        {
+					        {//c on controller
+					          type:       "button",
+					          handler:    "enter",
+					          imageUp:    5,
+					          imageDown:  6,
+					          x:          50,
+					          y:          50,
+					          width:      55,
+					          height:     55
+					        },
+					        {//b on controller
+					          type:       "button",
+					          handler:    "b",
+					          imageUp:    3,
+					          imageDown:  4,
+					          x:          50,
+					          y:          200,
+					          width:      55,
+					          height:     55
+					        },
+					        {//c on controller
 					          type:       "button",
 					          handler:    "space",
 					          imageUp:    1,
 					          imageDown:  2,
-					          x:          0,
-					          y:          0,
-					          width:      160,
-					          height:     160
-					        },
-					        {
-					          type:       "button",
-					          handler:    "b",
-					          imageUp:    1,
-					          imageDown:  2,
-					          x:          0,
-					          y:          160,
-					          width:      160,
-					          height:     160
-					        },
-					        {
-					          type:       "button",
-					          handler:    "enter",
-					          imageUp:    1,
-					          imageDown:  2,
-					          x:          300,
-					          y:          160,
-					          width:      160,
-					          height:     160
+					          x:          350,
+					          y:          200,
+					          width:      55,
+					          height:     55
 					        }
 				        ]
 				      }
@@ -162,16 +165,16 @@
 							me.input.triggerKeyEvent(me.input.KEY.LEFT, false);
 						}
 
-						//move right
-						if (accel.acceleration.z < -0.4 ) {
+						//move up
+						if (accel.acceleration.z < -0.8 ) {
 							me.input.triggerKeyEvent(me.input.KEY.UP, true);
 						} else {
 							me.input.triggerKeyEvent(me.input.KEY.UP, false);
 						}
 
 
-						//move left
-						if (accel.acceleration.z > 0.4) {
+						//move down
+						if (accel.acceleration.z > -0.3) {
 							me.input.triggerKeyEvent(me.input.KEY.DOWN, true);
 						} else {
 							me.input.triggerKeyEvent(me.input.KEY.DOWN, false);

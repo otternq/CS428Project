@@ -1,8 +1,10 @@
-define(function() {
+define(['explosionanimation'],
+	function(ExplosionAnimation) {
 	return me.ObjectEntity.extend({
 		init: function(x, y,vel,from)
 		{
 			this.time = 0;
+			this.lifespan = 0;
 			this.type = 3;
 
 			this.collidable = true;
@@ -11,12 +13,29 @@ define(function() {
 			if(from == "Player") {
 				this.parent(x, y, {image: "missile"});
 				this.target = me.game.ENEMY_OBJECT;
-			} else {
+				this.lifespan == 80;
+				this.damage = 1;
+			} 
+			else if(from=="Boss"){
+				this.parent(x,y, {image: "bigBossMissile"});
+				this.target = "Player";
+				this.lifespan == 100;
+				this.damage = 5;
+			}
+			else if(from=="AdvancedEnemy"){
 				this.parent(x,y, {image: "enemyMissile"});
 				this.target = "Player";
+				this.lifespan == 40;
+				this.damage = 2;
+			}
+			else {
+				this.parent(x,y, {image: "enemyMissile"});
+				this.target = "Player";
+				this.lifespan == 30;
+				this.damage = 1;
 			}
 
-			this.damage = 1;
+			
 
 			this.setVelocity(0, vel);  // set the default vertical speed (accel vector)
 		},
@@ -25,8 +44,8 @@ define(function() {
 		{
 		//determines how long the projectile stays active in the screen
 			this.time++;
-			if(this.time == 60)
-				me.game.remove(this);
+			if(this.time == this.lifespan)
+				me.game.remove(this, true);
 
 		//check for positive or negative velocity and adjust the position accordingly
 			if(this.accel.y < 0){  //enemy projectiles have negative velocity
@@ -57,6 +76,11 @@ define(function() {
 		checkCollision: function() {
 			var res = this.collideType(this.target);
 			if (res) {
+				
+				var implosion = new ExplosionAnimation(this.pos.x, this.pos.y);
+            	me.game.add(implosion, 15);
+            	me.game.sort();
+
 				res.obj.removeHealth(this.damage);
 				me.game.remove(this);
 			}

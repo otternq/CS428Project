@@ -13,15 +13,22 @@ define([
 
 			var settings = {
 				image: "ship",
-				spritewidth: 32,
-				spriteheight: 32,
+				spritewidth: 36,
+				spriteheight: 36,
 				type:"Player"
 			};
 
 			this.time = 0;
+			this.damage = 2;
 
 			// call the parent constructor
 			this.parent(x, me.game.viewport.bottom - y, settings);
+
+
+			// add animation with all sprites
+			this.addAnimation("flying", [2], 0.2);
+
+			this.setCurrentAnimation("flying");
 
 
 			this.constVelocity = constVel;
@@ -86,7 +93,7 @@ define([
 		update: function()
 		{
 
-			
+			//this.parent(this);
 
 			// move left
 			if (me.input.isKeyPressed("left")) {
@@ -122,13 +129,13 @@ define([
 			}
 
 			//check right
-			if (this.pos.x > me.video.getWidth() - this.image.width) {
-				this.pos.x = me.video.getWidth() - this.image.width;
+			if (this.pos.x > me.video.getWidth() - this.width) {
+				this.pos.x = me.video.getWidth() - this.width;
 			}
 
 			//check down
-			if (this.pos.y > me.game.viewport.bottom - this.image.height) {
-				this.pos.y = me.game.viewport.bottom - this.image.height;
+			if (this.pos.y > me.game.viewport.bottom - this.height) {
+				this.pos.y = me.game.viewport.bottom - this.height;
 			}
 
 			//check up
@@ -141,6 +148,21 @@ define([
 
 				var mapIndex = String(me.gamestat.getItemValue("mapIndex"));
 				console.log("Current mapIndex: " + mapIndex);
+
+				if (me.game.HUD.getItemValue("life") == 100) {
+					var achievement = new Clay.Achievement( { id: 1362 } );
+		            achievement.award( function( response ) {
+		                // Optional callback on completion
+		                console.log( response );
+		            } );
+				} else if (me.game.HUD.getItemValue("life") == 10) {
+					var achievement = new Clay.Achievement( { id: 1363 } );
+		            achievement.award( function( response ) {
+		                // Optional callback on completion
+		                console.log( response );
+		            } );
+				}
+
 				me.state.change(
 					101,
 					me.gamestat.getItemValue("debriefing"+mapIndex)[0],
@@ -170,7 +192,7 @@ define([
 
 			// update animation if necessary
 			var updated = (this.vel.x !== 0 || this.vel.y !== 0);
-			return updated;
+			return true;
 		},
 
 		checkCollision: function()
@@ -178,16 +200,20 @@ define([
 			var res = me.game.collide(this);
 
 			if (res) {
+				// play sound
+					me.audio.play("implosion");
+
 				// if collided object is an enemy
 				if (res.obj.type == me.game.ENEMY_OBJECT) {
-					// play sound
-					//me.audio.play("implosion");
+					
 
 					// update life indicator
 					this.removeHealth(res.obj.damage);
 
 					// remove enemy
-					res.obj.remove();
+					//res.obj.remove();
+					res.obj.removeHealth(this.damage);
+
 				} else if (res.obj.type == "asteroid" || res.obj.type == "mine") {
 
 					this.removeHealth(res.obj.damage);
@@ -202,13 +228,17 @@ define([
 		},
 
 		removeHealth: function (damage) {
+			/*
 			var smallExplosion = new SmallExplosionAnimation(this.pos.x, this.pos.y);
 			me.game.add(smallExplosion, 15);
 			me.game.sort();
+			*/
 
 			//alert(damage);
 
 			if (damage != undefined) {
+
+				me.audio.play("implosion");
 
 				me.game.HUD.updateItemValue("life", -1 * damage);
 

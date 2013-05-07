@@ -30,8 +30,11 @@ define([
 
             this.ratio = Math.random() * (1.25);
 
+            this.health = 2;
+
             if (this.ratio < 0.25) {
                 this.ratio = 0.25;
+                this.health = 1;
             }
 
             this.damage = Math.ceil(this.ratio * 5);
@@ -68,9 +71,12 @@ define([
                 this.pos.add(this.vel);
             }
         },
-        removeHealth: function() {
+        removeHealth: function(damage) {
 
-           // play sound
+
+            this.health = this.health - damage;
+
+            // play sound
             //me.audio.play("implosion");
 
             // init implosion
@@ -78,7 +84,10 @@ define([
             me.game.add(explosion, 15);
             me.game.sort();
 
-            me.game.remove(this, true);
+            if (this.health <= 0) {
+                me.game.remove(this, true);
+            }
+
 
         },
 
@@ -92,9 +101,9 @@ define([
             //me.audio.play("implosion");
 
             // init implosion
-            var implosion = new ExplosionAnimation(this.pos.x, this.pos.y);
-            me.game.add(explosion, 15);
-            me.game.sort();
+            //var implosion = new ExplosionAnimation(this.pos.x, this.pos.y);
+            //me.game.add(explosion, 15);
+            //me.game.sort();
 
         }
     });

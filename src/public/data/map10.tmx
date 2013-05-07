@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="100" tilewidth="32" tileheight="32">
+ <properties>
+  <property name="test" value="goo foo"/>
+ </properties>
+ <imagelayer name="Background1" width="20" height="100">
+  <image source="sprite/bkg0.png"/>
+  <properties>
+   <property name="ratio" value=".35"/>
+  </properties>
+ </imagelayer>
+ <imagelayer name="Background2" width="20" height="100">
+  <image source="sprite/bkg1.png"/>
+  <properties>
+   <property name="ratio" value=".25"/>
+  </properties>
+ </imagelayer>
+ <objectgroup name="enemy layer" width="20" height="100">
+  <object name="BossEntity" x="13" y="7"/>
+  <object name="EnemyEntity" x="319" y="2564"/>
+  <object name="AdvancedEnemyEntity" x="511" y="2562"/>
+  <object name="AdvancedEnemyEntity" x="77" y="2564"/>
+  <object name="AdvancedEnemyEntity" x="193" y="2186"/>
+  <object name="AdvancedEnemyEntity" x="192" y="2116"/>
+  <object name="AdvancedEnemyEntity" x="526" y="2218"/>
+  <object name="AdvancedEnemyEntity" x="527" y="2122"/>
+  <object name="EnemyEntity" x="266" y="1893"/>
+  <object name="EnemyEntity" x="334" y="1895"/>
+  <object name="EnemyEntity" x="407" y="1892"/>
+  <object name="EnemyEntity" x="42" y="1491"/>
+  <object name="EnemyEntity" x="64" y="1538"/>
+  <object name="EnemyEntity" x="101" y="1583"/>
+  <object name="EnemyEntity" x="514" y="1591"/>
+  <object name="EnemyEntity" x="542" y="1528"/>
+  <object name="EnemyEntity" x="570" y="1492"/>
+  <object name="MineEntity" x="180" y="1109"/>
+  <object name="MineEntity" x="242" y="1109"/>
+  <object name="MineEntity" x="297" y="1109"/>
+  <object name="MineEntity" x="353" y="1113"/>
+  <object x="393" y="1111"/>
+ </objectgroup>
+</map>

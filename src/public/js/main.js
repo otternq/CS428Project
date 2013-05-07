@@ -16,9 +16,13 @@ require.config({
     titleScreen: 'libs/app/screens/titlescreen',
     briefingScreen: 'libs/app/screens/briefingscreen',
     debriefingScreen: 'libs/app/screens/debriefingscreen',
+    howtoplayscreen: 'libs/app/screens/howtoplayscreen',
+    storyscreen: 'libs/app/screens/storyscreen',
 
     //entities
     enemyentity: 'libs/app/entities/enemyentity',
+    bossentity: 'libs/app/entities/bossentity',
+    minorbossentity: 'libs/app/entities/minorbossentity',
     advancedenemyentity: 'libs/app/entities/advancedenemyentity',
     bombentity: 'libs/app/entities/bombentity',
     bombentityaoe: 'libs/app/entities/bombentityaoe',
@@ -29,6 +33,7 @@ require.config({
 
     //animation
     bombexplosionanimation: 'libs/app/animation/bombexplosionanimation',
+    bossexplosionanimation: 'libs/app/animation/bossexplosionanimation',
     smallexplosionanimation: 'libs/app/animation/smallexplosionanimation',
     explosionanimation: 'libs/app/animation/explosionanimation',
     implosionanimations: 'libs/app/animation/implosionanimations',
