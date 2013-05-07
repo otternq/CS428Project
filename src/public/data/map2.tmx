@@ -19,14 +19,14 @@
   </properties>
  </imagelayer>
  <objectgroup name="enemylayer" width="20" height="80">
-  <object name="EnemyEntity" x="61" y="285"/>
-  <object name="EnemyEntity" x="29" y="252"/>
-  <object name="EnemyEntity" x="92" y="250"/>
-  <object name="EnemyEntity" x="60" y="219"/>
-  <object name="EnemyEntity" x="510" y="284"/>
-  <object name="EnemyEntity" x="478" y="251"/>
-  <object name="EnemyEntity" x="541" y="249"/>
-  <object name="EnemyEntity" x="509" y="218"/>
+  <object name="EnemyEntity" x="74" y="517"/>
+  <object name="EnemyEntity" x="42" y="484"/>
+  <object name="EnemyEntity" x="105" y="482"/>
+  <object name="EnemyEntity" x="73" y="451"/>
+  <object name="EnemyEntity" x="523" y="516"/>
+  <object name="EnemyEntity" x="491" y="483"/>
+  <object name="EnemyEntity" x="554" y="481"/>
+  <object name="EnemyEntity" x="522" y="450"/>
   <object name="EnemyEntity" x="162" y="1957"/>
   <object name="EnemyEntity" x="193" y="1921"/>
   <object name="EnemyEntity" x="225" y="1890"/>
@@ -45,5 +45,13 @@
   <object name="EnemyEntity" x="129" y="800"/>
   <object name="EnemyEntity" x="130" y="746"/>
   <object name="EnemyEntity" x="513" y="2242"/>
+  <object name="EnemyEntity" x="137" y="49"/>
+  <object name="EnemyEntity" x="200" y="47"/>
+  <object name="EnemyEntity" x="168" y="16"/>
+  <object name="EnemyEntity" x="400" y="84"/>
+  <object name="EnemyEntity" x="368" y="51"/>
+  <object name="EnemyEntity" x="169" y="82"/>
+  <object name="EnemyEntity" x="431" y="49"/>
+  <object name="EnemyEntity" x="399" y="18"/>
  </objectgroup>
 </map>

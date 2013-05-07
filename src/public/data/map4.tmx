@@ -22,8 +22,8 @@
   <object name="AdvancedEnemyEntity" x="160" y="548"/>
   <object name="AdvancedEnemyEntity" x="449" y="549"/>
   <object name="AdvancedEnemyEntity" x="297" y="194"/>
-  <object name="AdvancedEnemyEntity" x="128" y="548"/>
-  <object name="AdvancedEnemyEntity" x="480" y="549"/>
+  <object name="AdvancedEnemyEntity" x="96" y="511"/>
+  <object name="AdvancedEnemyEntity" x="519" y="496"/>
   <object name="AdvancedEnemyEntity" x="196" y="131"/>
   <object name="AdvancedEnemyEntity" x="391" y="131"/>
   <object name="EnemyEntity" x="248" y="161"/>
@@ -33,15 +33,15 @@
   <object name="EnemyEntity" x="305" y="849"/>
   <object name="EnemyEntity" x="338" y="849"/>
   <object name="EnemyEntity" x="277" y="849"/>
-  <object name="AdvancedEnemyEntity" x="112" y="1746"/>
+  <object name="AdvancedEnemyEntity" x="142" y="1744"/>
   <object name="AdvancedEnemyEntity" x="81" y="1746"/>
-  <object name="AdvancedEnemyEntity" x="283" y="1636"/>
+  <object name="AdvancedEnemyEntity" x="404" y="1637"/>
   <object name="AdvancedEnemyEntity" x="252" y="1636"/>
   <object name="AdvancedEnemyEntity" x="564" y="1772"/>
-  <object name="AdvancedEnemyEntity" x="533" y="1772"/>
-  <object name="AdvancedEnemyEntity" x="124" y="1315"/>
+  <object name="AdvancedEnemyEntity" x="497" y="1773"/>
+  <object name="AdvancedEnemyEntity" x="145" y="1315"/>
   <object name="AdvancedEnemyEntity" x="93" y="1315"/>
   <object name="AdvancedEnemyEntity" x="530" y="1163"/>
-  <object name="AdvancedEnemyEntity" x="499" y="1163"/>
+  <object name="AdvancedEnemyEntity" x="475" y="1164"/>
  </objectgroup>
 </map>

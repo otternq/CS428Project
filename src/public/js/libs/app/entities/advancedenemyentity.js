@@ -33,6 +33,39 @@ define([
             me.game.add(missile2, 10);
 
             me.game.sort();
+        },
+        update: function()
+        {
+
+            // call parent constructor
+            this.parent(this);
+
+            // calculate velocity
+            this.vel.y += this.accel.y * me.timer.tick;
+
+            if(this.inViewport === true){
+                this.startCounter = true;
+                if ( (this.time) % 70 == 0) {
+                    this.fire();
+                }
+            }
+
+            this.time++;
+
+            if(this.startCounter === true)
+                this.lifespan++;
+
+            
+            if(this.lifespan == 400 )
+                me.game.remove(this);
+
+            
+
+            // check & update missile movement
+            this.computeVelocity(this.vel);
+            this.pos.add(this.vel);
+
+            return true;
         }
     });
 

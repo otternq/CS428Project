@@ -12,7 +12,7 @@ define([
 
 			//var settings = {};
 			if (settings.image === undefined) {
-				settings.image = "minorboss";
+				settings.image = "miniboss";
 			}
 
 			if (settings.spritewidth === undefined) {
@@ -41,10 +41,10 @@ define([
 
 			this.time = 0;
 
-			this.health = 100;
+			this.health = 75;
 			this.damage = 50;
 
-			this.points = 50;
+			this.points = 30;
 			this.turret = 0;
 
 
@@ -61,13 +61,18 @@ define([
 			var yOffset;
 			var type;
 
-			if(this.turret % 5 == 0){
+			if(this.turret % 6 == 0){
 				xOffset = this.pos.x + 25;
 				yOffset = 10;
 				type = "Enemy"
 			}
-			else if(this.turret % 5 == 3){
+			else if(this.turret % 6 == 3){
 				xOffset = this.pos.x + 300;
+				yOffset = 10;
+				type = "Enemy"
+			}
+			else if(this.turret % 6 == 4){
+				xOffset =  this.pos.x + (Math.random() * 300);
 				yOffset = 10;
 				type = "Enemy"
 			}
@@ -110,7 +115,7 @@ define([
 			if (this.pos.y > this.bottom)
 				me.game.remove(this);
 
-			if ( (this.time++) % 45 == 0) {
+			if ( (this.time++) % 30 == 0) {
 				this.fire();
 			}
 

@@ -45,10 +45,10 @@ define([
 
 			this.shieldUp = false;
 
-			this.health = 50;
+			this.health = 150;
 			this.damage = 25;
 
-			this.points = 30;
+			this.points = 50;
 			this.turret = 0;
 
 

@@ -15,7 +15,7 @@
         "debriefing": [
             "You survived the ambush",
             "Now you must choose your next mission:",
-            "SPACE: Destory scout fleet   B: Examine Wreckage",
+            "SPACE: Investigate Distress Call  B: Examine Wreckage",
             [2,3]
         ],
         "next": [2,3]
