@@ -3,9 +3,6 @@
  <properties>
   <property name="test" value="goo foo"/>
  </properties>
- <tileset firstgid="1" name="enemy2" tilewidth="42" tileheight="42">
-  <image source="sprite/enemy2.png" width="168" height="42"/>
- </tileset>
  <imagelayer name="Background1" width="20" height="70">
   <image source="sprite/bkg2.png"/>
   <properties>

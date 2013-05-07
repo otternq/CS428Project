@@ -4,15 +4,16 @@ define([
 	'projectileentity',
 	'explosionanimation',
 	'enemyentity',
-	'advancedenemyentity'
-],function(ProjectileEntity, ExplosionAnimation, EnemyEntity, AdvancedEnemyEntity) {
+	'advancedenemyentity',
+	'bossexplosionanimation'
+],function(ProjectileEntity, ExplosionAnimation, EnemyEntity, AdvancedEnemyEntity, BossExplosionAnimation) {
 	return me.ObjectEntity.extend({
 		init: function(x, y, settings)
 		{
 
 			//var settings = {};
 			if (settings.image === undefined) {
-				settings.image = "miniboss";
+				settings.image = "minorboss";
 			}
 
 			if (settings.spritewidth === undefined) {
