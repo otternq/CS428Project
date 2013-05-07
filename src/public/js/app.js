@@ -37,20 +37,11 @@ define([
 		//bootstrap :)
 		window.onReady(function()
 		{
-			var requireClay = true; // If you pass true for 2nd param, it will make sure they've logged into clay (not anonymous)
+			
 			Clay.ready(function() {
-				var requireClay = false; // If you pass true for 2nd param, it will make sure they've logged into clay (not anonymous)
+				
 				
 				Game.onload(g_resources);
-
-				if( !Clay.Player.loggedIn ) {
-
-					Clay.Player.login(
-						function( response ) {},
-						requireClay
-					);
-
-				}
 
 			});
 

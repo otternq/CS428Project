@@ -15,19 +15,24 @@ define([
             settings.spritewidth = 84;
             settings.spriteheight = 84;
             settings.collidable = true;
-            settings.type = "mine";
+            settings.type = me.game.ENEMY_OBJECT;
             this.time = 0;
 
             this.damage = 5;
 
             this.parent(x, y, settings);
 
+            this.animationList = [];
 
-        },
+            for (var i = 0; i < 20; i++) {
+                this.animationList[i] = i;
+            }
 
-        update: function()
-        {
-            
+            this.addAnimation("strobe", this.animationList, 1);
+            this.setCurrentAnimation("strobe");
+
+            this.setVelocity(0, 0);
+
         },
 
         remove: function()
@@ -44,6 +49,10 @@ define([
             me.game.add(implosion, 15);
             me.game.sort();
 
+        },
+
+        removeHealth: function() {
+            me.game.remove(this, true);
         }
     });
 

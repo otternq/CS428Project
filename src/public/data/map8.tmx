@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="100" tilewidth="32" tileheight="32">
+ <properties>
+  <property name="test" value="goo foo"/>
+ </properties>
+ <imagelayer name="Background1" width="20" height="100">
+  <image source="sprite/bkg2.png"/>
+  <properties>
+   <property name="ratio" value=".35"/>
+  </properties>
+ </imagelayer>
+ <imagelayer name="Background2" width="20" height="100">
+  <image source="sprite/bkg1.png"/>
+  <properties>
+   <property name="ratio" value=".25"/>
+  </properties>
+ </imagelayer>
+ <objectgroup color="#00b200" name="EnemyLayer" width="20" height="100">
+  <object name="EnemyEntity" x="97" y="2786"/>
+  <object name="EnemyEntity" x="141" y="2782"/>
+  <object name="EnemyEntity" x="515" y="2789"/>
+  <object name="EnemyEntity" x="556" y="2789"/>
+  <object name="EnemyEntity" x="50" y="1923"/>
+  <object name="EnemyEntity" x="15" y="1983"/>
+  <object name="EnemyEntity" x="122" y="1984"/>
+  <object name="EnemyEntity" x="528" y="1994"/>
+  <object name="EnemyEntity" x="568" y="1906"/>
+  <object name="EnemyEntity" x="618" y="2007"/>
+  <object name="EnemyEntity" x="250" y="688"/>
+  <object name="EnemyEntity" x="366" y="683"/>
+  <object name="EnemyEntity" x="52" y="36"/>
+  <object name="EnemyEntity" x="162" y="34"/>
+  <object name="EnemyEntity" x="449" y="34"/>
+  <object name="EnemyEntity" x="574" y="33"/>
+ </objectgroup>
+ <objectgroup color="#ff0000" name="MineLayer" width="20" height="100">
+  <object name="MineEntity" x="287" y="2563"/>
+  <object name="MineEntity" x="354" y="2565"/>
+  <object name="MineEntity" x="410" y="2561"/>
+  <object name="MineEntity" x="242" y="2564"/>
+ </objectgroup>
+ <objectgroup color="#f4ff00" name="AdvancedEnemyLayer" width="20" height="100">
+  <object name="AdvancedEnemyEntity" x="320" y="1464"/>
+  <object name="AdvancedEnemyEntity" x="236" y="1406"/>
+  <object name="AdvancedEnemyEntity" x="404" y="1401"/>
+  <object name="AdvancedEnemyEntity" x="120" y="1349"/>
+  <object name="AdvancedEnemyEntity" x="525" y="1332"/>
+  <object name="AdvancedEnemyEntity" x="112" y="84"/>
+  <object name="AdvancedEnemyEntity" x="495" y="85"/>
+  <object name="AdvancedEnemyEntity" x="307" y="733"/>
+ </objectgroup>
+</map>
