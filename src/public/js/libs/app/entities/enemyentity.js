@@ -72,8 +72,12 @@ define([
 			// calculate velocity
 			this.vel.y += this.accel.y * me.timer.tick;
 
-			if(this.inViewport === true)
+			if(this.inViewport === true){
 				this.startCounter = true;
+				if ( (this.time) % 90 == 0) {
+					this.fire();
+				}
+			}
 
 			this.time++;
 
@@ -84,9 +88,7 @@ define([
 			if(this.lifespan == 400 )
 				me.game.remove(this);
 
-			if ( (this.time) % 90 == 0) {
-				this.fire();
-			}
+			
 
 			// check & update missile movement
 			this.computeVelocity(this.vel);

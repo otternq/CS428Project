@@ -25,13 +25,13 @@ define(['explosionanimation'],
 			else if(from=="AdvancedEnemy"){
 				this.parent(x,y, {image: "enemyMissile"});
 				this.target = "Player";
-				this.lifespan == 80;
+				this.lifespan == 40;
 				this.damage = 2;
 			}
 			else {
 				this.parent(x,y, {image: "enemyMissile"});
 				this.target = "Player";
-				this.lifespan == 60;
+				this.lifespan == 30;
 				this.damage = 1;
 			}
 
@@ -45,7 +45,7 @@ define(['explosionanimation'],
 		//determines how long the projectile stays active in the screen
 			this.time++;
 			if(this.time == this.lifespan)
-				me.game.remove(this);
+				me.game.remove(this, true);
 
 		//check for positive or negative velocity and adjust the position accordingly
 			if(this.accel.y < 0){  //enemy projectiles have negative velocity
