@@ -51,5 +51,6 @@
   <object name="EnemyEntity" x="510" y="2145"/>
   <object name="EnemyEntity" x="542" y="2111"/>
   <object name="EnemyEntity" x="446" y="2111"/>
+  <object name="MinorBossEntity" x="183" y="55"/>
  </objectgroup>
 </map>

@@ -93,5 +93,9 @@
   <object name="MineEntity" x="256" y="614"/>
   <object name="MineEntity" x="250" y="380"/>
   <object name="MineEntity" x="322" y="122"/>
+  <object name="MineEntity" x="109" y="213"/>
+  <object name="MineEntity" x="487" y="945"/>
+  <object name="MineEntity" x="121" y="981"/>
+  <object name="MineEntity" x="219" y="1235"/>
  </objectgroup>
 </map>

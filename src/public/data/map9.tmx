@@ -18,5 +18,70 @@
    <property name="ratio" value=".25"/>
   </properties>
  </imagelayer>
- <objectgroup name="enemy layer" width="20" height="75"/>
+ <objectgroup name="AsteroidsLayer" width="20" height="75">
+  <object name="AsteroidEntity" x="151" y="107"/>
+  <object name="AsteroidEntity" x="522" y="187"/>
+  <object name="AsteroidEntity" x="198" y="289"/>
+  <object name="AsteroidEntity" x="514" y="418"/>
+  <object name="AsteroidEntity" x="243" y="459"/>
+  <object name="AsteroidEntity" x="104" y="419"/>
+  <object name="AsteroidEntity" x="70" y="174"/>
+  <object name="AsteroidEntity" x="605" y="94"/>
+  <object name="AsteroidEntity" x="691" y="292"/>
+  <object name="AsteroidEntity" x="370" y="197"/>
+  <object name="AsteroidEntity" x="158" y="630"/>
+  <object name="AsteroidEntity" x="517" y="751"/>
+  <object name="AsteroidEntity" x="615" y="684"/>
+  <object name="AsteroidEntity" x="414" y="583"/>
+  <object name="AsteroidEntity" x="231" y="802"/>
+  <object name="AsteroidEntity" x="130" y="924"/>
+  <object name="AsteroidEntity" x="624" y="952"/>
+  <object name="AsteroidEntity" x="377" y="984"/>
+  <object name="AsteroidEntity" x="129" y="1412"/>
+  <object name="AsteroidEntity" x="449" y="1554"/>
+  <object name="AsteroidEntity" x="651" y="1491"/>
+  <object name="AsteroidEntity" x="597" y="1333"/>
+  <object name="AsteroidEntity" x="348" y="1311"/>
+  <object name="AsteroidEntity" x="140" y="1245"/>
+  <object name="AsteroidEntity" x="198" y="1188"/>
+  <object name="AsteroidEntity" x="147" y="2151"/>
+  <object name="AsteroidEntity" x="461" y="2283"/>
+  <object name="AsteroidEntity" x="328" y="2108"/>
+  <object name="AsteroidEntity" x="472" y="2082"/>
+  <object name="AsteroidEntity" x="438" y="1947"/>
+  <object name="AsteroidEntity" x="349" y="1942"/>
+  <object name="AsteroidEntity" x="143" y="1966"/>
+  <object name="AsteroidEntity" x="77" y="1899"/>
+  <object name="AsteroidEntity" x="314" y="1852"/>
+  <object name="AsteroidEntity" x="614" y="1874"/>
+  <object name="AsteroidEntity" x="457" y="1683"/>
+  <object name="AsteroidEntity" x="258" y="1678"/>
+  <object name="AsteroidEntity" x="174" y="1622"/>
+  <object name="AsteroidEntity" x="141" y="1533"/>
+  <object name="AsteroidEntity" x="366" y="1512"/>
+  <object name="AsteroidEntity" x="246" y="1401"/>
+  <object name="AsteroidEntity" x="493" y="1360"/>
+  <object name="AsteroidEntity" x="397" y="1219"/>
+ </objectgroup>
+ <objectgroup color="#ff0000" name="MineLayer" width="20" height="75">
+  <object name="MineEntity" x="77" y="1056"/>
+  <object name="MineEntity" x="162" y="1060"/>
+  <object name="MineEntity" x="271" y="1053"/>
+  <object name="MineEntity" x="391" y="1059"/>
+  <object name="MineEntity" x="532" y="1057"/>
+  <object name="MineEntity" x="658" y="1053"/>
+  <object name="MineEntity" x="140" y="532"/>
+  <object name="MineEntity" x="203" y="579"/>
+  <object name="MineEntity" x="274" y="649"/>
+  <object name="MineEntity" x="341" y="734"/>
+  <object name="MineEntity" x="408" y="366"/>
+  <object name="MineEntity" x="502" y="289"/>
+  <object name="MineEntity" x="589" y="240"/>
+  <object name="MineEntity" x="28" y="1756"/>
+  <object name="MineEntity" x="95" y="1757"/>
+  <object name="MineEntity" x="299" y="1751"/>
+  <object name="MineEntity" x="378" y="1751"/>
+  <object name="MineEntity" x="537" y="1748"/>
+  <object name="MineEntity" x="589" y="1746"/>
+ </objectgroup>
 </map>

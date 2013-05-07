@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="20" height="50" tilewidth="32" tileheight="32">
+<map version="1.0" orientation="orthogonal" width="20" height="75" tilewidth="32" tileheight="32">
  <properties>
   <property name="test" value="goo foo"/>
  </properties>
  <tileset firstgid="1" name="enemy2" tilewidth="42" tileheight="42">
   <image source="sprite/enemy2.png" width="168" height="42"/>
  </tileset>
- <imagelayer name="Background1" width="20" height="50">
+ <imagelayer name="Background1" width="20" height="75">
   <image source="sprite/bkg4.jpg"/>
   <properties>
    <property name="ratio" value=".35"/>
   </properties>
  </imagelayer>
- <imagelayer name="Background2" width="20" height="50">
+ <imagelayer name="Background2" width="20" height="75">
   <image source="sprite/bkg1.png"/>
   <properties>
    <property name="ratio" value=".25"/>
   </properties>
  </imagelayer>
- <objectgroup name="enemy layer" width="20" height="50">
+ <objectgroup name="enemy layer" width="20" height="75">
   <object name="EnemyEntity" x="289" y="1124"/>
   <object name="EnemyEntity" x="257" y="1122"/>
   <object name="EnemyEntity" x="228" y="1122"/>
@@ -39,5 +39,13 @@
   <object name="EnemyEntity" x="327" y="197"/>
   <object name="EnemyEntity" x="421" y="198"/>
   <object name="EnemyEntity" x="356" y="197"/>
+  <object name="EnemyEntity" x="113" y="1731"/>
+  <object name="EnemyEntity" x="19" y="1730"/>
+  <object name="EnemyEntity" x="48" y="1730"/>
+  <object name="EnemyEntity" x="80" y="1732"/>
+  <object name="EnemyEntity" x="465" y="1899"/>
+  <object name="EnemyEntity" x="371" y="1898"/>
+  <object name="EnemyEntity" x="400" y="1898"/>
+  <object name="EnemyEntity" x="432" y="1900"/>
  </objectgroup>
 </map>
