@@ -22,7 +22,7 @@ define([
 				this.target = me.game.ENEMY_OBJECT;
 			}
 
-			this.damage = 5;
+			this.damage = 3;
 
 			this.setVelocity(0, vel);  // set the default vertical speed (accel vector)
 		},

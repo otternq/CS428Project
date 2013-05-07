@@ -46,7 +46,7 @@ define([
 
 			this.shieldUp = false;
 
-			this.health = 150;
+			this.health = 300;
 			this.damage = 25;
 
 			this.points = 50;

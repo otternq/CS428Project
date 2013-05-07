@@ -9,8 +9,8 @@ define(function(){
                 this.parent(x, y, image, 600, 277);
             } else {//small boss
                 // call parent constructor
-                var image = me.loader.getImage("BossExplosion");
-                this.parent(x, y, image, 600, 277);
+                var image = me.loader.getImage("MinorBossExplosion");
+                this.parent(x, y, image, 320, 150);
             }
             
 

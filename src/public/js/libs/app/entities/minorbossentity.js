@@ -42,7 +42,7 @@ define([
 
 			this.time = 0;
 
-			this.health = 75;
+			this.health = 225;
 			this.damage = 50;
 
 			this.points = 30;
@@ -53,7 +53,7 @@ define([
 			this.gravity = 0;
 
 			// set the default horizontal speed (accel vector)
-			this.setVelocity(0, 0);
+			this.setVelocity(1, 0);
 		},
 
 		fire: function() {
@@ -118,6 +118,10 @@ define([
 
 			if ( (this.time++) % 30 == 0) {
 				this.fire();
+			}
+
+			if ( (this.time) % 150 == 0) {
+				this.vel.x = -this.vel.x;
 			}
 
 			// check & update missile movement

@@ -18,6 +18,7 @@
      {"name": "minorboss", "type":"image", "src": "data/sprite/miniBoss.png"},
     {"name": "bossShield", "type":"image", "src": "data/sprite/bossShield.png"},
     {"name": "BossExplosion", "type":"image", "src": "data/sprite/BossExplosion.png"},
+    {"name": "MinorBossExplosion", "type":"image", "src": "data/sprite/miniBossExplosion.png"},
 
     {"name": "asteroid", "type":"image", "src": "data/sprite/asteroid.png"},
     {"name": "mine", "type":"image", "src": "data/sprite/mine.png"},

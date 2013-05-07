@@ -59,7 +59,7 @@ define([
 
 			if (res) {
 
-				res.obj.removeHealth(5);
+				res.obj.removeHealth(2);
 
 			}
 		},
