@@ -24,10 +24,17 @@ define([
            console.log("How to play screen");
 
             this.line = [];
-            this.line[0] = "How To Play Screen";
-            this.line[1] = "'Spacebar' fires lasers, 'B' fires bombs" ;
-            this.line[2] = "on the remote, 'A' is the 'Spacebar'";
-            this.line[3] = "and 'C' is 'Enter'";
+            this.line[0] = "How To Play";
+            this.line[1] = "'Spacebar' Fires Lasers"
+            this.line[2] = " 'B' Fires Bombs Once They're Unlocked" ;
+            this.line[3] = "";
+            this.line[4] = "If You're Using The Remote Controller"
+            this.line[5] = "'A' Is The 'Spacebar'";
+            this.line[6] = "'C' is 'Enter'";
+            this.line[7] = "";
+            this.line[8] = "To Beat A Level"
+            this.line[9] = "Fight Your Way Through And Reach The Top";
+            this.line[10] = "Score As Many Points As Possible";
 
             this.backgroundImage = me.loader.getImage("briefingbackground");
 

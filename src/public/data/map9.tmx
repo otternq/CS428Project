@@ -7,7 +7,7 @@
   <image source="sprite/enemy2.png" width="168" height="42"/>
  </tileset>
  <imagelayer name="Background1" width="20" height="75">
-  <image source="sprite/bkg5.jpg"/>
+  <image source="sprite/bkg5.png"/>
   <properties>
    <property name="ratio" value=".35"/>
   </properties>
