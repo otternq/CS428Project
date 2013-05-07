@@ -148,6 +148,21 @@ define([
 
 				var mapIndex = String(me.gamestat.getItemValue("mapIndex"));
 				console.log("Current mapIndex: " + mapIndex);
+
+				if (me.game.HUD.getItemValue("life") == 100) {
+					var achievement = new Clay.Achievement( { id: 1362 } );
+		            achievement.award( function( response ) {
+		                // Optional callback on completion
+		                console.log( response );
+		            } );
+				} else if (me.game.HUD.getItemValue("life") == 10) {
+					var achievement = new Clay.Achievement( { id: 1363 } );
+		            achievement.award( function( response ) {
+		                // Optional callback on completion
+		                console.log( response );
+		            } );
+				}
+
 				me.state.change(
 					101,
 					me.gamestat.getItemValue("debriefing"+mapIndex)[0],

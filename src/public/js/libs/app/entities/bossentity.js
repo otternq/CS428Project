@@ -215,6 +215,11 @@ define([
 			var curScore = me.gamestat.getItemValue("score");
 			me.gamestat.setValue("score", curScore+this.points);
 
+			var achievement = new Clay.Achievement( { id: 1376 } );
+            achievement.award( function( response ) {
+                // Optional callback on completion
+                console.log( response );
+            } );
 
 			me.game.remove(this, true);
 
