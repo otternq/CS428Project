@@ -4,8 +4,9 @@ define([
 	'projectileentity',
 	'explosionanimation',
 	'enemyentity',
-	'advancedenemyentity'
-],function(ProjectileEntity, ExplosionAnimation, EnemyEntity, AdvancedEnemyEntity) {
+	'advancedenemyentity',
+	'bossexplosionanimation'
+],function(ProjectileEntity, ExplosionAnimation, EnemyEntity, AdvancedEnemyEntity, BossExplosionAnimation) {
 	return me.ObjectEntity.extend({
 		init: function(x, y, settings)
 		{
@@ -142,65 +143,70 @@ define([
 			// call parent constructor
 			this.parent(this);
 
-			for ( var i = 0; i < 14; i++) {
-				if (this.health > 100 - 14 * (i + 1)) {
-					this.setCurrentAnimation("health"+ i);
-					break;
+			if (this.health > 0) {
+
+				for ( var i = 0; i < 14; i++) {
+					if (this.health > 100 - 14 * (i + 1)) {
+						this.setCurrentAnimation("health"+ i);
+						break;
+					}
 				}
-			}
 
 
-			// calculate velocity
-			this.vel.y += this.accel.y * me.timer.tick;
+				// calculate velocity
+				this.vel.y += this.accel.y * me.timer.tick;
 
-			// if the enemy object goes out from the screen,
-			// remove it from the game manager
-			if (this.pos.y > this.bottom)
-				me.game.remove(this);
+				// if the enemy object goes out from the screen,
+				// remove it from the game manager
+				if (this.pos.y > this.bottom)
+					me.game.remove(this);
 
-			if ( (this.time++) % 45 == 0) {
-				this.fire();
-			}
-			if ( (this.time) % 225 == 0){
-				this.spawnEnemy();
-			}
-			if ( (this.time) % 150 == 0) {
-				
-				
-				if(this.shieldUp == true){
+				if ( (this.time++) % 45 == 0) {
+					this.fire();
+				}
+				if ( (this.time) % 225 == 0){
+					this.spawnEnemy();
+				}
+				if ( (this.time) % 150 == 0) {
 					
-					console.log(this.left + " " + this.width + " " + this.top + " " + this.height);
-					console.log(this.collisionBox.left + " " + this.collisionBox.width + " " + this.collisionBox.top + " " + this.collisionBox.height);
-
-					this.image = me.loader.getImage("boss");
-					this.spriteheight = this.height = this.collisionBox.height = 277;
-					this.updateColRect(0,600,0,277);
-					this.offset.y = this.offset.y / 310 * 277;
-
-					console.log("offset: " + this.offset.y);
 					
-					this.shieldUp = false;
+					if(this.shieldUp == true){
+						
+						console.log(this.left + " " + this.width + " " + this.top + " " + this.height);
+						console.log(this.collisionBox.left + " " + this.collisionBox.width + " " + this.collisionBox.top + " " + this.collisionBox.height);
+
+						this.image = me.loader.getImage("boss");
+						this.spriteheight = this.height = this.collisionBox.height = 277;
+						this.updateColRect(0,600,0,277);
+						this.offset.y = this.offset.y / 310 * 277;
+
+						console.log("offset: " + this.offset.y);
+						
+						this.shieldUp = false;
+					}
+					else{
+						console.log(this.left + " " + this.width + " " + this.top + " " + this.height);
+						console.log(this.collisionBox.left + " " + this.collisionBox.width + " " + this.collisionBox.top + " " + this.collisionBox.height);
+
+						this.image = me.loader.getImage("bossShield");
+						this.spriteheight = this.height = this.collisionBox.height= 310;
+						this.updateColRect(0,600,0,310);
+						this.offset.y = this.offset.y / 277 * 310;
+
+						console.log("offset: " + this.offset.y);
+
+						this.shieldUp = true;
+					}
 				}
-				else{
-					console.log(this.left + " " + this.width + " " + this.top + " " + this.height);
-					console.log(this.collisionBox.left + " " + this.collisionBox.width + " " + this.collisionBox.top + " " + this.collisionBox.height);
 
-					this.image = me.loader.getImage("bossShield");
-					this.spriteheight = this.height = this.collisionBox.height= 310;
-					this.updateColRect(0,600,0,310);
-					this.offset.y = this.offset.y / 277 * 310;
+				// check & update missile movement
+				this.computeVelocity(this.vel);
+				this.pos.add(this.vel);
 
-					console.log("offset: " + this.offset.y);
-
-					this.shieldUp = true;
-				}
+				return true;
+			} else {
+				return false;
 			}
-
-			// check & update missile movement
-			this.computeVelocity(this.vel);
-			this.pos.add(this.vel);
-
-			return true;
 		},
 
 		remove: function()
@@ -208,6 +214,7 @@ define([
 			me.game.HUD.updateItemValue("score", this.points);
 			var curScore = me.gamestat.getItemValue("score");
 			me.gamestat.setValue("score", curScore+this.points);
+
 
 			me.game.remove(this, true);
 
@@ -217,20 +224,15 @@ define([
 
 			if(this.shieldUp == false) {
 				this.health -= damage;
-				console.log("Boss Health" + this.health);
 			}
 
             // play sound
             me.audio.play("implosion");
 
-            // init implosion
-            /*
-            var implosion = new ExplosionAnimation(this.pos.x, this.pos.y);
-            me.game.add(implosion, 15);
-            me.game.sort();
-            */
-
-            if (this.health === 0) {
+            if (this.health <= 0) {
+            	var exp = new BossExplosionAnimation(this.pos.x, this.pos.y, 0);
+				me.game.add(exp, 15);
+				me.game.sort();
                 this.remove();
             }
 		}

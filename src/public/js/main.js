@@ -33,6 +33,7 @@ require.config({
 
     //animation
     bombexplosionanimation: 'libs/app/animation/bombexplosionanimation',
+    bossexplosionanimation: 'libs/app/animation/bossexplosionanimation',
     smallexplosionanimation: 'libs/app/animation/smallexplosionanimation',
     explosionanimation: 'libs/app/animation/explosionanimation',
     implosionanimations: 'libs/app/animation/implosionanimations',
