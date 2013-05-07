@@ -47,8 +47,8 @@ define([
 
 			me.gamestat.add("levelCount", levels.length);
 
-			me.gamestat.add("bombAtLevel", 3);
-			me.gamestat.add("dLaserAtLevel", 2);
+			me.gamestat.add("bombAtLevel", 5);
+			me.gamestat.add("dLaserAtLevel", 4);
 
 			me.gamestat.add("hasBomb", false);
 			me.gamestat.add("hasDouble", false);
