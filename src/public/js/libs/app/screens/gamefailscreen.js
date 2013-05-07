@@ -39,7 +39,7 @@ define([
 
             // buttons
           //  this.restart = new Button("restart", me.state.PLAY, 280);
-          //  this.menu = new Button("menu", me.state.MENU, 330);
+            this.menu = new Button("menu", me.state.MENU, 330);
 
             me.leaderboard.post( { score: me.gamestat.getItemValue("score") }, function( response ) {
                 // Callback
