@@ -34,10 +34,12 @@ define([
 			// call parent constructor
 			this.parent(x, y, settings);
 
-			this.addAnimation("fight", [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14], 1);
-			this.addAnimation("explode", [15,16,17,18,19,20, 21, 22, 23, 24, 25, 26, 27, 28], 1);
-			this.setAnimationFrame(0);
-			this.animationpause = true;
+
+			for (var i = 0; i < 14; i++) {
+				this.addAnimation("health" + i, [i], 1);
+			}
+
+			this.setCurrentAnimation("health0");
 
 			this.time = 0;
 
@@ -142,8 +144,7 @@ define([
 
 			for ( var i = 0; i < 14; i++) {
 				if (this.health > 100 - 14 * (i + 1)) {
-					this.setAnimationFrame(i);
-					this.animationpause = true;
+					this.setCurrentAnimation("health"+ i);
 					break;
 				}
 			}
@@ -208,17 +209,15 @@ define([
 			var curScore = me.gamestat.getItemValue("score");
 			me.gamestat.setValue("score", curScore+this.points);
 
-			this.setCurrentAnimation("explode", function() {
-				// remove this entity
-				me.game.remove(this, true);
-			});
+			me.game.remove(this, true);
 
 		},
 
 		removeHealth: function(damage) {
 
-			if(this.shieldUp == false){
+			if(this.shieldUp == false) {
 				this.health -= damage;
+				console.log("Boss Health" + this.health);
 			}
 
             // play sound
