@@ -15,6 +15,7 @@
     {"name": "advancedenemy", "type":"image", "src": "data/sprite/HeavyFighter.png"},
 
     {"name": "boss", "type":"image", "src": "data/sprite/boss.png"},
+     {"name": "minorboss", "type":"image", "src": "data/sprite/minorboss.png"},
     {"name": "bossShield", "type":"image", "src": "data/sprite/bossShield.png"},
 
     {"name": "asteroid", "type":"image", "src": "data/sprite/asteroid.png"},

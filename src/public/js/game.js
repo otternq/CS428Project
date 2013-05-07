@@ -12,9 +12,10 @@ define([
 	'mineentity',
 	'enemyentity',
 	'bossentity',
+	'minorbossentity',
 	'advancedenemyentity',
 	'text!/data/levels.json'
-], function(MenuScreen, BriefingScreen, DebriefingScreen, HowToPlayScreen, StoryScreen, PlayScreen, GameOverScreen, GameFailScreen, BackgroundObject, AsteroidEntity, MineEntity, EnemyEntity,BossEntity, AdvancedEnemyEntity, LevelData) {
+], function(MenuScreen, BriefingScreen, DebriefingScreen, HowToPlayScreen, StoryScreen, PlayScreen, GameOverScreen, GameFailScreen, BackgroundObject, AsteroidEntity, MineEntity, EnemyEntity,BossEntity, MinorBossEntity, AdvancedEnemyEntity, LevelData) {
 
 	var game = {
 		/* ---
@@ -119,6 +120,7 @@ define([
 			me.entityPool.add("MineEntity", MineEntity, true);
 			me.entityPool.add("EnemyEntity", EnemyEntity, true);
 			me.entityPool.add("BossEntity", BossEntity, true);
+			me.entityPool.add("MinorBossEntity", MinorBossEntity, true);
 			me.entityPool.add("AdvancedEnemyEntity", AdvancedEnemyEntity, true);
 
 			// enable the keyboard

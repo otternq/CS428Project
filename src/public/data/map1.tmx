@@ -33,5 +33,6 @@
   <object name="EnemyEntity" x="203" y="150"/>
   <object name="EnemyEntity" x="66" y="147"/>
   <object name="EnemyEntity" x="32" y="125"/>
+  <object name="MinorBossEntity" x="183" y="51"/>
  </objectgroup>
 </map>

@@ -43,10 +43,10 @@ define([
 
 			this.shieldUp = false;
 
-			this.health = 100;
-			this.damage = 50;
+			this.health = 50;
+			this.damage = 25;
 
-			this.points = 50;
+			this.points = 30;
 			this.turret = 0;
 
 
@@ -63,30 +63,36 @@ define([
 			var yOffset;
 			var type;
 
-			if(this.turret % 5 == 0){
+			if(this.turret % 7 == 0){
 				xOffset = 160;
 				yOffset = 10;
 				type = "Enemy"
 			}
-			else if(this.turret % 5 == 1){
+			else if(this.turret % 7 == 1){
 				xOffset = 320;
 				yOffset = 10;
 				type = "Enemy"
 			}
-			else if(this.turret % 5 == 2){
+			else if(this.turret % 7 == 5){
 				xOffset = 480;
 				yOffset = 10;
 				type = "Enemy"
 			}
-			else if(this.turret % 5 == 3){
+			else if(this.turret % 7 == 3){
 				xOffset = 90;
 				yOffset = -100;
 				type = "Boss"
 			}
-			else if(this.turret % 5 == 4){
+			else if(this.turret % 7 == 6){
 				xOffset = 520;
 				yOffset = -100;
 				type = "Boss"
+			}
+			else{
+				xOffset = 320;
+				yOffset = 10;
+				type = "Enemy"
+
 			}
 
 			var missile = new ProjectileEntity(this.pos.x + xOffset, this.pos.y + this.height + yOffset, -3, type);
